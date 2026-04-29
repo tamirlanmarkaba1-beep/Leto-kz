@@ -49,8 +49,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);dis
 
 /* ── TABS ── */
 .tabbar{position:relative;z-index:200;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;
-  border-bottom:1px solid var(--border);flex-shrink:0;}
-.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:1;max-width:68px;
+  border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:0 0 auto;width:68px;
   height:52px;border-radius:14px;border:1.5px solid transparent;background:rgba(255,255,255,.04);
   cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
 [data-theme="light"] .tab{background:rgba(79,70,229,.06);}
@@ -174,8 +175,17 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
 .online-txt{font-size:.73rem;color:var(--muted);}
 .online-n{font-family:'Syne',sans-serif;font-weight:800;color:#4ade80;margin-left:2px;}
 .my-name-strip{margin-left:auto;display:flex;align-items:center;gap:.4rem;}
-.my-mini-av{width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.my-mini-av{width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;position:relative;}
 .my-name-lbl{font-size:.7rem;color:#a5b4fc;font-weight:700;}
+
+/* Avatar frame */
+.av-frame{position:absolute;inset:-3px;border-radius:50%;pointer-events:none;z-index:1;}
+.av-frame.gold{border:3px solid #fbbf24;box-shadow:0 0 12px rgba(251,191,36,.6);}
+.av-frame.diamond{border:3px solid #60a5fa;box-shadow:0 0 12px rgba(96,165,250,.6);}
+.av-frame.fire{border:3px solid #f87171;box-shadow:0 0 12px rgba(248,113,113,.6);animation:fire-glow 1.5s ease-in-out infinite alternate;}
+@keyframes fire-glow{from{box-shadow:0 0 12px rgba(248,113,113,.6)}to{box-shadow:0 0 20px rgba(248,113,113,.9)}}
+.av-frame.rainbow{border:3px solid transparent;background:linear-gradient(45deg,#f87171,#fbbf24,#34d399,#60a5fa,#c084fc) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rainbow-spin 3s linear infinite;}
+@keyframes rainbow-spin{to{filter:hue-rotate(360deg)}}
 
 .users-row{display:flex;gap:.5rem;padding:.5rem 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--border);}
 .users-row::-webkit-scrollbar{display:none;}
@@ -235,6 +245,88 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
 .send-btn{background:linear-gradient(135deg,var(--acc1),var(--acc2));border:none;border-radius:12px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
 .send-btn svg{width:14px;height:14px;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
 
+/* ══ GDZ ══ */
+.gdz-tabs{display:flex;gap:.4rem;margin-bottom:.85rem;border-bottom:1px solid var(--border);padding-bottom:.5rem;}
+.gdz-tab{flex:1;padding:.5rem .7rem;background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:10px;font-size:.75rem;font-weight:700;text-align:center;cursor:pointer;transition:all .2s;}
+.gdz-tab.active{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border-color:transparent;}
+
+.points-banner{display:flex;align-items:center;gap:.85rem;background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(251,191,36,.08));border:1px solid rgba(251,191,36,.3);border-radius:16px;padding:.85rem 1rem;margin-bottom:.85rem;}
+.points-icon{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.points-info{flex:1;}
+.points-num{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fbbf24;}
+.points-label{font-size:.68rem;color:var(--muted);margin-top:.1rem;}
+
+.ask-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,var(--acc1),var(--acc2));border:none;border-radius:14px;padding:.75rem 1.2rem;color:#fff;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;cursor:pointer;margin-bottom:.85rem;width:100%;}
+.ask-btn svg{width:18px;height:18px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+
+.question-card{background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:16px;padding:.9rem 1rem;margin-bottom:.65rem;cursor:pointer;transition:all .2s;}
+.question-card:active{transform:scale(.98);}
+.q-header{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.55rem;}
+.q-av{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:#fff;overflow:hidden;position:relative;}
+.q-av img{width:100%;height:100%;object-fit:cover;}
+.q-info{flex:1;min-width:0;}
+.q-author{font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:.35rem;}
+.q-badge{display:inline-flex;align-items:center;gap:3px;background:rgba(251,191,36,.2);border:1px solid rgba(251,191,36,.4);color:#fbbf24;font-size:.55rem;font-weight:800;padding:1px 5px;border-radius:6px;}
+.q-time{font-size:.6rem;color:var(--muted);}
+.q-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;margin-bottom:.4rem;line-height:1.3;}
+.q-subject{display:inline-block;background:rgba(129,140,248,.15);border:1px solid rgba(129,140,248,.25);color:#818cf8;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:6px;margin-bottom:.45rem;}
+.q-preview{font-size:.75rem;color:var(--muted);line-height:1.4;margin-bottom:.45rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.q-img{width:100%;max-height:140px;object-fit:cover;border-radius:10px;margin-bottom:.5rem;}
+.q-footer{display:flex;align-items:center;gap:.85rem;font-size:.68rem;color:var(--muted);}
+.q-stat{display:flex;align-items:center;gap:.3rem;}
+.q-stat svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+
+.no-questions{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.82rem;}
+
+/* Question detail */
+.q-detail{display:none;flex-direction:column;height:100%;background:var(--bg);}
+.q-detail.open{display:flex;}
+.q-detail-hdr{display:flex;align-items:center;gap:.6rem;padding:.6rem .9rem;border-bottom:1px solid var(--border);flex-shrink:0;}
+.q-detail-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:.9rem;}
+.q-detail-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;line-height:1.3;margin-bottom:.5rem;}
+.q-detail-text{font-size:.82rem;line-height:1.5;color:var(--text);margin-bottom:.7rem;}
+.q-detail-img{width:100%;border-radius:12px;margin-bottom:.85rem;}
+.answer-section{margin-top:1.2rem;}
+.answer-section-title{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;margin-bottom:.6rem;color:var(--muted);}
+.answer-card{background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:14px;padding:.8rem .9rem;margin-bottom:.5rem;}
+.answer-header{display:flex;align-items:center;gap:.55rem;margin-bottom:.5rem;}
+.answer-av{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.75rem;color:#fff;overflow:hidden;position:relative;}
+.answer-av img{width:100%;height:100%;object-fit:cover;}
+.answer-author{font-size:.72rem;font-weight:700;flex:1;}
+.answer-time{font-size:.6rem;color:var(--muted);}
+.answer-text{font-size:.78rem;line-height:1.45;margin-bottom:.5rem;}
+.answer-actions{display:flex;gap:.4rem;}
+.answer-btn{display:flex;align-items:center;gap:.25rem;background:rgba(79,70,229,.15);border:1px solid var(--border);border-radius:8px;padding:.3rem .55rem;font-size:.65rem;font-weight:700;color:#818cf8;cursor:pointer;}
+.answer-btn.upvoted{background:rgba(74,222,128,.2);border-color:rgba(74,222,128,.4);color:#34d399;}
+.answer-btn svg{width:11px;height:11px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.answer-input-bar{display:flex;gap:.42rem;padding:.7rem .85rem;border-top:1px solid var(--border);flex-shrink:0;}
+.answer-inp{flex:1;background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:12px;padding:.52rem .78rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none;min-height:38px;max-height:100px;resize:none;}
+
+/* Summaries */
+.summary-card{background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:16px;padding:.9rem 1rem;margin-bottom:.65rem;cursor:pointer;}
+.summary-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;margin-bottom:.35rem;}
+.summary-author{font-size:.68rem;color:var(--muted);}
+.summary-detail{display:none;flex-direction:column;height:100%;background:var(--bg);}
+.summary-detail.open{display:flex;}
+.summary-detail-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:.9rem;}
+.summary-text{font-size:.82rem;line-height:1.6;white-space:pre-line;}
+
+/* Shop */
+.shop-grid{display:grid;gap:.7rem;}
+.shop-item{background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:16px;padding:.9rem 1rem;display:flex;align-items:center;gap:.85rem;}
+.shop-preview{width:56px;height:56px;border-radius:50%;border:3px solid transparent;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;position:relative;}
+.shop-preview.gold{border-color:#fbbf24;box-shadow:0 0 12px rgba(251,191,36,.5);}
+.shop-preview.diamond{border-color:#60a5fa;box-shadow:0 0 12px rgba(96,165,250,.5);}
+.shop-preview.fire{border-color:#f87171;box-shadow:0 0 12px rgba(248,113,113,.5);}
+.shop-preview.rainbow{border:3px solid;border-image:linear-gradient(45deg,#f87171,#fbbf24,#34d399,#60a5fa,#c084fc) 1;}
+.shop-info{flex:1;}
+.shop-name{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;margin-bottom:.15rem;}
+.shop-desc{font-size:.68rem;color:var(--muted);margin-bottom:.35rem;}
+.shop-price{display:flex;align-items:center;gap:.3rem;font-size:.72rem;font-weight:700;color:#fbbf24;}
+.shop-price svg{width:12px;height:12px;fill:#fbbf24;stroke:none;}
+.shop-buy{background:linear-gradient(135deg,var(--acc1),var(--acc2));border:none;border-radius:10px;padding:.45rem .8rem;color:#fff;font-size:.72rem;font-weight:700;cursor:pointer;flex-shrink:0;}
+.shop-buy.owned{background:rgba(74,222,128,.2);color:#34d399;cursor:default;}
+
 /* ══ SETTINGS ══ */
 .settings-av-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;padding:1rem;background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:18px;}
 .settings-av{width:64px;height:64px;border-radius:50%;overflow:hidden;flex-shrink:0;position:relative;cursor:pointer;border:2px solid var(--border);}
@@ -270,9 +362,12 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
 .modal-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:1rem;}
 .modal label{font-size:.7rem;color:var(--muted);font-weight:700;letter-spacing:.08em;display:block;margin-bottom:.32rem;}
 .modal .inp{margin-bottom:.8rem;}
+.modal textarea{background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:12px;padding:.58rem .82rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;width:100%;min-height:100px;resize:vertical;margin-bottom:.8rem;}
 .modal-btns{display:flex;gap:.5rem;margin-top:.2rem;}
 .modal-btns button{flex:1;}
 .modal-drag{width:36px;height:4px;border-radius:999px;background:rgba(255,255,255,.15);margin:0 auto .9rem;}
+.img-preview-wrap{margin-bottom:.8rem;}
+.img-preview{width:100%;max-height:200px;object-fit:cover;border-radius:12px;margin-top:.4rem;}
 
 /* ADMIN */
 .admin-lock{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.82rem;padding:2rem 0;}
@@ -416,6 +511,49 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   </div>
 </div>
 
+<div class="modal-overlay" id="modal-ask-question">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-title">Задать вопрос</div>
+    <label>Предмет</label>
+    <select class="inp" id="q-subject-inp" style="margin-bottom:.8rem">
+      <option>Математика</option><option>Физика</option><option>Химия</option>
+      <option>Русский язык</option><option>Английский язык</option><option>История</option>
+      <option>География</option><option>Биология</option><option>Литература</option>
+      <option>Информатика</option><option>Другое</option>
+    </select>
+    <label>Вопрос</label>
+    <textarea id="q-text-inp" placeholder="Опиши задачу или вопрос подробно…" maxlength="500"></textarea>
+    <label>Фото (если нужно)</label>
+    <div class="av-upload" style="width:100%;height:auto;min-height:60px;border-radius:12px;">
+      <img id="q-img-preview" src="" style="display:none;width:100%;height:auto;border-radius:12px;">
+      <svg viewBox="0 0 24 24" id="q-img-icon"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <input type="file" accept="image/*" id="q-img-input" onchange="previewQImg(event)">
+    </div>
+    <div class="modal-btns">
+      <button class="btn-s" onclick="closeModal('modal-ask-question')">Отмена</button>
+      <button class="btn-p" onclick="postQuestion()">Опубликовать</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-add-summary">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-title">Добавить пересказ</div>
+    <label>Название произведения</label>
+    <input class="inp" id="summary-title-inp" placeholder="«Война и мир»" maxlength="80">
+    <label>Автор</label>
+    <input class="inp" id="summary-author-inp" placeholder="Л. Н. Толстой" maxlength="60">
+    <label>Пересказ</label>
+    <textarea id="summary-text-inp" placeholder="Краткое содержание…" maxlength="5000" style="min-height:150px;"></textarea>
+    <div class="modal-btns">
+      <button class="btn-s" onclick="closeModal('modal-add-summary')">Отмена</button>
+      <button class="btn-p" onclick="addSummary()">Добавить</button>
+    </div>
+  </div>
+</div>
+
 <!-- TABS -->
 <div class="tabbar glass">
   <div class="tab active" onclick="showPage(0)" id="tab-0">
@@ -424,22 +562,26 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
     <div class="tab-badge" id="chat-badge">0</div>
   </div>
   <div class="tab" onclick="showPage(1)" id="tab-1">
+    <svg class="ti" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    <span class="tl">ГДЗ</span>
+  </div>
+  <div class="tab" onclick="showPage(2)" id="tab-2">
     <svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
     <span class="tl">Отсчёт</span>
   </div>
-  <div class="tab" onclick="showPage(2)" id="tab-2">
+  <div class="tab" onclick="showPage(3)" id="tab-3">
     <svg class="ti" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
     <span class="tl">Прогресс</span>
   </div>
-  <div class="tab" onclick="showPage(3)" id="tab-3">
+  <div class="tab" onclick="showPage(4)" id="tab-4">
     <svg class="ti" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
     <span class="tl">Праздники</span>
   </div>
-  <div class="tab" onclick="showPage(4)" id="tab-4">
+  <div class="tab" onclick="showPage(5)" id="tab-5">
     <svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
     <span class="tl">Профиль</span>
   </div>
-  <div class="tab" onclick="showPage(5)" id="tab-5">
+  <div class="tab" onclick="showPage(6)" id="tab-6">
     <svg class="ti" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <span class="tl">Админ</span>
   </div>
@@ -472,8 +614,11 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
         <div class="online-dot"></div>
         <span class="online-txt">Онлайн: <span class="online-n" id="online-count">—</span></span>
         <div class="my-name-strip">
-          <img class="my-mini-av" id="my-mini-av" src="" style="display:none;">
-          <div class="my-mini-av" id="my-mini-av-letter" style="display:none;background:var(--acc1);font-family:'Syne',sans-serif;font-weight:800;font-size:.7rem;color:#fff;"></div>
+          <div style="position:relative;">
+            <img class="my-mini-av" id="my-mini-av" src="" style="display:none;">
+            <div class="my-mini-av" id="my-mini-av-letter" style="display:none;background:var(--acc1);font-family:'Syne',sans-serif;font-weight:800;font-size:.7rem;color:#fff;"></div>
+            <div class="av-frame" id="my-mini-frame"></div>
+          </div>
           <span class="my-name-lbl" id="my-name-lbl"></span>
         </div>
       </div>
@@ -507,8 +652,72 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   </div>
 </div>
 
-<!-- PAGE 1: COUNTDOWN -->
+<!-- PAGE 1: GDZ -->
 <div class="page" id="page-1">
+  <div class="sec-title">ГДЗ и помощь</div>
+  <p class="sec-sub">Задавай вопросы и помогай другим</p>
+  
+  <div class="points-banner">
+    <div class="points-icon">⭐</div>
+    <div class="points-info">
+      <div class="points-num" id="my-points">0</div>
+      <div class="points-label">Твои очки за помощь</div>
+    </div>
+  </div>
+
+  <div class="gdz-tabs">
+    <div class="gdz-tab active" onclick="showGdzTab('questions')">Вопросы</div>
+    <div class="gdz-tab" onclick="showGdzTab('summaries')">Пересказы</div>
+    <div class="gdz-tab" onclick="showGdzTab('shop')">Магазин</div>
+  </div>
+
+  <div id="gdz-questions" class="gdz-content">
+    <button class="ask-btn" onclick="openModal('modal-ask-question')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+      Задать вопрос
+    </button>
+    <div id="questions-list"></div>
+  </div>
+
+  <div id="gdz-summaries" class="gdz-content" style="display:none;">
+    <div id="summaries-list"></div>
+  </div>
+
+  <div id="gdz-shop" class="gdz-content" style="display:none;">
+    <div class="shop-grid" id="shop-list"></div>
+  </div>
+
+  <div class="q-detail" id="q-detail">
+    <div class="q-detail-hdr glass">
+      <div class="back-btn" onclick="closeQuestion()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div class="room-hdr-info">
+        <div class="room-hdr-name">Вопрос</div>
+        <div class="room-hdr-sub" id="q-detail-subject"></div>
+      </div>
+    </div>
+    <div class="q-detail-content" id="q-detail-body"></div>
+    <div class="answer-input-bar glass">
+      <textarea class="answer-inp" id="answer-inp" placeholder="Напиши ответ…" maxlength="1000"></textarea>
+      <button class="send-btn" onclick="postAnswer()"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+    </div>
+  </div>
+
+  <div class="summary-detail" id="summary-detail">
+    <div class="q-detail-hdr glass">
+      <div class="back-btn" onclick="closeSummary()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+      <div class="room-hdr-info">
+        <div class="room-hdr-name" id="summary-detail-title"></div>
+        <div class="room-hdr-sub" id="summary-detail-author"></div>
+      </div>
+    </div>
+    <div class="summary-detail-content">
+      <div class="summary-text" id="summary-detail-text"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: COUNTDOWN -->
+<div class="page" id="page-2">
   <div class="badge">🇰🇿 КАЗАХСТАН · <span id="badge-yr">2026</span></div>
   <h1>Осталось до<br><em id="ev-title">Каникул</em></h1>
   <p class="subtitle" id="ev-sub">Считаем каждую секунду</p>
@@ -527,8 +736,8 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   <div class="sun-wrap"><div class="sun"></div></div>
 </div>
 
-<!-- PAGE 2: PROGRESS -->
-<div class="page" id="page-2">
+<!-- PAGE 3: PROGRESS -->
+<div class="page" id="page-3">
   <div class="sec-title">Учебный год</div>
   <p class="sec-sub" id="school-year-lbl">2025–2026</p>
   <div class="prog-card">
@@ -546,8 +755,8 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   </div>
 </div>
 
-<!-- PAGE 3: CALENDAR -->
-<div class="page" id="page-3">
+<!-- PAGE 4: CALENDAR -->
+<div class="page" id="page-4">
   <div class="sec-title">Праздники</div>
   <p class="sec-sub">Казахстан + свои праздники</p>
   <div class="month-nav glass">
@@ -563,8 +772,8 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   <div class="hol-list" id="hol-list"></div>
 </div>
 
-<!-- PAGE 4: PROFILE/SETTINGS -->
-<div class="page" id="page-4">
+<!-- PAGE 5: PROFILE/SETTINGS -->
+<div class="page" id="page-5">
   <div class="sec-title">Профиль и настройки</div>
   <p class="sec-sub">Персонализация</p>
 
@@ -574,9 +783,13 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
       <div id="profile-av-letter" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;color:#fff;background:linear-gradient(135deg,var(--acc1),var(--acc2));">?</div>
       <input type="file" accept="image/*" onchange="changeProfileAv(event)">
       <div class="settings-av-edit"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+      <div class="av-frame" id="profile-frame"></div>
     </div>
     <div style="flex:1">
-      <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;" id="profile-name-display">Гость</div>
+      <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;display:flex;align-items:center;gap:.4rem;">
+        <span id="profile-name-display">Гость</span>
+        <span id="profile-badge" style="display:none;"></span>
+      </div>
       <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">Нажми на аватар чтобы изменить</div>
       <div style="display:flex;gap:.4rem;margin-top:.5rem;">
         <input class="inp" id="profile-name-inp" placeholder="Новый ник…" maxlength="20" style="font-size:.75rem;padding:.38rem .65rem;">
@@ -605,8 +818,8 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   </div>
 </div>
 
-<!-- PAGE 5: ADMIN -->
-<div class="page" id="page-5">
+<!-- PAGE 6: ADMIN -->
+<div class="page" id="page-6">
   <div class="sec-title">Админ панель</div>
   <p class="sec-sub">Только для администратора</p>
   <div class="admin-lock" id="admin-lock">
@@ -620,6 +833,13 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
     <div id="pass-err" style="font-size:.7rem;color:#f87171;margin-top:.22rem;display:none;">Неверный пароль</div>
   </div>
   <div class="admin-panel" id="admin-panel">
+    <div class="asec">
+      <div class="asec-title">ГДЗ управление</div>
+      <button class="admin-btn" onclick="openModal('modal-add-summary')" style="margin-bottom:.65rem;">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        <span>Добавить пересказ</span>
+      </button>
+    </div>
     <div class="asec">
       <div class="asec-title">Эффекты для всех</div>
       <div class="admin-grid">
@@ -650,7 +870,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, limit,
-         deleteDoc, getDocs, doc, setDoc, serverTimestamp, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+         deleteDoc, getDocs, doc, setDoc, serverTimestamp, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const cfg={apiKey:"AIzaSyBlJ5x2lYIVuVL2qB0r4FX3a8zGe2SnFQk",authDomain:"do-leta-kz.firebaseapp.com",projectId:"do-leta-kz",storageBucket:"do-leta-kz.firebasestorage.app",messagingSenderId:"140919023504",appId:"1:140919023504:web:9306b083c3b91b7b42f515"};
 const app=initializeApp(cfg);
@@ -660,21 +880,67 @@ const sessionId=Math.random().toString(36).slice(2);
 let userName=localStorage.getItem('chat-name')||'';
 let userAvatar=localStorage.getItem('chat-avatar')||'';
 let currentRoomId=null,currentRoomType=null,currentRoomUnsub=null,currentGrpData=null;
+let currentQuestionId=null,currentQuestionUnsub=null;
 let unreadCounts={};
 const AVC=['#4f46e5','#7c3aed','#2563eb','#0891b2','#059669','#d97706','#dc2626','#db2777'];
 function nc(n){let h=0;for(let c of n)h=(h*31+c.charCodeAt(0))%AVC.length;return AVC[h];}
 function ni(n){return n.charAt(0).toUpperCase();}
 
-function makeAv(name,img,size=38){
-  if(img) return `<img src="${img}" style="width:${size}px;height:${size}px;border-radius:50%;object-fit:cover;">`;
-  return `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${nc(name)};display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:${Math.round(size*0.38)}px;color:#fff;">${ni(name)}</div>`;
+// User profile with points
+let userPoints=parseInt(localStorage.getItem('user-points')||'0');
+let ownedItems=JSON.parse(localStorage.getItem('owned-items')||'[]');
+let activeFrame=localStorage.getItem('active-frame')||'';
+let activeBadge=localStorage.getItem('active-badge')||'';
+
+function updatePoints(delta){
+  userPoints=Math.max(0,userPoints+delta);
+  localStorage.setItem('user-points',userPoints);
+  document.getElementById('my-points').textContent=userPoints;
+}
+
+function buyItem(item){
+  if(ownedItems.includes(item.id)){alert('Уже куплено!');return;}
+  if(userPoints<item.price){alert('Недостаточно очков!');return;}
+  updatePoints(-item.price);
+  ownedItems.push(item.id);
+  localStorage.setItem('owned-items',JSON.stringify(ownedItems));
+  if(item.type==='frame'){activeFrame=item.id;localStorage.setItem('active-frame',activeFrame);applyFrame();}
+  if(item.type==='badge'){activeBadge=item.id;localStorage.setItem('active-badge',activeBadge);applyBadge();}
+  renderShop();
+}
+
+function applyFrame(){
+  const frames=[document.getElementById('my-mini-frame'),document.getElementById('profile-frame')];
+  frames.forEach(f=>{if(f){f.className='av-frame';if(activeFrame)f.classList.add(activeFrame);}});
+}
+
+function applyBadge(){
+  const pb=document.getElementById('profile-badge');
+  if(!pb)return;
+  if(!activeBadge){pb.style.display='none';return;}
+  const badges={genius:'🧠 Гений',megamind:'🌟 Мегамозг',helper:'🤝 Помощник',star:'⭐ Звезда'};
+  pb.textContent=badges[activeBadge]||'';
+  pb.style.display='inline-block';
+  pb.style.background='rgba(251,191,36,.2)';
+  pb.style.border='1px solid rgba(251,191,36,.4)';
+  pb.style.color='#fbbf24';
+  pb.style.fontSize='.65rem';
+  pb.style.fontWeight='800';
+  pb.style.padding='2px 7px';
+  pb.style.borderRadius='6px';
+}
+
+function makeAv(name,img,size=38,frame=''){
+  const f=frame?`<div class="av-frame ${frame}"></div>`:'';
+  if(img)return `<div style="position:relative;width:${size}px;height:${size}px;"><img src="${img}" style="width:${size}px;height:${size}px;border-radius:50%;object-fit:cover;">${f}</div>`;
+  return `<div style="position:relative;width:${size}px;height:${size}px;"><div style="width:${size}px;height:${size}px;border-radius:50%;background:${nc(name)};display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:${Math.round(size*0.38)}px;color:#fff;">${ni(name)}</div>${f}</div>`;
 }
 
 // Presence
 const presRef=doc(db,'presence',sessionId);
 async function ping(){
   if(!userName)return;
-  await setDoc(presRef,{name:userName,avatar:userAvatar,t:serverTimestamp(),active:true});
+  await setDoc(presRef,{name:userName,avatar:userAvatar,t:serverTimestamp(),active:true,frame:activeFrame,badge:activeBadge});
 }
 window.addEventListener('beforeunload',()=>setDoc(presRef,{active:false,t:serverTimestamp()}));
 let onlineUsers=[];
@@ -684,7 +950,7 @@ onSnapshot(collection(db,'presence'),snap=>{
   snap.forEach(d=>{
     const v=d.data();
     if(v.active&&v.name&&v.t&&(now-v.t.toMillis())<70000&&!seen.has(v.name)){
-      seen.add(v.name);onlineUsers.push({name:v.name,avatar:v.avatar||''});
+      seen.add(v.name);onlineUsers.push({name:v.name,avatar:v.avatar||'',frame:v.frame||'',badge:v.badge||''});
     }
   });
   document.getElementById('online-count').textContent=onlineUsers.length;
@@ -735,6 +1001,7 @@ function updateProfileUI(){
   if(userAvatar&&mav){mav.src=userAvatar;mav.style.display='block';if(mavl)mavl.style.display='none';}
   else if(mavl){mavl.style.display='flex';mavl.textContent=userName?ni(userName):'?';if(mav)mav.style.display='none';}
   if(document.getElementById('my-name-lbl'))document.getElementById('my-name-lbl').textContent=userName;
+  applyFrame();applyBadge();
 }
 
 // Enter chat
@@ -750,6 +1017,8 @@ window.enterChat=function(){
 };
 if(userName){
   userAvatar=localStorage.getItem('chat-avatar')||'';
+  activeFrame=localStorage.getItem('active-frame')||'';
+  activeBadge=localStorage.getItem('active-badge')||'';
   document.getElementById('name-screen').style.display='none';
   document.getElementById('chat-home').style.display='flex';
   updateProfileUI();
@@ -762,8 +1031,10 @@ function renderUsersRow(){
   row.innerHTML='';
   onlineUsers.forEach(u=>{
     const chip=document.createElement('div');chip.className='user-chip'+(u.name===userName?' me':'');
-    chip.innerHTML=`<div class="user-chip-av" style="background:${nc(u.name)}">${u.avatar?`<img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`:ni(u.name)}</div><div class="user-chip-name">${esc(u.name)}</div>`;
-    if(u.name!==userName)chip.onclick=()=>openDM(u.name,u.avatar);
+    const av=u.avatar?`<img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`:ni(u.name);
+    const frame=u.frame?`<div class="av-frame ${u.frame}"></div>`:'';
+    chip.innerHTML=`<div class="user-chip-av" style="background:${nc(u.name)};position:relative;">${av}${frame}</div><div class="user-chip-name">${esc(u.name)}</div>`;
+    if(u.name!==userName)chip.onclick=()=>openDM(u.name,u.avatar,u.frame);
     row.appendChild(chip);
   });
 }
@@ -825,24 +1096,26 @@ function renderDMsList(){
     const id=dmId(userName,u.name);
     const item=document.createElement('div');item.className='room-item';
     const unread=unreadCounts[id]||0;
-    const av=u.avatar?`<div class="room-av dm" style="width:40px;height:40px;overflow:hidden;"><img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>`
-      :`<div class="room-av dm" style="width:40px;height:40px;background:${nc(u.name)};border-radius:50%;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;">${ni(u.name)}</div>`;
+    const frame=u.frame?`<div class="av-frame ${u.frame}"></div>`:'';
+    const av=u.avatar?`<div class="room-av dm" style="width:40px;height:40px;overflow:hidden;position:relative;"><img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">${frame}</div>`
+      :`<div class="room-av dm" style="width:40px;height:40px;background:${nc(u.name)};border-radius:50%;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;position:relative;">${ni(u.name)}${frame}</div>`;
     item.innerHTML=`${av}<div class="room-info"><div class="room-name">${esc(u.name)}</div><div class="room-prev">Онлайн</div></div><div class="online-ind"></div>${unread>0?`<div class="room-unread">${unread}</div>`:''}`;
-    item.onclick=()=>openDM(u.name,u.avatar);
+    item.onclick=()=>openDM(u.name,u.avatar,u.frame);
     list.appendChild(item);
   });
 }
-function openDM(name,avatar){openRoom(dmId(userName,name),'dm',name,'',avatar||'',null);}
+function openDM(name,avatar,frame){openRoom(dmId(userName,name),'dm',name,'',avatar||'',null,frame);}
 
 // Open room
-function openRoom(roomId,type,name,icon,avatar,grpData){
+function openRoom(roomId,type,name,icon,avatar,grpData,frame=''){
   currentRoomId=roomId;currentRoomType=type;currentGrpData=grpData;
   unreadCounts[roomId]=0;updateBadge();
   const av=document.getElementById('room-hdr-av');
   av.className='room-hdr-av '+(type==='group'?'grp':'');
-  if(avatar){av.innerHTML=`<img src="${avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:${type==='group'?'10px':'50%'};">`;}
+  const f=frame?`<div class="av-frame ${frame}"></div>`:'';
+  if(avatar){av.innerHTML=`<div style="position:relative;width:100%;height:100%;"><img src="${avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:${type==='group'?'10px':'50%'};">${f}</div>`;}
   else if(type==='group'){av.innerHTML=icon||'💬';}
-  else{av.style.background=nc(name);av.style.borderRadius='50%';av.style.color='#fff';av.style.fontFamily="'Syne',sans-serif";av.style.fontWeight='800';av.style.fontSize='.85rem';av.innerHTML=ni(name);}
+  else{av.style.background=nc(name);av.style.borderRadius='50%';av.style.color='#fff';av.style.fontFamily="'Syne',sans-serif";av.style.fontWeight='800';av.style.fontSize='.85rem';av.innerHTML=`<div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;">${ni(name)}${f}</div>`;}
   document.getElementById('room-hdr-name').textContent=name;
   document.getElementById('room-hdr-sub').textContent=type==='group'?'Групповой чат':'Личные сообщения';
   const settBtn=document.getElementById('room-settings-btn');
@@ -868,7 +1141,7 @@ function openRoom(roomId,type,name,icon,avatar,grpData){
       const isMe=data.name===userName;
       const div=document.createElement('div');div.className=`msg ${isMe?'me':'other'}`;
       const time=data.t?new Date(data.t.toMillis()).toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'}):'';
-      const avHtml=!isMe?`<div style="margin-bottom:2px;">${makeAv(data.name,data.avatar||'',22)}</div>`:'';
+      const avHtml=!isMe?`<div style="margin-bottom:2px;">${makeAv(data.name,data.avatar||'',22,data.frame||'')}</div>`:'';
       div.innerHTML=`${!isMe?`<div class="msg-name">${esc(data.name)}</div>`:''}<div style="display:flex;align-items:flex-end;gap:4px;">${avHtml}<div class="msg-bubble">${esc(data.text)}</div></div><div class="msg-time">${time}</div>`;
       el.appendChild(div);
     });
@@ -889,7 +1162,7 @@ window.sendMsg=async function(){
   const text=inp.value.trim();if(!text)return;
   inp.value='';
   const col=currentRoomType==='group'?`groups/${currentRoomId}/messages`:`dms/${currentRoomId}/messages`;
-  await addDoc(collection(db,col),{name:userName,avatar:userAvatar,text,t:serverTimestamp()});
+  await addDoc(collection(db,col),{name:userName,avatar:userAvatar,frame:activeFrame,text,t:serverTimestamp()});
 };
 
 // Group settings
@@ -959,269 +1232,46 @@ window.kickMember=async function(member){
   openGrpSettings();
 };
 
-// Admin effects
-const effectRef=doc(db,'admin','effect');
-let lastEffect=null;
-onSnapshot(effectRef,snap=>{
-  if(!snap.exists())return;
-  const d=snap.data();if(d.id===lastEffect)return;
-  lastEffect=d.id;runEffect(d.type);
-});
-
-window.adminAction=async function(type){
-  if(type==='clearchat'){
-    if(!confirm('Очистить текущий чат?'))return;
-    if(currentRoomId){
-      const col=currentRoomType==='group'?`groups/${currentRoomId}/messages`:`dms/${currentRoomId}/messages`;
-      const snap=await getDocs(collection(db,col));
-      for(const d of snap.docs)await deleteDoc(doc(db,col,d.id));
-      await addDoc(collection(db,col),{system:true,text:'Чат очищен администратором',t:serverTimestamp()});
-    }return;
-  }
-  if(type==='announce'){
-    const txt=prompt('Текст объявления:');if(!txt)return;
-    const gs=await getDocs(collection(db,'groups'));
-    for(const d of gs.docs)await addDoc(collection(db,`groups/${d.id}/messages`),{system:true,text:'📢 '+txt,t:serverTimestamp()});
-    return;
-  }
-  await setDoc(effectRef,{type,id:Date.now()});
+// ══ GDZ SECTION ══
+window.previewQImg=function(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    document.getElementById('q-img-preview').src=ev.target.result;
+    document.getElementById('q-img-preview').style.display='block';
+    document.getElementById('q-img-icon').style.display='none';
+  };r.readAsDataURL(f);
 };
 
-window.runEffect=function(type){
-  if(type==='fireworks')launchFireworks();
-  else if(type==='confetti')launchConfetti();
-  else if(type==='snow')launchSnow();
-  else if(type==='rainbow')launchRainbow();
-  else if(type==='matrix')launchMatrix();
-  else if(type==='earthquake')launchEarthquake();
-  else if(type==='hearts')launchHearts();
-  else if(type==='screamer')document.getElementById('screamer').classList.add('show');
-};
-
-function launchFireworks(){const canvas=document.getElementById('fw-canvas');canvas.width=window.innerWidth;canvas.height=window.innerHeight;const ctx=canvas.getContext('2d');const particles=[];const colors=['#818cf8','#c084fc','#60a5fa','#f472b6','#fbbf24','#34d399','#fff'];function burst(x,y){for(let i=0;i<80;i++){const a=(Math.PI*2/80)*i,sp=Math.random()*6+2;particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,color:colors[Math.floor(Math.random()*colors.length)],life:1,r:Math.random()*3+1});}}let shots=0;function shoot(){burst(Math.random()*canvas.width,Math.random()*canvas.height*0.6);shots++;if(shots<8)setTimeout(shoot,400);}shoot();function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;p.life-=0.018;p.vx*=0.98;p.vy*=0.98;if(p.life<=0){particles.splice(i,1);continue;}ctx.globalAlpha=p.life;ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;if(particles.length>0)requestAnimationFrame(animate);else ctx.clearRect(0,0,canvas.width,canvas.height);}animate();}
-function launchConfetti(){const cs=['#818cf8','#c084fc','#60a5fa','#f472b6','#fbbf24','#34d399'];for(let i=0;i<80;i++)setTimeout(()=>{const el=document.createElement('div');el.className='cp';const sz=Math.random()*10+6;el.style.cssText=`left:${Math.random()*100}vw;top:0;width:${sz}px;height:${sz}px;background:${cs[Math.floor(Math.random()*cs.length)]};animation-duration:${Math.random()*2+2}s;animation-delay:${Math.random()}s;`;document.body.appendChild(el);setTimeout(()=>el.remove(),4000);},i*30);}
-function launchSnow(){for(let i=0;i<60;i++)setTimeout(()=>{const el=document.createElement('div');el.className='cp';const sz=Math.random()*8+4;el.style.cssText=`left:${Math.random()*100}vw;top:0;width:${sz}px;height:${sz}px;background:#e0e7ff;border-radius:50%;animation-duration:${Math.random()*3+3}s;animation-delay:${Math.random()*2}s;`;document.body.appendChild(el);setTimeout(()=>el.remove(),6000);},i*50);}
-function launchRainbow(){const el=document.createElement('div');el.style.cssText=`position:fixed;inset:0;pointer-events:none;z-index:9997;background:linear-gradient(180deg,rgba(248,113,113,.18),rgba(251,191,36,.18),rgba(74,222,128,.18),rgba(96,165,250,.18),rgba(192,132,252,.18));animation:fadeR 3s ease forwards;`;const st=document.createElement('style');st.textContent='@keyframes fadeR{0%{opacity:0}20%{opacity:1}80%{opacity:1}100%{opacity:0}}';document.head.appendChild(st);document.body.appendChild(el);setTimeout(()=>{el.remove();st.remove();},3000);}
-function launchMatrix(){const canvas=document.getElementById('fw-canvas');canvas.width=window.innerWidth;canvas.height=window.innerHeight;const ctx=canvas.getContext('2d');const cols=Math.floor(canvas.width/14);const drops=Array(cols).fill(1);let frames=0;const interval=setInterval(()=>{ctx.fillStyle='rgba(0,0,0,0.05)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#0f0';ctx.font='12px monospace';drops.forEach((y,i)=>{const txt=String.fromCharCode(0x30A0+Math.random()*96);ctx.fillText(txt,i*14,y*14);if(y*14>canvas.height&&Math.random()>0.975)drops[i]=0;drops[i]++;});frames++;if(frames>150){clearInterval(interval);ctx.clearRect(0,0,canvas.width,canvas.height);}},33);}
-function launchEarthquake(){let t=0;const id=setInterval(()=>{const x=(Math.random()-0.5)*16;const y=(Math.random()-0.5)*16;document.body.style.transform=`translate(${x}px,${y}px)`;t++;if(t>30){clearInterval(id);document.body.style.transform='';}},50);}
-function launchHearts(){const colors=['#f472b6','#fb7185','#f43f5e','#e11d48'];for(let i=0;i<40;i++)setTimeout(()=>{const el=document.createElement('div');el.innerHTML='❤️';el.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:100vh;font-size:${Math.random()*20+16}px;pointer-events:none;z-index:9998;animation:fall ${Math.random()*2+2}s linear forwards;transform:rotate(${Math.random()*60-30}deg);`;document.body.appendChild(el);setTimeout(()=>el.remove(),4000);},i*80);}
-
-function updateBadge(){const total=Object.values(unreadCounts).reduce((a,b)=>a+b,0);const badge=document.getElementById('chat-badge');badge.textContent=total;badge.classList.toggle('show',total>0);}
-function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-</script>
-
-<script>
-// ── NON-FIREBASE ────────────────────────────────────────────────
-const KZ_BASE=[
-  {m:1,d:1,name:"Новый год",type:"star"},{m:1,d:2,name:"Новый год (2-й день)",type:"star"},
-  {m:3,d:8,name:"Международный женский день",type:"heart"},
-  {m:3,d:21,name:"Наурыз мейрамы",type:"flower"},{m:3,d:22,name:"Наурыз мейрамы",type:"flower"},{m:3,d:23,name:"Наурыз мейрамы",type:"flower"},
-  {m:5,d:1,name:"День единства народа",type:"flag"},{m:5,d:7,name:"День защитника Отечества",type:"shield"},
-  {m:5,d:9,name:"День Победы",type:"award"},{m:5,d:25,name:"Конец учебного года 🔔",type:"bell"},
-  {m:6,d:1,name:"ЛЕТО! ☀️",type:"sun"},{m:7,d:6,name:"День столицы",type:"building"},
-  {m:8,d:30,name:"День Конституции",type:"book"},{m:10,d:25,name:"День Республики",type:"flag"},
-  {m:12,d:1,name:"День Первого Президента",type:"star"},{m:12,d:16,name:"День Независимости",type:"flag"},{m:12,d:17,name:"День Независимости",type:"flag"},
-];
-const ICONS={bell:`<path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/>`,sun:`<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/>`,star:`<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`,heart:`<path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>`,flower:`<circle cx="12" cy="12" r="3"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/>`,flag:`<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>`,shield:`<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,award:`<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>`,building:`<rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22V12h6v10M9 7h1M14 7h1"/>`,book:`<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>`,cake:`<path d="M20 21v-8a2 2 0 00-2-2H6a2 2 0 00-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/>`,};
-const MR=["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
-const MN=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
-const DR=["Вс","Пн","Вт","Ср","Чт","Пт","Сб"];
-
-// Stars
-(function(){const c=document.getElementById('stars');for(let i=0;i<90;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*1.8+.4;s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*70}%;left:${Math.random()*100}%;background:rgba(200,190,255,1);--d:${(Math.random()*4+2).toFixed(1)}s;animation-delay:${(Math.random()*6).toFixed(1)}s`;c.appendChild(s);}})();
-
-// Custom holidays
-let customHols=JSON.parse(localStorage.getItem('custom-hols')||'[]');
-window.saveCustomHol=function(){
-  const name=document.getElementById('hol-name-inp').value.trim();
-  const day=parseInt(document.getElementById('hol-day-inp').value);
-  const month=parseInt(document.getElementById('hol-month-inp').value);
-  if(!name||!day||day<1||day>31)return;
-  customHols.push({name,d:day,m:month});
-  localStorage.setItem('custom-hols',JSON.stringify(customHols));
-  closeModal('modal-add-hol');
-  document.getElementById('hol-name-inp').value='';
-  renderCal();
-};
-
-// Theme
-function toggleTheme(){
-  const cur=document.documentElement.getAttribute('data-theme');
-  const next=cur==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme',next);
-  localStorage.setItem('theme',next);
-  const t=document.getElementById('theme-toggle');
-  if(next==='dark')t.classList.add('on');else t.classList.remove('on');
-}
-function setColor(color,el){
-  document.documentElement.setAttribute('data-color',color);
-  localStorage.setItem('color',color);
-  document.querySelectorAll('.color-dot').forEach(d=>d.classList.remove('active'));
-  el.classList.add('active');
-}
-// Restore
-const savedTheme=localStorage.getItem('theme')||'dark';
-document.documentElement.setAttribute('data-theme',savedTheme);
-if(savedTheme==='light')document.getElementById('theme-toggle').classList.remove('on');
-const savedColor=localStorage.getItem('color')||'indigo';
-document.documentElement.setAttribute('data-color',savedColor);
-document.querySelectorAll('.color-dot').forEach((d,i)=>{
-  const colors=['indigo','rose','amber','teal','green'];
-  if(colors[i]===savedColor)d.classList.add('active');else d.classList.remove('active');
-});
-
-const now=new Date();
-document.getElementById('today-tag').textContent=`${now.getDate()} ${MR[now.getMonth()]} ${now.getFullYear()}`;
-
-function getNext(){
-  const y=now.getFullYear();
-  const isSummer=now.getMonth()>=5&&now.getMonth()<=7;
-  if(isSummer){
-    // Count to Sept 1
-    return{date:new Date(`${y}-09-01T08:00:00`),title:"1 сентября",sub:`До школы — 1 сентября ${y} 📚`,year:y,isSept:true};
-  }
-  const cands=[
-    {date:new Date(`${y}-05-25T08:00:00`),title:"Каникул",sub:`25 мая ${y} — последний звонок`,year:y},
-    {date:new Date(`${y}-06-01T00:00:00`),title:"Лета",sub:`1 июня ${y} — лето!`,year:y},
-    {date:new Date(`${y+1}-05-25T08:00:00`),title:"Каникул",sub:`25 мая ${y+1}`,year:y+1},
-  ];
-  for(const t of cands)if(t.date>Date.now())return t;
-  return cands[cands.length-1];
-}
-function pad(n){return String(n).padStart(2,'0');}
-function updateCountdown(){
-  const t=getNext();
-  document.getElementById('ev-title').textContent=t.title;
-  document.getElementById('ev-sub').textContent=t.sub;
-  document.getElementById('badge-yr').textContent=t.year;
-  if(!t.isSept){document.getElementById('yr-k').textContent=t.year;document.getElementById('yr-l').textContent=t.year;}
-  // Sept tag
-  const septTag=document.getElementById('tag-sept');
-  if(t.isSept){septTag.style.display='flex';document.getElementById('yr-sept').textContent=t.year;}
-  else{septTag.style.display='none';}
-  const diff=Math.max(0,t.date-Date.now());
-  const ss=Math.floor(diff/1000),mm=Math.floor(ss/60),hh=Math.floor(mm/60),dd=Math.floor(hh/24);
-  document.getElementById('cd-d').textContent=dd;
-  document.getElementById('cd-h').textContent=pad(hh%24);
-  document.getElementById('cd-m').textContent=pad(mm%60);
-  document.getElementById('cd-s').textContent=pad(ss%60);
-}
-
-function updateProgress(){
-  let sy=now.getFullYear();if(now.getMonth()<8)sy--;
-  const start=new Date(`${sy}-09-01`).getTime();
-  const end=new Date(`${sy+1}-05-25`).getTime();
-  const cur=Math.min(Date.now(),end);
-  const pct=Math.max(0,Math.min(100,(cur-start)/(end-start)*100));
-  const passed=Math.floor((cur-start)/864e5);
-  const left=Math.max(0,Math.floor((end-Date.now())/864e5));
-  document.getElementById('prog-bar').style.width=pct.toFixed(1)+'%';
-  document.getElementById('prog-pct').textContent=pct.toFixed(0)+'%';
-  document.getElementById('prog-txt').textContent=pct>=100?'🎉 Каникулы!':`Осталось ${left} дней`;
-  document.getElementById('dp').textContent=passed;
-  document.getElementById('dl').textContent=left;
-  document.getElementById('wl').textContent=Math.ceil(left/7);
-  document.getElementById('bl-s').textContent=`1 сент ${sy}`;
-  document.getElementById('bl-e').textContent=`25 мая ${sy+1}`;
-  document.getElementById('school-year-lbl').textContent=`${sy}–${sy+1}`;
-}
-
-let vy=now.getFullYear(),vm=now.getMonth();
-function changeMonth(d){vm+=d;if(vm<0){vm=11;vy--;}if(vm>11){vm=0;vy++;}renderCal();}
-
-function getHolsForMonth(year,month){
-  // month is 0-indexed
-  const m=month+1;
-  const base=KZ_BASE.filter(h=>h.m===m).map(h=>({...h,year,custom:false}));
-  const custom=customHols.filter(h=>h.m===m).map(h=>({...h,year,custom:true}));
-  return [...base,...custom];
-}
-
-function renderCal(){
-  const grid=document.getElementById('cal-grid');
-  const list=document.getElementById('hol-list');
-  document.getElementById('month-label').textContent=`${MN[vm]} ${vy}`;
-  grid.innerHTML='';
-  DR.forEach(d=>{const h=document.createElement('div');h.className='cal-hdr';h.textContent=d;grid.appendChild(h);});
-  const fd=new Date(vy,vm,1).getDay(),dim=new Date(vy,vm+1,0).getDate();
-  const hols=getHolsForMonth(vy,vm);
-  const holByDay={};
-  hols.forEach(h=>{
-    if(!holByDay[h.d])holByDay[h.d]=[];
-    holByDay[h.d].push(h);
+window.postQuestion=async function(){
+  const subject=document.getElementById('q-subject-inp').value;
+  const text=document.getElementById('q-text-inp').value.trim();
+  const img=document.getElementById('q-img-preview').src||'';
+  if(!text){alert('Опиши вопрос!');return;}
+  await addDoc(collection(db,'questions'),{
+    author:userName,avatar:userAvatar,frame:activeFrame,badge:activeBadge,
+    subject,text,image:img,t:serverTimestamp(),answers:0
   });
-  for(let i=0;i<fd;i++){const b=document.createElement('div');b.className='cal-day empty';grid.appendChild(b);}
-  for(let day=1;day<=dim;day++){
-    const el=document.createElement('div');el.className='cal-day';
-    const dow=new Date(vy,vm,day).getDay();
-    if(dow===0||dow===6)el.classList.add('weekend');
-    if(vy===now.getFullYear()&&vm===now.getMonth()&&day===now.getDate())el.classList.add('today');
-    const dayHols=holByDay[day]||[];
-    const hasCustom=dayHols.some(h=>h.custom);
-    const hasBase=dayHols.some(h=>!h.custom);
-    if(hasBase)el.classList.add('holiday');
-    if(hasCustom)el.classList.add('custom-hol');
-    el.innerHTML=`<span class="dn">${day}</span>${hasBase?'<div class="doth"></div>':''}${hasCustom?'<div class="dotc"></div>':''}`;
-    grid.appendChild(el);
-  }
+  closeModal('modal-ask-question');
+  document.getElementById('q-subject-inp').selectedIndex=0;
+  document.getElementById('q-text-inp').value='';
+  document.getElementById('q-img-preview').src='';
+  document.getElementById('q-img-preview').style.display='none';
+  document.getElementById('q-img-icon').style.display='block';
+};
+
+onSnapshot(query(collection(db,'questions'),orderBy('t','desc'),limit(50)),snap=>{
+  const list=document.getElementById('questions-list');
+  if(!list)return;
   list.innerHTML='';
-  hols.sort((a,b)=>a.d-b.d).forEach(h=>{
-    const el=document.createElement('div');el.className='hol-item';
-    const iconPath=ICONS[h.type]||ICONS[h.custom?'cake':'star'];
-    el.innerHTML=`<div class="hol-icon${h.custom?' custom':''}"><svg viewBox="0 0 24 24">${iconPath}</svg></div>
-      <div style="flex:1"><div class="hol-name">${h.name}</div><div class="hol-sub">${h.d} ${MR[vm]}${h.year?' · каждый год':''}</div></div>
-      <div class="hol-date">${h.d} ${MR[vm]}</div>
-      ${h.custom?`<div class="hol-del" onclick="deleteCustomHol(${customHols.indexOf(h)})">✕</div>`:''}`;
-    list.appendChild(el);
-  });
-  if(!hols.length)list.innerHTML='<div class="no-hols">Нет праздников в этом месяце</div>';
-}
-
-window.deleteCustomHol=function(idx){
-  customHols.splice(idx,1);
-  localStorage.setItem('custom-hols',JSON.stringify(customHols));
-  renderCal();
-};
-
-function showPage(i){
-  document.querySelectorAll('.page').forEach((p,j)=>p.classList.toggle('active',i===j));
-  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',i===j));
-}
-
-function openModal(id){document.getElementById(id).classList.add('open');}
-function closeModal(id){document.getElementById(id).classList.remove('open');}
-window.openModal=openModal;window.closeModal=closeModal;
-
-// Admin
-const ADMIN_PASS='leto2026admin';
-function checkPass(){
-  const v=document.getElementById('pass-inp').value;
-  if(v===ADMIN_PASS){document.getElementById('admin-lock').style.display='none';document.getElementById('admin-panel').classList.add('visible');}
-  else{document.getElementById('pass-err').style.display='block';document.getElementById('pass-inp').value='';}
-}
-function adminLogout(){document.getElementById('admin-lock').style.display='flex';document.getElementById('admin-panel').classList.remove('visible');document.getElementById('pass-inp').value='';}
-
-// Profile
-window.updateProfileUI=updateProfileUI;
-function updateProfileUI(){
-  const savedAv=localStorage.getItem('chat-avatar')||'';
-  const savedName=localStorage.getItem('chat-name')||'';
-  const img=document.getElementById('profile-av-img');
-  const ltr=document.getElementById('profile-av-letter');
-  if(savedAv){img.src=savedAv;img.style.display='block';ltr.style.display='none';}
-  else{img.style.display='none';ltr.style.display='flex';ltr.textContent=savedName?savedName.charAt(0).toUpperCase():'?';}
-  const nd=document.getElementById('profile-name-display');
-  if(nd)nd.textContent=savedName||'Гость';
-}
-updateProfileUI();
-
-// Close modals on overlay click
-document.querySelectorAll('.modal-overlay').forEach(o=>{
-  o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});
-});
-
-updateCountdown();updateProgress();renderCal();
-setInterval(updateCountdown,1000);
-</script>
-</body>
-</html>
+  if(snap.empty){list.innerHTML='<div class="no-questions">Вопросов пока нет. Задай первый!</div>';return;}
+  snap.forEach(d=>{
+    const q=d.data();const id=d.id;
+    const card=document.createElement('div');card.className='question-card';
+    const time=q.t?new Date(q.t.toMillis()).toLocaleString('ru',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
+    const badge=q.badge?`<span class="q-badge">${{genius:'🧠 Гений',megamind:'🌟 Мегамозг',helper:'🤝 Помощник',star:'⭐ Звезда'}[q.badge]||''}</span>`:'';
+    const frame=q.frame?`<div class="av-frame ${q.frame}"></div>`:'';
+    card.innerHTML=`
+      <div class="q-header">
+        <div class="q-av" style="background:${nc(q.author)};position:relative;">
+          ${q.avatar?`<img src="${q.avatar}"
