@@ -3,417 +3,469 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Лето · Казахстан</title>
+<title>ЛетоKZ</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════
-   THEME SYSTEM
-═══════════════════════════════════════ */
-:root {
-  --indigo:#4f46e5;--violet:#7c3aed;--blue:#2563eb;--rose:#e11d48;--amber:#d97706;--teal:#0d9488;--green:#16a34a;
-  --acc1:var(--indigo);--acc2:var(--violet);
+:root{
+  --a1:#4f46e5;--a2:#7c3aed;
   --bg:#07050f;--bg2:#0f0c1f;--bg3:#161230;
   --text:#e2e0f0;--muted:rgba(180,170,220,.45);
   --card:rgba(79,70,229,.08);--border:rgba(129,140,248,.18);
-  --msg-me1:#4f46e5;--msg-me2:#7c3aed;
 }
-[data-color="indigo"]  { --acc1:#4f46e5;--acc2:#7c3aed;--border:rgba(129,140,248,.18);--msg-me1:#4f46e5;--msg-me2:#7c3aed; }
-[data-color="rose"]    { --acc1:#e11d48;--acc2:#be123c;--border:rgba(251,113,133,.18);--msg-me1:#e11d48;--msg-me2:#be123c; }
-[data-color="amber"]   { --acc1:#d97706;--acc2:#b45309;--border:rgba(251,191,36,.18);--msg-me1:#d97706;--msg-me2:#b45309; }
-[data-color="teal"]    { --acc1:#0d9488;--acc2:#0f766e;--border:rgba(45,212,191,.18);--msg-me1:#0d9488;--msg-me2:#0f766e; }
-[data-color="green"]   { --acc1:#16a34a;--acc2:#15803d;--border:rgba(74,222,128,.18);--msg-me1:#16a34a;--msg-me2:#15803d; }
-
-[data-theme="light"] {
-  --bg:#f0eeff;--bg2:#e8e4ff;--bg3:#ddd8ff;
-  --text:#1e1a3f;--muted:rgba(80,70,140,.55);
-  --card:rgba(79,70,229,.07);--border:rgba(79,70,229,.2);
-}
-
+[data-color="indigo"]{--a1:#4f46e5;--a2:#7c3aed;--border:rgba(129,140,248,.18);--card:rgba(79,70,229,.08);}
+[data-color="rose"]{--a1:#e11d48;--a2:#be123c;--border:rgba(251,113,133,.2);--card:rgba(225,29,72,.08);}
+[data-color="amber"]{--a1:#d97706;--a2:#b45309;--border:rgba(251,191,36,.2);--card:rgba(217,119,6,.08);}
+[data-color="teal"]{--a1:#0d9488;--a2:#0f766e;--border:rgba(45,212,191,.2);--card:rgba(13,148,136,.08);}
+[data-color="green"]{--a1:#16a34a;--a2:#15803d;--border:rgba(74,222,128,.2);--card:rgba(22,163,74,.08);}
+[data-color="pink"]{--a1:#db2777;--a2:#be185d;--border:rgba(244,114,182,.2);--card:rgba(219,39,119,.08);}
+[data-theme="light"]{--bg:#f0eeff;--bg2:#e4e0ff;--bg3:#d8d2ff;--text:#1e1a3f;--muted:rgba(80,70,140,.55);}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100dvh;transition:background .3s,color .3s;}
-
-.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(79,70,229,.22) 0%,transparent 60%),
-  radial-gradient(ellipse 60% 50% at 80% 20%,rgba(124,58,237,.18) 0%,transparent 55%),
-  radial-gradient(ellipse 70% 80% at 50% 100%,rgba(37,99,235,.12) 0%,transparent 60%),var(--bg);}
-[data-theme="light"] .mesh{background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(79,70,229,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 20%,rgba(124,58,237,.1) 0%,transparent 55%),var(--bg);}
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(79,70,229,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 15%,rgba(124,58,237,.13) 0%,transparent 55%),var(--bg);}
 .stars{position:fixed;inset:0;z-index:1;pointer-events:none;}
 .star{position:absolute;border-radius:50%;animation:tw var(--d,3s) ease-in-out infinite alternate;}
 [data-theme="light"] .stars{display:none;}
-@keyframes tw{from{opacity:.06}to{opacity:.65}}
+@keyframes tw{from{opacity:.05}to{opacity:.55}}
 
-/* ── GLASS ── */
-.glass{background:rgba(15,12,31,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
-[data-theme="light"] .glass{background:rgba(240,238,255,.75);}
-
-/* ── TABS ── */
-.tabbar{position:relative;z-index:200;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 10px;
-  border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.tabbar::-webkit-scrollbar{display:none;}
-.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:0 0 auto;width:68px;
-  height:52px;border-radius:14px;border:1.5px solid transparent;background:rgba(255,255,255,.04);
-  cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
-[data-theme="light"] .tab{background:rgba(79,70,229,.06);}
-.tab::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--acc1),var(--acc2));opacity:0;transition:opacity .22s;}
+/* TABS */
+.tabbar{position:relative;z-index:200;display:flex;align-items:center;justify-content:center;gap:3px;padding:7px 7px 0;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2);}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex:1;height:48px;border-radius:10px 10px 0 0;border:1px solid transparent;border-bottom:none;background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;position:relative;overflow:hidden;isolation:isolate;min-width:0;}
+[data-theme="light"] .tab{background:rgba(79,70,229,.05);}
+.tab::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--a1),var(--a2));opacity:0;transition:opacity .2s;border-radius:10px 10px 0 0;}
 .tab.active::before{opacity:1;}
-.tab.active{border-color:rgba(129,140,248,.45);box-shadow:0 0 18px rgba(109,40,217,.25);}
-.ti{position:relative;z-index:1;width:19px;height:19px;stroke:var(--muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .22s;}
-.tab.active .ti{stroke:#fff;filter:drop-shadow(0 0 5px rgba(255,255,255,.4));}
-.tl{position:relative;z-index:1;font-size:.5rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .22s;}
+.ti{position:relative;z-index:1;width:17px;height:17px;stroke:var(--muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
+.tab.active .ti{stroke:#fff;}
+.tl{position:relative;z-index:1;font-size:.46rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);transition:color .2s;}
 .tab.active .tl{color:#fff;}
-.tab-badge{position:absolute;top:5px;right:7px;z-index:2;background:#f87171;color:#fff;border-radius:999px;font-size:.48rem;font-weight:800;padding:1px 5px;min-width:15px;text-align:center;display:none;}
+.tab-badge{position:absolute;top:4px;right:5px;z-index:2;background:#f87171;color:#fff;border-radius:999px;font-size:.44rem;font-weight:800;padding:1px 4px;min-width:13px;text-align:center;display:none;}
 .tab-badge.show{display:block;}
 
-/* ── PAGES ── */
+/* PAGES */
 .pages{flex:1;position:relative;overflow:hidden;z-index:10;}
-.page{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none;padding:14px 13px 24px;}
+.page{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none;padding:12px 12px 20px;}
 .page.active{display:block;}
 
-/* ── SHARED ── */
-.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(79,70,229,.2);border:1px solid rgba(129,140,248,.3);color:#818cf8;font-size:.58rem;font-weight:700;letter-spacing:.12em;padding:.28rem .82rem;border-radius:999px;margin-bottom:.85rem;}
-h1{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,6vw,2.6rem);font-weight:800;line-height:1.08;margin-bottom:.4rem;letter-spacing:-.02em;}
-h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2),#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.subtitle{font-size:.8rem;color:var(--muted);margin-bottom:1.1rem;}
-.sec-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;margin-bottom:.15rem;}
-.sec-sub{color:var(--muted);font-size:.72rem;margin-bottom:.85rem;}
-.inp{background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:12px;padding:.58rem .82rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;width:100%;}
+/* SHARED */
+.inp{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.52rem .75rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;width:100%;}
 .inp::placeholder{color:var(--muted);}
-[data-theme="light"] .inp{background:rgba(79,70,229,.08);}
-.btn-p{background:linear-gradient(135deg,var(--acc1),var(--acc2));border:none;border-radius:12px;padding:.58rem 1.1rem;color:#fff;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;white-space:nowrap;}
-.btn-s{background:rgba(79,70,229,.15);border:1px solid var(--border);border-radius:12px;padding:.58rem 1rem;color:#818cf8;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;}
-.btn-d{background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.3);border-radius:12px;padding:.58rem 1rem;color:#f87171;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;}
+select.inp{cursor:pointer;}
+.btn-p{background:linear-gradient(135deg,var(--a1),var(--a2));border:none;border-radius:11px;padding:.52rem 1rem;color:#fff;font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:700;cursor:pointer;white-space:nowrap;}
+.btn-s{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.52rem .88rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:700;cursor:pointer;}
+.btn-d{background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.3);border-radius:11px;padding:.52rem .88rem;color:#f87171;font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:700;cursor:pointer;}
+.sec-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;margin-bottom:.12rem;}
+.sec-sub{color:var(--muted);font-size:.68rem;margin-bottom:.75rem;}
+
+/* USER BADGE */
+.ubadge{display:inline-flex;align-items:center;gap:3px;border-radius:5px;padding:1px 5px;font-size:.58rem;font-weight:800;margin-left:3px;}
+.ubadge.dev{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;}
+.ubadge.major{background:linear-gradient(135deg,#8b5cf6,#ec4899);color:#fff;}
+.ubadge.cool{background:linear-gradient(135deg,#06b6d4,#3b82f6);color:#fff;}
+.ubadge.sub{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;}
+.verified{display:inline-flex;align-items:center;margin-left:2px;}
+.verified svg{width:13px;height:13px;fill:var(--a1);}
+
+/* NICK GRADIENT */
+.nick-grad-1{background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nick-grad-2{background:linear-gradient(135deg,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nick-grad-3{background:linear-gradient(135deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nick-grad-4{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nick-grad-5{background:linear-gradient(135deg,#f97316,#eab308);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* CURRENCY */
+.coin{display:inline-flex;align-items:center;gap:3px;color:#fbbf24;font-weight:700;font-size:.78rem;}
+.coin svg{width:14px;height:14px;fill:#fbbf24;}
 
 /* COUNTDOWN */
-.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1rem;}
-.cd-card{background:linear-gradient(145deg,rgba(79,70,229,.15),rgba(124,58,237,.1));border:1px solid var(--border);border-radius:14px;padding:11px 3px;text-align:center;position:relative;overflow:hidden;}
-.cd-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(129,140,248,.5),transparent);}
-.num{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,4.5vw,1.9rem);font-weight:800;line-height:1;background:linear-gradient(135deg,#e0e7ff,var(--acc1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.lbl2{font-size:.54rem;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;margin-top:.25rem;}
-.tags{display:flex;flex-direction:column;gap:.38rem;}
-.tag{display:flex;align-items:center;gap:.48rem;background:rgba(255,255,255,.04);border:1px solid rgba(129,140,248,.12);border-radius:10px;padding:.45rem .82rem;font-size:.75rem;color:var(--text);opacity:.85;}
-[data-theme="light"] .tag{background:rgba(79,70,229,.06);}
-.tag svg{width:12px;height:12px;flex-shrink:0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-
-/* Sun / planet */
-.sun-wrap{display:flex;justify-content:center;margin-top:1.4rem;}
-.sun{width:140px;height:140px;border-radius:50%;
-  background:radial-gradient(circle,#fff 5%,#e0e7ff 25%,var(--acc1) 55%,var(--acc2) 80%,#1e1060 100%);
-  box-shadow:0 0 60px 20px rgba(99,102,241,.45),0 0 120px 40px rgba(79,70,229,.2);
-  animation:gp 3s ease-in-out infinite alternate;position:relative;}
-.sun::before{content:'';position:absolute;inset:-20px;border-radius:50%;
-  background:conic-gradient(from 0deg,transparent 75%,rgba(129,140,248,.2) 85%,transparent 100%);
-  animation:spin 8s linear infinite;}
-.sun::after{content:'';position:absolute;inset:15px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.3) 0%,transparent 60%);
-  pointer-events:none;}
-@keyframes gp{from{box-shadow:0 0 60px 20px rgba(99,102,241,.4)}to{box-shadow:0 0 90px 35px rgba(124,58,237,.6)}}
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:.85rem;}
+.cd-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:9px 3px;text-align:center;position:relative;overflow:hidden;}
+.cd-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--a1),transparent);opacity:.5;}
+.num{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,3.5vw,1.7rem);font-weight:800;line-height:1;background:linear-gradient(135deg,var(--text),var(--a1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.lbl2{font-size:.5rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.2rem;}
+.tags{display:flex;flex-direction:column;gap:.32rem;}
+.tag{display:flex;align-items:center;gap:.42rem;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:.4rem .75rem;font-size:.7rem;color:var(--text);opacity:.85;}
+.tag svg{width:11px;height:11px;flex-shrink:0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.sun-wrap{display:flex;justify-content:center;margin-top:1.1rem;}
+.sun{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#fff 5%,#e0e7ff 22%,var(--a1) 52%,var(--a2) 78%,#1e1060 100%);box-shadow:0 0 50px 16px color-mix(in srgb,var(--a1) 45%,transparent);animation:gp 3s ease-in-out infinite alternate;position:relative;}
+.sun::before{content:'';position:absolute;inset:-16px;border-radius:50%;background:conic-gradient(from 0deg,transparent 75%,rgba(129,140,248,.18) 85%,transparent 100%);animation:spin 8s linear infinite;}
+@keyframes gp{from{box-shadow:0 0 50px 16px color-mix(in srgb,var(--a1) 40%,transparent)}to{box-shadow:0 0 80px 30px color-mix(in srgb,var(--a2) 55%,transparent)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* PROGRESS */
-.prog-card{background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:18px;padding:1.1rem;margin-bottom:.75rem;position:relative;overflow:hidden;}
-.prog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(129,140,248,.4),transparent);}
-.prog-label{font-size:.63rem;letter-spacing:.11em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:.85rem;font-weight:700;}
-.bar-labels{display:flex;justify-content:space-between;font-size:.63rem;color:var(--muted);margin-bottom:.42rem;}
-.bar-outer{height:9px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;}
-.bar-inner{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--acc1),var(--acc2));transition:width 1.2s ease;}
-.bar-pct{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;text-align:center;margin-top:.55rem;background:linear-gradient(135deg,var(--acc1),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.bar-txt{font-size:.68rem;color:var(--muted);text-align:center;margin-top:.1rem;}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;}
-.info-card{background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:13px;padding:.8rem;text-align:center;}
-.ic-n{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--acc1),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ic-l{font-size:.64rem;color:var(--muted);margin-top:.13rem;}
+.prog-card{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:.9rem;margin-bottom:.65rem;position:relative;overflow:hidden;}
+.prog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--a1),transparent);opacity:.4;}
+.prog-label{font-size:.58rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:.75rem;font-weight:700;}
+.bar-labels{display:flex;justify-content:space-between;font-size:.58rem;color:var(--muted);margin-bottom:.38rem;}
+.bar-outer{height:8px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;}
+.bar-inner{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--a1),var(--a2));transition:width 1.2s ease;}
+.bar-pct{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;text-align:center;margin-top:.5rem;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.bar-txt{font-size:.64rem;color:var(--muted);text-align:center;margin-top:.1rem;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.72rem;text-align:center;}
+.ic-n{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.ic-l{font-size:.6rem;color:var(--muted);margin-top:.1rem;}
 
 /* CALENDAR */
-.month-nav{display:flex;align-items:center;justify-content:space-between;background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:13px;padding:.52rem .82rem;margin-bottom:.75rem;}
-.month-nav button{background:rgba(129,140,248,.12);border:1px solid var(--border);color:#a5b4fc;border-radius:8px;width:28px;height:28px;font-size:.9rem;cursor:pointer;}
-.month-name{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:800;background:linear-gradient(135deg,var(--acc1),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:.8rem;}
-.cal-hdr{text-align:center;font-size:.54rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;padding:.32rem 0;font-weight:700;}
-.cal-day{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:7px;font-size:.74rem;cursor:pointer;transition:background .15s;}
-.cal-day:hover{background:rgba(79,70,229,.15);}
+.month-nav{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.48rem .75rem;margin-bottom:.65rem;}
+.month-nav button{background:rgba(255,255,255,.08);border:1px solid var(--border);color:var(--text);border-radius:7px;width:26px;height:26px;font-size:.82rem;cursor:pointer;}
+.month-name{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:800;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:.65rem;}
+.cal-hdr{text-align:center;font-size:.5rem;color:var(--muted);text-transform:uppercase;padding:.28rem 0;font-weight:700;}
+.cal-day{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:6px;font-size:.7rem;cursor:pointer;transition:background .12s;}
+.cal-day:hover{background:var(--card);}
 .cal-day.empty{opacity:0;pointer-events:none;}
-.cal-day.weekend{color:#a78bfa;}
-.cal-day.today{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;font-weight:800;}
-.cal-day.holiday{background:rgba(99,102,241,.18);border:1px solid rgba(129,140,248,.3);}
-.cal-day.holiday .dn{color:#a5b4fc;font-weight:800;}
-.cal-day.custom-hol{background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);}
+.cal-day.weekend{color:color-mix(in srgb,var(--a1) 80%,#fff);}
+.cal-day.today{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;font-weight:800;}
+.cal-day.holiday{background:color-mix(in srgb,var(--a1) 18%,transparent);border:1px solid color-mix(in srgb,var(--a1) 35%,transparent);}
+.cal-day.holiday .dn{color:color-mix(in srgb,var(--a1) 80%,#fff);font-weight:800;}
+.cal-day.custom-hol{background:rgba(251,191,36,.14);border:1px solid rgba(251,191,36,.28);}
 .cal-day.custom-hol .dn{color:#fbbf24;font-weight:800;}
-.doth{width:3px;height:3px;border-radius:50%;background:#818cf8;margin-top:1px;}
+.doth{width:3px;height:3px;border-radius:50%;background:var(--a1);margin-top:1px;}
 .dotc{width:3px;height:3px;border-radius:50%;background:#fbbf24;margin-top:1px;}
-.hol-list{display:grid;gap:.48rem;}
-.hol-item{display:flex;align-items:center;gap:.65rem;background:linear-gradient(135deg,rgba(79,70,229,.1),rgba(124,58,237,.07));border:1px solid var(--border);border-radius:12px;padding:.7rem .82rem;}
-.hol-icon{width:30px;height:30px;border-radius:8px;flex-shrink:0;background:rgba(99,102,241,.18);border:1px solid rgba(129,140,248,.22);display:flex;align-items:center;justify-content:center;}
-.hol-icon svg{width:14px;height:14px;stroke:#818cf8;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.hol-icon.custom{background:rgba(251,191,36,.15);border-color:rgba(251,191,36,.3);}
+.hol-list{display:grid;gap:.42rem;}
+.hol-item{display:flex;align-items:center;gap:.58rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem .75rem;}
+.hol-icon{width:26px;height:26px;border-radius:7px;flex-shrink:0;background:color-mix(in srgb,var(--a1) 15%,transparent);border:1px solid color-mix(in srgb,var(--a1) 28%,transparent);display:flex;align-items:center;justify-content:center;}
+.hol-icon svg{width:12px;height:12px;stroke:var(--a1);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.hol-icon.custom{background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.22);}
 .hol-icon.custom svg{stroke:#fbbf24;}
-.hol-name{font-size:.78rem;font-weight:700;line-height:1.25;}
-.hol-sub{font-size:.63rem;color:var(--muted);}
-.hol-date{font-family:'Syne',sans-serif;font-size:.65rem;font-weight:800;color:#818cf8;flex-shrink:0;}
-.hol-del{width:22px;height:22px;border-radius:6px;background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.25);color:#f87171;font-size:.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.no-hols{text-align:center;color:var(--muted);font-size:.78rem;padding:1.3rem 0;}
-.add-hol-btn{display:flex;align-items:center;gap:.5rem;background:rgba(251,191,36,.1);border:1px dashed rgba(251,191,36,.35);border-radius:12px;padding:.65rem .82rem;cursor:pointer;margin-bottom:.8rem;font-size:.78rem;color:#fbbf24;font-weight:700;}
+.hol-name{font-size:.74rem;font-weight:700;line-height:1.2;flex:1;}
+.hol-date{font-family:'Syne',sans-serif;font-size:.6rem;font-weight:800;color:var(--a1);flex-shrink:0;}
+.hol-del{width:18px;height:18px;border-radius:5px;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.2);color:#f87171;font-size:.62rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.no-hols{text-align:center;color:var(--muted);font-size:.74rem;padding:1.1rem 0;}
+.add-hol-btn{display:flex;align-items:center;gap:.42rem;background:rgba(251,191,36,.07);border:1px dashed rgba(251,191,36,.28);border-radius:10px;padding:.55rem .75rem;cursor:pointer;margin-bottom:.65rem;font-size:.73rem;color:#fbbf24;font-weight:700;}
 
-/* ══ CHAT ══ */
-.chat-layout{display:flex;flex-direction:column;height:calc(100dvh - 72px);overflow:hidden;position:absolute;inset:0;padding:0;}
-.name-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;padding:2rem 1.5rem;height:100%;}
-.name-screen svg{width:48px;height:48px;stroke:#818cf8;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.name-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;}
-.name-sub{font-size:.76rem;color:var(--muted);text-align:center;}
-.name-row{display:flex;gap:.5rem;width:100%;max-width:300px;}
-
-/* Avatar upload */
-.av-upload{width:72px;height:72px;border-radius:50%;border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;flex-shrink:0;position:relative;}
+/* CHAT */
+.chat-layout{display:flex;flex-direction:column;height:calc(100dvh - 55px);overflow:hidden;position:absolute;inset:0;padding:0;}
+.name-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:1.8rem 1.3rem;height:100%;}
+.name-screen-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;}
+.name-screen-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.ns-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;}
+.ns-sub{font-size:.7rem;color:var(--muted);text-align:center;}
+.av-upload{border-radius:50%;border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;flex-shrink:0;position:relative;background:var(--card);}
 .av-upload img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
-.av-upload svg{width:22px;height:22px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.av-upload svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
 .av-upload input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.username-note{font-size:.65rem;color:var(--muted);text-align:center;padding:0 1rem;}
+.username-note strong{color:var(--a1);}
 
 .chat-home{display:flex;flex-direction:column;height:100%;overflow:hidden;}
-.online-strip{display:flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-bottom:1px solid var(--border);flex-shrink:0;}
-.online-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 7px #4ade80;animation:pdot 1.5s ease-in-out infinite;}
+.chat-topbar{display:flex;align-items:center;gap:.45rem;padding:.5rem .9rem;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2);}
+.online-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px #4ade80;animation:pdot 1.5s ease-in-out infinite;flex-shrink:0;}
 @keyframes pdot{0%,100%{opacity:1}50%{opacity:.3}}
-.online-txt{font-size:.73rem;color:var(--muted);}
-.online-n{font-family:'Syne',sans-serif;font-weight:800;color:#4ade80;margin-left:2px;}
-.my-name-strip{margin-left:auto;display:flex;align-items:center;gap:.4rem;}
-.my-mini-av{width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;position:relative;}
-.my-name-lbl{font-size:.7rem;color:#a5b4fc;font-weight:700;}
+.online-txt{font-size:.68rem;color:var(--muted);}
+.online-n{font-weight:800;color:#4ade80;margin-left:1px;}
+.my-strip{margin-left:auto;display:flex;align-items:center;gap:.3rem;}
+.mini-av{width:20px;height:20px;border-radius:50%;object-fit:cover;flex-shrink:0;font-size:.55rem;font-weight:800;display:flex;align-items:center;justify-content:center;color:#fff;}
 
-/* Avatar frame */
-.av-frame{position:absolute;inset:-3px;border-radius:50%;pointer-events:none;z-index:1;}
-.av-frame.gold{border:3px solid #fbbf24;box-shadow:0 0 12px rgba(251,191,36,.6);}
-.av-frame.diamond{border:3px solid #60a5fa;box-shadow:0 0 12px rgba(96,165,250,.6);}
-.av-frame.fire{border:3px solid #f87171;box-shadow:0 0 12px rgba(248,113,113,.6);animation:fire-glow 1.5s ease-in-out infinite alternate;}
-@keyframes fire-glow{from{box-shadow:0 0 12px rgba(248,113,113,.6)}to{box-shadow:0 0 20px rgba(248,113,113,.9)}}
-.av-frame.rainbow{border:3px solid transparent;background:linear-gradient(45deg,#f87171,#fbbf24,#34d399,#60a5fa,#c084fc) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rainbow-spin 3s linear infinite;}
-@keyframes rainbow-spin{to{filter:hue-rotate(360deg)}}
+.chat-filters{display:flex;gap:.35rem;padding:.35rem .9rem;border-bottom:1px solid var(--border);overflow-x:auto;flex-shrink:0;}
+.chat-filters::-webkit-scrollbar{display:none;}
+.cf{padding:.22rem .65rem;border-radius:999px;font-size:.64rem;font-weight:700;cursor:pointer;white-space:nowrap;border:1px solid var(--border);background:var(--card);color:var(--muted);transition:all .14s;}
+.cf.active{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-color:transparent;}
 
-.users-row{display:flex;gap:.5rem;padding:.5rem 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--border);}
+.users-row{display:flex;gap:.4rem;padding:.4rem .9rem;overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--border);flex-shrink:0;}
 .users-row::-webkit-scrollbar{display:none;}
-.user-chip{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;cursor:pointer;}
-.user-chip-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;color:#fff;position:relative;border:2px solid rgba(79,70,229,.4);overflow:hidden;}
-.user-chip-av img{width:100%;height:100%;object-fit:cover;}
-.user-chip-av::after{content:'';position:absolute;bottom:0;right:0;width:9px;height:9px;border-radius:50%;background:#4ade80;border:2px solid var(--bg);}
-.user-chip-name{font-size:.56rem;color:var(--muted);max-width:48px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;}
+.user-chip{display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0;cursor:pointer;}
+.uc-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:800;color:#fff;position:relative;border:2px solid var(--a1);overflow:hidden;}
+.uc-av::after{content:'';position:absolute;bottom:0;right:0;width:7px;height:7px;border-radius:50%;background:#4ade80;border:2px solid var(--bg);}
+.uc-av img{width:100%;height:100%;object-fit:cover;}
+.uc-name{font-size:.5rem;color:var(--muted);max-width:42px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;}
 
 .chat-sections{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-.chat-section-hdr{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem .3rem;position:sticky;top:0;z-index:5;}
-.chat-section-title{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.chat-section-hdr button{font-size:.63rem;font-weight:700;background:rgba(79,70,229,.2);border:1px solid var(--border);color:#818cf8;border-radius:8px;padding:.25rem .6rem;cursor:pointer;}
+.chat-section-hdr{display:flex;align-items:center;justify-content:space-between;padding:.42rem .85rem .25rem;position:sticky;top:0;z-index:5;background:var(--bg2);}
+.csh-title{font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.csh-btns{display:flex;gap:.28rem;}
+.csh-btn{font-size:.58rem;font-weight:700;background:var(--card);border:1px solid var(--border);color:var(--a1);border-radius:7px;padding:.2rem .55rem;cursor:pointer;}
 
-.room-item{display:flex;align-items:center;gap:.7rem;padding:.68rem 1rem;border-bottom:1px solid rgba(129,140,248,.06);cursor:pointer;transition:background .15s;}
-.room-item:hover,.room-item:active{background:rgba(79,70,229,.1);}
-.room-av{width:40px;height:40px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;overflow:hidden;}
-.room-av.grp{background:linear-gradient(135deg,rgba(79,70,229,.3),rgba(124,58,237,.2));border:1px solid rgba(129,140,248,.25);}
-.room-av.dm{border-radius:50%;}
+.room-item{display:flex;align-items:center;gap:.6rem;padding:.6rem .85rem;border-bottom:1px solid rgba(129,140,248,.05);cursor:pointer;transition:background .12s;}
+.room-item:active{background:var(--card);}
+.room-av{width:40px;height:40px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;overflow:hidden;}
+.room-av.circle{border-radius:50%;}
 .room-av img{width:100%;height:100%;object-fit:cover;}
 .room-info{flex:1;min-width:0;}
-.room-name{font-size:.83rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.room-prev{font-size:.68rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;}
-.room-unread{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border-radius:999px;font-size:.56rem;font-weight:800;padding:1px 6px;min-width:17px;text-align:center;}
-.online-ind{width:9px;height:9px;border-radius:50%;background:#4ade80;box-shadow:0 0 5px #4ade80;flex-shrink:0;}
+.room-name{font-size:.78rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:2px;}
+.room-prev{font-size:.63rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;}
+.room-right{display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;}
+.room-time{font-size:.55rem;color:var(--muted);}
+.room-unread{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-radius:999px;font-size:.52rem;font-weight:800;padding:1px 5px;min-width:15px;text-align:center;}
+.online-ind{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 4px #4ade80;}
 
-/* Chat room */
-.chat-room{display:none;flex-direction:column;height:100%;background:var(--bg);}
+.chat-room{display:none;flex-direction:column;height:100%;background:var(--bg);position:absolute;inset:0;z-index:20;}
 .chat-room.open{display:flex;}
-.chat-room-hdr{display:flex;align-items:center;gap:.65rem;padding:.6rem .9rem;border-bottom:1px solid var(--border);flex-shrink:0;}
-.back-btn{width:30px;height:30px;border-radius:8px;background:rgba(79,70,229,.15);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
-.back-btn svg{width:13px;height:13px;stroke:#818cf8;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.room-hdr-av{width:32px;height:32px;border-radius:10px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;}
-.room-hdr-av.grp{background:linear-gradient(135deg,rgba(79,70,229,.3),rgba(124,58,237,.2));border:1px solid rgba(129,140,248,.2);}
+.chat-room-hdr{display:flex;align-items:center;gap:.58rem;padding:.55rem .82rem;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2);}
+.back-btn{width:26px;height:26px;border-radius:7px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.back-btn svg{width:11px;height:11px;stroke:var(--a1);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.room-hdr-av{width:28px;height:28px;border-radius:8px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;}
 .room-hdr-av img{width:100%;height:100%;object-fit:cover;}
 .room-hdr-info{flex:1;min-width:0;}
-.room-hdr-name{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.room-hdr-sub{font-size:.6rem;color:var(--muted);}
-.room-hdr-btn{width:28px;height:28px;border-radius:8px;background:rgba(79,70,229,.15);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
-.room-hdr-btn svg{width:12px;height:12px;stroke:#818cf8;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.room-hdr-name{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.room-hdr-sub{font-size:.56rem;color:var(--muted);}
+.hdr-btn{width:24px;height:24px;border-radius:6px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.hdr-btn svg{width:10px;height:10px;stroke:var(--a1);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 
-.messages{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:.7rem .85rem;display:flex;flex-direction:column;gap:.42rem;}
-.msg{display:flex;flex-direction:column;gap:2px;max-width:82%;}
+.typing-ind{display:none;align-items:center;gap:3px;padding:.18rem .75rem;font-size:.6rem;color:var(--muted);}
+.typing-ind.show{display:flex;}
+.typing-dot{width:4px;height:4px;border-radius:50%;background:var(--muted);animation:bounce .8s ease-in-out infinite;}
+.typing-dot:nth-child(2){animation-delay:.15s;}
+.typing-dot:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+.messages{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:.6rem .78rem;display:flex;flex-direction:column;gap:.35rem;}
+.msg{display:flex;flex-direction:column;gap:1px;max-width:80%;}
 .msg.me{align-self:flex-end;align-items:flex-end;}
 .msg.other{align-self:flex-start;}
-.msg-name{font-size:.57rem;color:var(--muted);font-weight:700;padding:0 .35rem;}
-.msg-bubble{padding:.46rem .72rem;border-radius:13px;font-size:.8rem;line-height:1.4;word-break:break-word;}
-.msg.me .msg-bubble{background:linear-gradient(135deg,var(--msg-me1),var(--msg-me2));color:#fff;border-bottom-right-radius:3px;}
-.msg.other .msg-bubble{background:rgba(79,70,229,.15);border:1px solid var(--border);border-bottom-left-radius:3px;}
-[data-theme="light"] .msg.other .msg-bubble{background:rgba(79,70,229,.1);}
-.msg-time{font-size:.54rem;color:var(--muted);padding:0 .35rem;}
-.sys-msg{text-align:center;font-size:.64rem;color:var(--muted);padding:.25rem;font-style:italic;}
+.msg-name{font-size:.53rem;color:var(--muted);font-weight:700;padding:0 .3rem;}
+.msg-bubble{padding:.42rem .65rem;border-radius:11px;font-size:.76rem;line-height:1.4;word-break:break-word;position:relative;}
+.msg.me .msg-bubble{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-bottom-right-radius:3px;}
+.msg.other .msg-bubble{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:3px;}
+.msg-time{font-size:.5rem;color:var(--muted);padding:0 .3rem;}
+.msg-img{max-width:190px;border-radius:9px;cursor:pointer;display:block;margin-top:2px;}
+.msg-link{color:color-mix(in srgb,var(--a1) 80%,#fff);text-decoration:underline;cursor:pointer;word-break:break-all;}
+.sys-msg{text-align:center;font-size:.6rem;color:var(--muted);padding:.2rem;font-style:italic;}
+.msg-del-btn{display:none;position:absolute;top:-22px;right:0;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:.18rem .4rem;font-size:.58rem;color:#f87171;cursor:pointer;white-space:nowrap;}
+.msg-bubble:hover .msg-del-btn,.msg-bubble:active .msg-del-btn{display:block;}
 
-.chat-input-bar{display:flex;gap:.42rem;padding:.55rem .85rem;border-top:1px solid var(--border);flex-shrink:0;}
-.chat-inp{flex:1;background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:12px;padding:.52rem .78rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;}
+.chat-input-bar{display:flex;gap:.35rem;padding:.48rem .78rem;border-top:1px solid var(--border);flex-shrink:0;background:var(--bg2);align-items:center;}
+.chat-inp{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.48rem .7rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.76rem;outline:none;}
 .chat-inp::placeholder{color:var(--muted);}
-.send-btn{background:linear-gradient(135deg,var(--acc1),var(--acc2));border:none;border-radius:12px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
-.send-btn svg{width:14px;height:14px;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+.send-btn{background:linear-gradient(135deg,var(--a1),var(--a2));border:none;border-radius:10px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.send-btn svg{width:12px;height:12px;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+.attach-btn{width:30px;height:30px;border-radius:8px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;position:relative;}
+.attach-btn svg{width:12px;height:12px;stroke:var(--a1);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.attach-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;}
 
-/* ══ GDZ ══ */
-.gdz-tabs{display:flex;gap:.4rem;margin-bottom:.85rem;border-bottom:1px solid var(--border);padding-bottom:.5rem;}
-.gdz-tab{flex:1;padding:.5rem .7rem;background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:10px;font-size:.75rem;font-weight:700;text-align:center;cursor:pointer;transition:all .2s;}
-.gdz-tab.active{background:linear-gradient(135deg,var(--acc1),var(--acc2));color:#fff;border-color:transparent;}
+/* FRIENDS */
+.friend-req{display:flex;align-items:center;gap:.6rem;padding:.6rem .85rem;border-bottom:1px solid rgba(129,140,248,.05);background:color-mix(in srgb,var(--a1) 4%,transparent);}
+.freq-av{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.85rem;overflow:hidden;}
+.freq-av img{width:100%;height:100%;object-fit:cover;}
+.freq-btns{display:flex;gap:.28rem;}
 
-.points-banner{display:flex;align-items:center;gap:.85rem;background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(251,191,36,.08));border:1px solid rgba(251,191,36,.3);border-radius:16px;padding:.85rem 1rem;margin-bottom:.85rem;}
-.points-icon{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
-.points-info{flex:1;}
-.points-num{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fbbf24;}
-.points-label{font-size:.68rem;color:var(--muted);margin-top:.1rem;}
+/* POSTS */
+.post-card{background:var(--card);border:1px solid var(--border);border-radius:15px;margin-bottom:.75rem;overflow:hidden;}
+.post-header{display:flex;align-items:center;gap:.58rem;padding:.75rem .85rem .5rem;}
+.post-av{width:36px;height:36px;border-radius:50%;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.85rem;}
+.post-av img{width:100%;height:100%;object-fit:cover;}
+.post-author{font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:2px;}
+.post-time{font-size:.6rem;color:var(--muted);}
+.post-text{font-size:.78rem;line-height:1.5;padding:0 .85rem .65rem;color:var(--text);}
+.post-img{width:100%;max-height:300px;object-fit:cover;cursor:pointer;}
+.post-actions{display:flex;gap:.5rem;padding:.55rem .85rem;border-top:1px solid var(--border);}
+.post-action-btn{display:flex;align-items:center;gap:.3rem;font-size:.7rem;color:var(--muted);cursor:pointer;background:none;border:none;font-family:inherit;padding:.25rem .5rem;border-radius:7px;transition:all .14s;}
+.post-action-btn:hover,.post-action-btn.liked{color:var(--a1);background:color-mix(in srgb,var(--a1) 8%,transparent);}
+.post-action-btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.post-comments{padding:0 .85rem .65rem;display:none;}
+.post-comments.open{display:block;}
+.comment-item{display:flex;gap:.5rem;margin-bottom:.45rem;}
+.comment-av{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.6rem;overflow:hidden;}
+.comment-av img{width:100%;height:100%;object-fit:cover;}
+.comment-bubble{background:rgba(255,255,255,.04);border-radius:9px;padding:.35rem .6rem;flex:1;}
+.comment-name{font-size:.6rem;font-weight:700;display:flex;align-items:center;gap:2px;}
+.comment-text{font-size:.7rem;color:var(--text);margin-top:1px;}
+.comment-inp-row{display:flex;gap:.35rem;margin-top:.5rem;}
 
-.ask-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,var(--acc1),var(--acc2));border:none;border-radius:14px;padding:.75rem 1.2rem;color:#fff;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;cursor:pointer;margin-bottom:.85rem;width:100%;}
-.ask-btn svg{width:18px;height:18px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* GDZ */
+.gdz-card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:.7rem;overflow:hidden;}
+.gdz-header{padding:.7rem .82rem .45rem;display:flex;align-items:flex-start;gap:.55rem;}
+.gdz-av{width:34px;height:34px;border-radius:50%;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.8rem;}
+.gdz-av img{width:100%;height:100%;object-fit:cover;}
+.gdz-subject{display:inline-block;background:color-mix(in srgb,var(--a1) 15%,transparent);border:1px solid color-mix(in srgb,var(--a1) 30%,transparent);color:var(--a1);font-size:.58rem;font-weight:700;border-radius:5px;padding:1px 6px;margin-bottom:.25rem;}
+.gdz-question{font-size:.8rem;line-height:1.45;color:var(--text);}
+.gdz-img{width:100%;max-height:220px;object-fit:cover;cursor:pointer;}
+.gdz-answers{border-top:1px solid var(--border);}
+.gdz-answer{display:flex;gap:.5rem;padding:.55rem .82rem;border-bottom:1px solid rgba(129,140,248,.05);}
+.gdz-ans-av{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.6rem;overflow:hidden;}
+.gdz-ans-av img{width:100%;height:100%;object-fit:cover;}
+.gdz-ans-name{font-size:.6rem;font-weight:700;}
+.gdz-ans-text{font-size:.72rem;color:var(--text);}
+.gdz-ans-img{max-width:100%;border-radius:7px;margin-top:.3rem;cursor:pointer;}
+.gdz-ans-inp{display:flex;gap:.35rem;padding:.5rem .82rem;}
 
-.question-card{background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:16px;padding:.9rem 1rem;margin-bottom:.65rem;cursor:pointer;transition:all .2s;}
-.question-card:active{transform:scale(.98);}
-.q-header{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.55rem;}
-.q-av{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:#fff;overflow:hidden;position:relative;}
-.q-av img{width:100%;height:100%;object-fit:cover;}
-.q-info{flex:1;min-width:0;}
-.q-author{font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:.35rem;}
-.q-badge{display:inline-flex;align-items:center;gap:3px;background:rgba(251,191,36,.2);border:1px solid rgba(251,191,36,.4);color:#fbbf24;font-size:.55rem;font-weight:800;padding:1px 5px;border-radius:6px;}
-.q-time{font-size:.6rem;color:var(--muted);}
-.q-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;margin-bottom:.4rem;line-height:1.3;}
-.q-subject{display:inline-block;background:rgba(129,140,248,.15);border:1px solid rgba(129,140,248,.25);color:#818cf8;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:6px;margin-bottom:.45rem;}
-.q-preview{font-size:.75rem;color:var(--muted);line-height:1.4;margin-bottom:.45rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.q-img{width:100%;max-height:140px;object-fit:cover;border-radius:10px;margin-bottom:.5rem;}
-.q-footer{display:flex;align-items:center;gap:.85rem;font-size:.68rem;color:var(--muted);}
-.q-stat{display:flex;align-items:center;gap:.3rem;}
-.q-stat svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* SHOP / SUBSCRIPTION */
+.shop-header{background:linear-gradient(135deg,var(--a1),var(--a2));border-radius:14px;padding:1.1rem;margin-bottom:.85rem;text-align:center;position:relative;overflow:hidden;}
+.shop-header::before{content:'✦';position:absolute;font-size:8rem;opacity:.06;top:-20px;right:-20px;color:#fff;}
+.shop-coins{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;gap:.4rem;}
+.shop-coins svg{width:28px;height:28px;fill:#fbbf24;}
+.shop-coins-label{font-size:.7rem;color:rgba(255,255,255,.7);margin-top:.15rem;}
+.shop-section{margin-bottom:1rem;}
+.shop-section-title{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.55rem;}
+.shop-item{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:.8rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.7rem;}
+.shop-item-icon{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.shop-item-info{flex:1;}
+.shop-item-name{font-size:.8rem;font-weight:700;}
+.shop-item-desc{font-size:.65rem;color:var(--muted);margin-top:1px;}
+.shop-item-price{display:flex;align-items:center;gap:.25rem;color:#fbbf24;font-weight:800;font-size:.78rem;flex-shrink:0;}
+.shop-item-price svg{width:14px;height:14px;fill:#fbbf24;}
+.shop-buy-btn{background:linear-gradient(135deg,var(--a1),var(--a2));border:none;border-radius:8px;padding:.32rem .75rem;color:#fff;font-size:.7rem;font-weight:700;cursor:pointer;margin-left:.5rem;white-space:nowrap;}
 
-.no-questions{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.82rem;}
-
-/* Question detail */
-.q-detail{display:none;flex-direction:column;height:100%;background:var(--bg);}
-.q-detail.open{display:flex;}
-.q-detail-hdr{display:flex;align-items:center;gap:.6rem;padding:.6rem .9rem;border-bottom:1px solid var(--border);flex-shrink:0;}
-.q-detail-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:.9rem;}
-.q-detail-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;line-height:1.3;margin-bottom:.5rem;}
-.q-detail-text{font-size:.82rem;line-height:1.5;color:var(--text);margin-bottom:.7rem;}
-.q-detail-img{width:100%;border-radius:12px;margin-bottom:.85rem;}
-.answer-section{margin-top:1.2rem;}
-.answer-section-title{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;margin-bottom:.6rem;color:var(--muted);}
-.answer-card{background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:14px;padding:.8rem .9rem;margin-bottom:.5rem;}
-.answer-header{display:flex;align-items:center;gap:.55rem;margin-bottom:.5rem;}
-.answer-av{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.75rem;color:#fff;overflow:hidden;position:relative;}
-.answer-av img{width:100%;height:100%;object-fit:cover;}
-.answer-author{font-size:.72rem;font-weight:700;flex:1;}
-.answer-time{font-size:.6rem;color:var(--muted);}
-.answer-text{font-size:.78rem;line-height:1.45;margin-bottom:.5rem;}
-.answer-actions{display:flex;gap:.4rem;}
-.answer-btn{display:flex;align-items:center;gap:.25rem;background:rgba(79,70,229,.15);border:1px solid var(--border);border-radius:8px;padding:.3rem .55rem;font-size:.65rem;font-weight:700;color:#818cf8;cursor:pointer;}
-.answer-btn.upvoted{background:rgba(74,222,128,.2);border-color:rgba(74,222,128,.4);color:#34d399;}
-.answer-btn svg{width:11px;height:11px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.answer-input-bar{display:flex;gap:.42rem;padding:.7rem .85rem;border-top:1px solid var(--border);flex-shrink:0;}
-.answer-inp{flex:1;background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:12px;padding:.52rem .78rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none;min-height:38px;max-height:100px;resize:none;}
-
-/* Summaries */
-.summary-card{background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:16px;padding:.9rem 1rem;margin-bottom:.65rem;cursor:pointer;}
-.summary-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;margin-bottom:.35rem;}
-.summary-author{font-size:.68rem;color:var(--muted);}
-.summary-detail{display:none;flex-direction:column;height:100%;background:var(--bg);}
-.summary-detail.open{display:flex;}
-.summary-detail-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:.9rem;}
-.summary-text{font-size:.82rem;line-height:1.6;white-space:pre-line;}
-
-/* Shop */
-.shop-grid{display:grid;gap:.7rem;}
-.shop-item{background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:16px;padding:.9rem 1rem;display:flex;align-items:center;gap:.85rem;}
-.shop-preview{width:56px;height:56px;border-radius:50%;border:3px solid transparent;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;position:relative;}
-.shop-preview.gold{border-color:#fbbf24;box-shadow:0 0 12px rgba(251,191,36,.5);}
-.shop-preview.diamond{border-color:#60a5fa;box-shadow:0 0 12px rgba(96,165,250,.5);}
-.shop-preview.fire{border-color:#f87171;box-shadow:0 0 12px rgba(248,113,113,.5);}
-.shop-preview.rainbow{border:3px solid;border-image:linear-gradient(45deg,#f87171,#fbbf24,#34d399,#60a5fa,#c084fc) 1;}
-.shop-info{flex:1;}
-.shop-name{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;margin-bottom:.15rem;}
-.shop-desc{font-size:.68rem;color:var(--muted);margin-bottom:.35rem;}
-.shop-price{display:flex;align-items:center;gap:.3rem;font-size:.72rem;font-weight:700;color:#fbbf24;}
-.shop-price svg{width:12px;height:12px;fill:#fbbf24;stroke:none;}
-.shop-buy{background:linear-gradient(135deg,var(--acc1),var(--acc2));border:none;border-radius:10px;padding:.45rem .8rem;color:#fff;font-size:.72rem;font-weight:700;cursor:pointer;flex-shrink:0;}
-.shop-buy.owned{background:rgba(74,222,128,.2);color:#34d399;cursor:default;}
-
-/* ══ SETTINGS ══ */
-.settings-av-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;padding:1rem;background:linear-gradient(145deg,rgba(79,70,229,.12),rgba(124,58,237,.08));border:1px solid var(--border);border-radius:18px;}
-.settings-av{width:64px;height:64px;border-radius:50%;overflow:hidden;flex-shrink:0;position:relative;cursor:pointer;border:2px solid var(--border);}
+/* SETTINGS */
+.settings-av-row{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem;padding:.85rem;background:var(--card);border:1px solid var(--border);border-radius:15px;}
+.settings-av{width:56px;height:56px;border-radius:50%;overflow:hidden;flex-shrink:0;position:relative;cursor:pointer;border:2px solid var(--border);}
 .settings-av img{width:100%;height:100%;object-fit:cover;}
 .settings-av input{position:absolute;inset:0;opacity:0;cursor:pointer;}
-.settings-av-edit{position:absolute;bottom:0;right:0;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--acc1),var(--acc2));display:flex;align-items:center;justify-content:center;}
-.settings-av-edit svg{width:10px;height:10px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-
-.settings-section{margin-bottom:1.1rem;}
-.settings-section-title{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.55rem;padding:0 .2rem;}
-.settings-row{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:.4rem;}
-.settings-row:first-of-type{border-radius:14px 14px 6px 6px;}
-.settings-row:last-of-type{border-radius:6px 6px 14px 14px;}
-.settings-row-label{font-size:.82rem;font-weight:600;}
-.settings-row-sub{font-size:.68rem;color:var(--muted);margin-top:1px;}
-
-/* Toggle switch */
-.toggle{width:42px;height:24px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid var(--border);position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;}
-.toggle.on{background:linear-gradient(135deg,var(--acc1),var(--acc2));border-color:transparent;}
-.toggle-knob{position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 4px rgba(0,0,0,.3);}
-.toggle.on .toggle-knob{transform:translateX(18px);}
-
-/* Color picker */
-.color-row{display:flex;gap:.5rem;flex-wrap:wrap;}
-.color-dot{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s,border-color .15s;flex-shrink:0;}
-.color-dot.active{border-color:#fff;transform:scale(1.15);}
-
-/* ══ MODALS ══ */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:500;display:none;align-items:flex-end;justify-content:center;padding:0;}
-.modal-overlay.open{display:flex;}
-.modal{background:var(--bg2);border:1px solid var(--border);border-radius:24px 24px 0 0;padding:1.4rem 1.4rem 2rem;width:100%;max-width:480px;animation:slide-up .25s ease;}
-@keyframes slide-up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.modal-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:1rem;}
-.modal label{font-size:.7rem;color:var(--muted);font-weight:700;letter-spacing:.08em;display:block;margin-bottom:.32rem;}
-.modal .inp{margin-bottom:.8rem;}
-.modal textarea{background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:12px;padding:.58rem .82rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;width:100%;min-height:100px;resize:vertical;margin-bottom:.8rem;}
-.modal-btns{display:flex;gap:.5rem;margin-top:.2rem;}
-.modal-btns button{flex:1;}
-.modal-drag{width:36px;height:4px;border-radius:999px;background:rgba(255,255,255,.15);margin:0 auto .9rem;}
-.img-preview-wrap{margin-bottom:.8rem;}
-.img-preview{width:100%;max-height:200px;object-fit:cover;border-radius:12px;margin-top:.4rem;}
+.settings-av-edit{position:absolute;bottom:0;right:0;width:17px;height:17px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;}
+.settings-av-edit svg{width:8px;height:8px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.settings-section{margin-bottom:.9rem;}
+.settings-section-title{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.45rem;}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:.65rem .85rem;background:var(--card);border:1px solid var(--border);border-radius:11px;margin-bottom:.32rem;}
+.srl{font-size:.76rem;font-weight:600;}
+.srs{font-size:.62rem;color:var(--muted);margin-top:1px;}
+.toggle{width:38px;height:21px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid var(--border);position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;}
+.toggle.on{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;}
+.toggle-knob{position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3);}
+.toggle.on .toggle-knob{transform:translateX(17px);}
+.color-row{display:flex;gap:.42rem;flex-wrap:wrap;margin-top:.38rem;}
+.color-dot{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .14s,border-color .14s;}
+.color-dot.active{border-color:#fff;transform:scale(1.18);}
 
 /* ADMIN */
-.admin-lock{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.82rem;padding:2rem 0;}
-.admin-lock svg{width:42px;height:42px;stroke:#818cf8;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.admin-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;}
-.admin-sub{font-size:.74rem;color:var(--muted);text-align:center;}
-.pass-row{display:flex;gap:.5rem;width:100%;max-width:280px;}
-.pass-inp{flex:1;background:rgba(79,70,229,.1);border:1px solid var(--border);border-radius:11px;padding:.56rem .8rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;text-align:center;letter-spacing:.15em;}
+.admin-lock{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.72rem;padding:1.6rem 0;}
+.admin-lock svg{width:38px;height:38px;stroke:var(--a1);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.admin-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;}
+.admin-sub{font-size:.68rem;color:var(--muted);text-align:center;}
+.pass-row{display:flex;gap:.42rem;width:100%;max-width:260px;}
+.pass-inp{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .75rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none;text-align:center;letter-spacing:.14em;}
 .pass-inp::placeholder{letter-spacing:.05em;color:var(--muted);}
 .admin-panel{display:none;}
 .admin-panel.visible{display:block;}
-.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.85rem;}
-.admin-btn{display:flex;flex-direction:column;align-items:center;gap:.42rem;background:linear-gradient(145deg,rgba(79,70,229,.15),rgba(124,58,237,.1));border:1px solid var(--border);border-radius:15px;padding:.85rem .65rem;cursor:pointer;transition:all .18s;color:var(--text);}
-.admin-btn:active{transform:scale(.94);}
-.admin-btn svg{width:26px;height:26px;stroke:#818cf8;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.admin-btn span{font-size:.68rem;font-weight:700;text-align:center;color:rgba(220,215,240,.8);}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:.58rem;margin-bottom:.75rem;}
+.admin-btn{display:flex;flex-direction:column;align-items:center;gap:.38rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.78rem .6rem;cursor:pointer;transition:all .14s;color:var(--text);}
+.admin-btn:active{transform:scale(.93);}
+.admin-btn svg{width:22px;height:22px;stroke:var(--a1);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.admin-btn span{font-size:.62rem;font-weight:700;text-align:center;color:var(--muted);}
 .admin-btn.danger svg{stroke:#f87171;}
 .admin-btn.danger span{color:#f87171;}
 .admin-btn.special svg{stroke:#fbbf24;}
 .admin-btn.special span{color:#fbbf24;}
-.asec{margin-bottom:.85rem;}
-.asec-title{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.5rem;}
+.asec{margin-bottom:.78rem;}
+.asec-title{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.45rem;}
 
-/* Group settings panel */
-.grp-settings{display:none;flex-direction:column;height:100%;background:var(--bg);}
-.grp-settings.open{display:flex;}
-.grp-member{display:flex;align-items:center;gap:.65rem;padding:.6rem .9rem;border-bottom:1px solid rgba(129,140,248,.06);}
-.grp-member-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.85rem;overflow:hidden;flex-shrink:0;}
-.grp-member-av img{width:100%;height:100%;object-fit:cover;}
-.grp-member-info{flex:1;}
-.grp-member-name{font-size:.8rem;font-weight:700;}
-.grp-member-role{font-size:.63rem;color:var(--muted);}
-.grp-member-actions{display:flex;gap:.3rem;}
-.grp-action-btn{font-size:.6rem;font-weight:700;border-radius:7px;padding:.22rem .5rem;border:1px solid;cursor:pointer;}
-.grp-action-btn.kick{background:rgba(248,113,113,.12);border-color:rgba(248,113,113,.3);color:#f87171;}
-.grp-action-btn.promote{background:rgba(251,191,36,.12);border-color:rgba(251,191,36,.3);color:#fbbf24;}
+/* GAMES */
+.games-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.9rem;}
+.game-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.9rem;cursor:pointer;transition:all .16s;display:flex;flex-direction:column;align-items:center;gap:.45rem;text-align:center;}
+.game-card:active{transform:scale(.95);}
+.game-icon{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.game-name{font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;}
+.game-sub{font-size:.6rem;color:var(--muted);}
+.game-wrap{position:fixed;inset:0;background:var(--bg);z-index:300;display:none;flex-direction:column;}
+.game-wrap.open{display:flex;}
+.game-hdr{display:flex;align-items:center;justify-content:space-between;padding:.55rem .85rem;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2);}
+.game-title-lbl{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;}
+.game-score-lbl{font-family:'Syne',sans-serif;font-size:.78rem;color:var(--a1);font-weight:800;}
 
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);z-index:500;display:none;align-items:flex-end;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:20px 20px 0 0;padding:1.2rem 1.2rem 1.7rem;width:100%;max-width:480px;animation:slide-up .2s ease;max-height:85vh;overflow-y:auto;}
+@keyframes slide-up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-title{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;margin-bottom:.85rem;}
+.modal label{font-size:.65rem;color:var(--muted);font-weight:700;letter-spacing:.07em;display:block;margin-bottom:.26rem;}
+.modal .inp{margin-bottom:.7rem;}
+.modal-btns{display:flex;gap:.42rem;margin-top:.18rem;}
+.modal-btns button{flex:1;}
+.modal-drag{width:32px;height:3px;border-radius:999px;background:rgba(255,255,255,.1);margin:0 auto .75rem;}
+.grp-member{display:flex;align-items:center;gap:.55rem;padding:.5rem .82rem;border-bottom:1px solid rgba(129,140,248,.05);}
+.gm-av{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.75rem;overflow:hidden;}
+.gm-av img{width:100%;height:100%;object-fit:cover;}
+.gm-info{flex:1;}
+.gm-name{font-size:.75rem;font-weight:700;}
+.gm-role{font-size:.58rem;color:var(--muted);}
+.gm-btns{display:flex;gap:.22rem;}
+.gm-btn{font-size:.55rem;font-weight:700;border-radius:6px;padding:.18rem .42rem;border:1px solid;cursor:pointer;background:transparent;}
+.gm-btn.kick{color:#f87171;border-color:rgba(248,113,113,.28);}
+.gm-btn.promote{color:#fbbf24;border-color:rgba(251,191,36,.28);}
+.gm-btn.give-coin{color:#4ade80;border-color:rgba(74,222,128,.28);}
+.gm-btn.verify{color:var(--a1);border-color:var(--border);}
+
+/* IMG VIEWER */
+#img-viewer{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9998;display:none;align-items:center;justify-content:center;cursor:pointer;}
+#img-viewer.open{display:flex;}
+#img-viewer img{max-width:95vw;max-height:95vh;object-fit:contain;border-radius:9px;}
+
+/* TOAST */
+.toast{position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-80px);background:var(--bg2);border:1px solid var(--border);border-radius:13px;padding:.6rem .9rem;display:flex;align-items:center;gap:.55rem;z-index:9000;transition:transform .28s ease;max-width:88vw;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast-av{width:30px;height:30px;border-radius:50%;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.72rem;}
+.toast-av img{width:100%;height:100%;object-fit:cover;}
+.toast-name{font-size:.72rem;font-weight:700;}
+.toast-msg{font-size:.65rem;color:var(--muted);}
+
+/* STATUS VIEWER */
+.status-viewer{position:fixed;inset:0;background:#000;z-index:999;display:none;flex-direction:column;}
+.status-viewer.open{display:flex;}
+.sv-header{display:flex;align-items:center;gap:.55rem;padding:.55rem .85rem;position:absolute;top:0;left:0;right:0;z-index:2;background:linear-gradient(to bottom,rgba(0,0,0,.55),transparent);}
+.sv-prog{display:flex;gap:3px;margin-bottom:.38rem;}
+.sv-pb{flex:1;height:2px;background:rgba(255,255,255,.28);border-radius:999px;overflow:hidden;}
+.sv-pbf{height:100%;background:#fff;border-radius:999px;}
+.sv-content{flex:1;display:flex;align-items:center;justify-content:center;}
+.sv-content img{max-width:100%;max-height:100%;object-fit:contain;}
+.sv-text{font-size:1.1rem;font-weight:700;color:#fff;text-align:center;padding:1.5rem;}
+
+/* SCREAMER */
+#screamer{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;background:#000;cursor:pointer;}
+#screamer.show{display:flex;}
+#screamer-content{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
 #fw-canvas{position:fixed;inset:0;pointer-events:none;z-index:9999;}
 .cp{position:fixed;pointer-events:none;z-index:9998;border-radius:2px;animation:fall linear forwards;}
 @keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110dvh) rotate(720deg);opacity:0}}
 
-/* Screamer overlay */
-#screamer{position:fixed;inset:0;z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center;background:#000;cursor:pointer;}
-#screamer.show{display:flex;}
-#screamer img{width:100%;height:100%;object-fit:cover;animation:scare .1s ease infinite alternate;}
-@keyframes scare{from{transform:scale(1)}to{transform:scale(1.04)}}
+/* USERNAME/PROFILE */
+.verified-tick{color:#60a5fa;font-size:.8rem;}
+.dev-tick{color:#fbbf24;font-size:.8rem;}
+.nick-grad-1{background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;}
+.nick-grad-2{background:linear-gradient(135deg,#f472b6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;}
+.nick-grad-3{background:linear-gradient(135deg,#34d399,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;}
+.nick-grad-4{background:linear-gradient(135deg,#fbbf24,#f87171);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;}
+.nick-grad-5{background:linear-gradient(135deg,#e879f9,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;}
+.user-tag{display:inline-block;font-size:.52rem;font-weight:800;padding:1px 6px;border-radius:999px;margin-left:3px;letter-spacing:.03em;vertical-align:middle;}
+.tag-major{background:linear-gradient(135deg,#fbbf24,#f97316);color:#fff;}
+.tag-cool{background:linear-gradient(135deg,#818cf8,#7c3aed);color:#fff;}
+.tag-dev{background:linear-gradient(135deg,#f87171,#dc2626);color:#fff;}
+/* POSTS */
+.post-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:.75rem;overflow:hidden;}
+.post-header{display:flex;align-items:center;gap:.65rem;padding:.75rem .9rem .5rem;}
+.post-av{width:36px;height:36px;border-radius:50%;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.85rem;}
+.post-av img{width:100%;height:100%;object-fit:cover;}
+.post-author{font-size:.82rem;font-weight:700;}
+.post-time{font-size:.6rem;color:var(--muted);margin-top:1px;}
+.post-text{font-size:.8rem;line-height:1.5;padding:0 .9rem .65rem;}
+.post-img{width:100%;max-height:320px;object-fit:cover;display:block;cursor:pointer;}
+.post-video{width:100%;max-height:280px;display:block;}
+.post-actions{display:flex;gap:.3rem;padding:.5rem .9rem .7rem;border-top:1px solid var(--border);}
+.post-action{display:flex;align-items:center;gap:.3rem;font-size:.7rem;color:var(--muted);cursor:pointer;padding:.28rem .55rem;border-radius:8px;transition:background .12s;border:none;background:none;font-family:inherit;}
+.post-action:active{background:var(--card);}
+.post-action svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.post-action.liked{color:#f472b6;}
+.post-comments-wrap{border-top:1px solid var(--border);padding:.4rem 0;}
+.post-comment{display:flex;gap:.45rem;padding:.3rem .9rem;}
+.post-comment-av{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.55rem;overflow:hidden;}
+.post-comment-av img{width:100%;height:100%;object-fit:cover;}
+.post-comment-body{font-size:.74rem;line-height:1.4;}
+.post-comment-name{font-weight:700;margin-right:3px;}
+.post-comment-inp{display:flex;gap:.4rem;padding:.4rem .9rem;}
+/* GDZ */
+.gdz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:.75rem;overflow:hidden;}
+.gdz-header{display:flex;align-items:center;gap:.6rem;padding:.7rem .9rem .4rem;}
+.gdz-subject{font-size:.58rem;font-weight:800;padding:2px 7px;border-radius:999px;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;margin-left:auto;flex-shrink:0;}
+.gdz-question{font-size:.8rem;line-height:1.4;padding:0 .9rem .55rem;}
+.gdz-img{width:100%;max-height:180px;object-fit:cover;display:block;cursor:pointer;}
+.gdz-answers{border-top:1px solid var(--border);padding:.3rem 0;}
+.gdz-answer{display:flex;gap:.5rem;padding:.45rem .9rem;border-bottom:1px solid rgba(129,140,248,.04);}
+.gdz-answer-av{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:.6rem;overflow:hidden;}
+.gdz-answer-av img{width:100%;height:100%;object-fit:cover;}
+.gdz-answer-body{font-size:.76rem;line-height:1.4;flex:1;}
+.gdz-answer-name{font-weight:700;font-size:.7rem;}
+.gdz-answer-img{max-width:120px;border-radius:8px;margin-top:3px;cursor:pointer;display:block;}
+.gdz-inp-row{display:flex;gap:.4rem;padding:.5rem .9rem;border-top:1px solid var(--border);}
+/* SHOP */
+.shop-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.9rem;margin-bottom:.6rem;display:flex;align-items:center;gap:.75rem;}
+.shop-item-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.shop-item-info{flex:1;}
+.shop-item-name{font-size:.82rem;font-weight:700;}
+.shop-item-desc{font-size:.65rem;color:var(--muted);margin-top:1px;}
+.shop-item-price{font-size:.78rem;font-weight:800;color:#fbbf24;}
+.balance-bar{background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(245,158,11,.1));border:1px solid rgba(251,191,36,.3);border-radius:14px;padding:.85rem 1rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;}
+.balance-num{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fbbf24;}
+.balance-lbl{font-size:.65rem;color:var(--muted);}
+.grad-pill{height:18px;border-radius:999px;width:70px;}
 </style>
 </head>
 <body>
@@ -421,19 +473,40 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
 <div class="stars" id="stars"></div>
 <canvas id="fw-canvas"></canvas>
 <div id="screamer" onclick="this.classList.remove('show')">
-  <svg viewBox="0 0 200 200" style="width:80vw;height:80vw;max-width:400px" fill="none">
-    <circle cx="100" cy="100" r="90" fill="#ff0000" opacity=".9"/>
-    <ellipse cx="70" cy="80" rx="18" ry="22" fill="white"/>
-    <ellipse cx="130" cy="80" rx="18" ry="22" fill="white"/>
-    <circle cx="70" cy="85" r="10" fill="black"/>
-    <circle cx="130" cy="85" r="10" fill="black"/>
-    <circle cx="74" cy="82" r="3" fill="white"/>
-    <circle cx="134" cy="82" r="3" fill="white"/>
-    <path d="M 50 140 Q 100 110 150 140 Q 130 180 100 185 Q 70 180 50 140z" fill="#cc0000"/>
-    <path d="M 60 145 L 140 145" stroke="white" stroke-width="3"/>
-    <path d="M 75 145 L 80 165 L 90 145" fill="white"/>
-    <path d="M 110 145 L 115 165 L 125 145" fill="white"/>
-  </svg>
+  <div id="screamer-content">
+    <svg viewBox="0 0 200 200" style="width:85vw;height:85vw;max-width:380px;" fill="none">
+      <circle cx="100" cy="100" r="95" fill="#cc0000"/>
+      <ellipse cx="68" cy="78" rx="20" ry="25" fill="white"/>
+      <ellipse cx="132" cy="78" rx="20" ry="25" fill="white"/>
+      <circle cx="68" cy="84" r="12" fill="black"/>
+      <circle cx="132" cy="84" r="12" fill="black"/>
+      <circle cx="73" cy="80" r="4" fill="white"/>
+      <circle cx="137" cy="80" r="4" fill="white"/>
+      <path d="M45 140 Q100 105 155 140 Q135 185 100 190 Q65 185 45 140z" fill="#990000"/>
+      <path d="M58 148 L142 148" stroke="white" stroke-width="3"/>
+      <path d="M72 148 L77 170 L88 148" fill="white"/><path d="M112 148 L117 170 L128 148" fill="white"/>
+    </svg>
+  </div>
+</div>
+<div class="toast" id="toast">
+  <div class="toast-av" id="toast-av"></div>
+  <div><div class="toast-name" id="toast-name"></div><div class="toast-msg" id="toast-msg"></div></div>
+</div>
+<div id="img-viewer" onclick="this.classList.remove('open')"><img id="iv-img" src=""></div>
+<div class="status-viewer" id="status-viewer">
+  <div class="sv-header">
+    <div class="back-btn" onclick="closeStatusViewer()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+    <div id="sv-prog-bars" class="sv-prog" style="flex:1"></div>
+  </div>
+  <div class="sv-content" id="sv-content"></div>
+</div>
+<div class="game-wrap" id="game-wrap">
+  <div class="game-hdr">
+    <div class="back-btn" onclick="window.closeGame()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+    <div class="game-title-lbl" id="game-title">Игра</div>
+    <div class="game-score-lbl" id="game-score">0</div>
+  </div>
+  <div id="game-content" style="flex:1;overflow:hidden;position:relative;"></div>
 </div>
 
 <!-- MODALS -->
@@ -441,286 +514,333 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   <div class="modal">
     <div class="modal-drag"></div>
     <div class="modal-title">Создать группу</div>
-    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:.9rem;">
-      <div class="av-upload" id="grp-av-upload" style="width:56px;height:56px;">
-        <img id="grp-av-preview" src="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:50%;">
-        <svg viewBox="0 0 24 24" id="grp-av-icon"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <input type="file" accept="image/*" onchange="previewGrpAv(event)">
+    <div style="display:flex;align-items:center;gap:.85rem;margin-bottom:.85rem;">
+      <div class="av-upload" style="width:56px;height:56px;">
+        <img id="grp-av-prev" src="" style="display:none;">
+        <svg id="grp-av-ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <input type="file" accept="image/*" onchange="prevImg(event,'grp-av-prev','grp-av-ico',80)">
       </div>
-      <div style="flex:1">
-        <label>Название группы</label>
-        <input class="inp" id="group-name-inp" placeholder="Класс 8А…" maxlength="30">
-      </div>
+      <div style="flex:1"><label>Название</label><input class="inp" id="grp-name-inp" placeholder="Класс 8А…" maxlength="30"></div>
     </div>
     <label>Иконка (если нет фото)</label>
-    <input class="inp" id="group-icon-inp" placeholder="🎓" maxlength="2" style="margin-bottom:.85rem">
+    <input class="inp" id="grp-icon-inp" placeholder="🎓" maxlength="2" style="margin-bottom:.85rem">
     <div class="modal-btns">
-      <button class="btn-s" onclick="closeModal('modal-group')">Отмена</button>
-      <button class="btn-p" onclick="createGroup()">Создать</button>
+      <button class="btn-s" onclick="window.closeModal('modal-group')">Отмена</button>
+      <button class="btn-p" id="create-grp-btn">Создать</button>
     </div>
   </div>
 </div>
-
 <div class="modal-overlay" id="modal-add-hol">
   <div class="modal">
     <div class="modal-drag"></div>
     <div class="modal-title">Добавить праздник</div>
-    <label>Название</label>
-    <input class="inp" id="hol-name-inp" placeholder="День рождения 🎂" maxlength="40">
-    <label>Дата (день и месяц)</label>
-    <div style="display:flex;gap:.5rem;margin-bottom:.85rem;">
-      <input class="inp" id="hol-day-inp" placeholder="День" type="number" min="1" max="31" style="width:50%">
-      <select class="inp" id="hol-month-inp" style="width:50%">
+    <label>Название</label><input class="inp" id="hol-name-inp" placeholder="День рождения 🎂" maxlength="40">
+    <label>День и месяц</label>
+    <div style="display:flex;gap:.42rem;margin-bottom:.85rem;">
+      <input class="inp" id="hol-day-inp" placeholder="День" type="number" min="1" max="31" style="width:40%">
+      <select class="inp" id="hol-month-inp" style="width:60%">
         <option value="1">Январь</option><option value="2">Февраль</option><option value="3">Март</option>
         <option value="4">Апрель</option><option value="5">Май</option><option value="6">Июнь</option>
         <option value="7">Июль</option><option value="8">Август</option><option value="9">Сентябрь</option>
         <option value="10">Октябрь</option><option value="11">Ноябрь</option><option value="12">Декабрь</option>
       </select>
     </div>
-    <div class="modal-btns">
-      <button class="btn-s" onclick="closeModal('modal-add-hol')">Отмена</button>
-      <button class="btn-p" onclick="saveCustomHol()">Добавить</button>
-    </div>
+    <div class="modal-btns"><button class="btn-s" onclick="window.closeModal('modal-add-hol')">Отмена</button><button class="btn-p" onclick="saveCustomHol()">Добавить</button></div>
   </div>
 </div>
-
 <div class="modal-overlay" id="modal-grp-settings">
-  <div class="modal" style="border-radius:24px 24px 0 0;max-height:80vh;overflow-y:auto;">
+  <div class="modal">
     <div class="modal-drag"></div>
-    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+    <div class="modal-title">Настройки группы</div>
+    <div style="display:flex;align-items:center;gap:.72rem;margin-bottom:.85rem;">
       <div style="position:relative;cursor:pointer;">
-        <div class="room-av grp" id="gs-av" style="width:50px;height:50px;font-size:1.3rem;border-radius:14px;"></div>
-        <input type="file" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;" onchange="changeGrpAvatar(event)">
+        <div class="room-av" id="gs-av" style="width:46px;height:46px;border-radius:12px;background:var(--card);border:1px solid var(--border);"></div>
+        <input type="file" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;" onchange="changeGrpAv(event)">
       </div>
-      <div style="flex:1">
-        <input class="inp" id="gs-name" placeholder="Название группы" style="margin-bottom:.3rem">
-      </div>
-      <button class="btn-p" style="padding:.5rem .8rem;font-size:.75rem;" onclick="saveGrpSettings()">Сохр.</button>
+      <div style="flex:1"><input class="inp" id="gs-name" placeholder="Название" style="margin-bottom:.28rem">
+      <div style="font-size:.6rem;color:var(--muted)">Код: <span id="gs-code" style="color:var(--a1);font-weight:700;cursor:pointer;" onclick="copyCode()"></span></div></div>
+      <button class="btn-p" style="padding:.42rem .72rem;font-size:.7rem;" onclick="saveGrpSettings()">Сохр.</button>
     </div>
-    <div style="margin-bottom:.8rem;">
-      <div class="settings-row" style="border-radius:14px;justify-content:space-between;">
-        <div><div class="settings-row-label">Только админы пишут</div><div class="settings-row-sub">Участники не могут писать</div></div>
-        <div class="toggle" id="gs-admin-only" onclick="this.classList.toggle('on')"></div>
+    <div style="margin-bottom:.75rem;">
+      <div class="settings-row" style="border-radius:10px;">
+        <div><div class="srl">Только админы пишут</div></div>
+        <div class="toggle" id="gs-admin-only" onclick="this.classList.toggle('on')"><div class="toggle-knob"></div></div>
       </div>
     </div>
     <div class="asec-title">Участники</div>
     <div id="gs-members"></div>
-    <div class="modal-btns" style="margin-top:1rem;">
-      <button class="btn-d" onclick="closeModal('modal-grp-settings')">Закрыть</button>
+    <div class="modal-btns" style="margin-top:.85rem;">
+      <button class="btn-d" onclick="deleteGroup()">Удалить группу</button>
+      <button class="btn-s" onclick="window.closeModal('modal-grp-settings')">Закрыть</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-join-group">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-title">Войти в группу</div>
+    <label>Код приглашения</label>
+    <input class="inp" id="join-code-inp" placeholder="Код…" maxlength="8" style="margin-bottom:.85rem;text-transform:uppercase;letter-spacing:.1em;">
+    <div class="modal-btns"><button class="btn-s" onclick="window.closeModal('modal-join-group')">Отмена</button><button class="btn-p" id="join-grp-btn">Войти</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-status">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-title">Добавить статус</div>
+    <label>Текст</label><input class="inp" id="status-text-inp" placeholder="Что нового? 👋" maxlength="100">
+    <label>Фото</label>
+    <div style="margin-bottom:.85rem;position:relative;">
+      <div class="av-upload" style="width:100%;height:110px;border-radius:11px;" id="status-img-upload">
+        <img id="status-img-prev" src="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:11px;">
+        <div id="status-img-ico" style="display:flex;flex-direction:column;align-items:center;gap:.28rem;"><svg viewBox="0 0 24 24" style="width:24px;height:24px;"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span style="font-size:.68rem;color:var(--muted)">Фото</span></div>
+        <input type="file" accept="image/*" onchange="prevImg(event,'status-img-prev','status-img-ico',400)">
+      </div>
+    </div>
+    <div class="modal-btns"><button class="btn-s" onclick="window.closeModal('modal-status')">Отмена</button><button class="btn-p" id="post-status-btn">Опубликовать</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-new-post">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-title">Новый пост</div>
+    <label>Текст</label>
+    <textarea class="inp" id="post-text-inp" placeholder="Что думаешь?.." maxlength="500" style="resize:none;height:90px;margin-bottom:.7rem;"></textarea>
+    <label>Фото (необязательно)</label>
+    <div style="margin-bottom:.85rem;position:relative;">
+      <div class="av-upload" style="width:100%;height:100px;border-radius:11px;">
+        <img id="post-img-prev" src="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:11px;">
+        <div id="post-img-ico" style="display:flex;flex-direction:column;align-items:center;gap:.28rem;"><svg viewBox="0 0 24 24" style="width:22px;height:22px;"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span style="font-size:.66rem;color:var(--muted)">Фото</span></div>
+        <input type="file" accept="image/*" onchange="prevImg(event,'post-img-prev','post-img-ico',600)">
+      </div>
+    </div>
+    <div class="modal-btns"><button class="btn-s" onclick="window.closeModal('modal-new-post')">Отмена</button><button class="btn-p" id="submit-post-btn">Опубликовать</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-new-gdz">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-title">Задать вопрос ГДЗ</div>
+    <label>Предмет</label>
+    <select class="inp" id="gdz-subject-inp" style="margin-bottom:.7rem">
+      <option>Математика</option><option>Русский язык</option><option>Казахский язык</option>
+      <option>Английский язык</option><option>Физика</option><option>Химия</option>
+      <option>История</option><option>Биология</option><option>Другое</option>
+    </select>
+    <label>Вопрос</label>
+    <textarea class="inp" id="gdz-q-inp" placeholder="Объясни задачу…" maxlength="400" style="resize:none;height:80px;margin-bottom:.7rem;"></textarea>
+    <label>Фото задания (необязательно)</label>
+    <div style="margin-bottom:.85rem;position:relative;">
+      <div class="av-upload" style="width:100%;height:100px;border-radius:11px;">
+        <img id="gdz-img-prev" src="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:11px;">
+        <div id="gdz-img-ico" style="display:flex;flex-direction:column;align-items:center;gap:.28rem;"><svg viewBox="0 0 24 24" style="width:22px;height:22px;"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span style="font-size:.66rem;color:var(--muted)">Фото</span></div>
+        <input type="file" accept="image/*" onchange="prevImg(event,'gdz-img-prev','gdz-img-ico',600)">
+      </div>
+    </div>
+    <div class="modal-btns"><button class="btn-s" onclick="window.closeModal('modal-new-gdz')">Отмена</button><button class="btn-p" id="submit-gdz-btn">Опубликовать</button></div>
+  </div>
+</div>
+
+<!-- POST MODAL -->
+<div class="modal-overlay" id="modal-post">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-title">Создать пост</div>
+    <label>Текст поста</label>
+    <textarea class="inp" id="post-text-inp" placeholder="Что нового?" rows="3" style="resize:none;margin-bottom:.75rem;line-height:1.4;"></textarea>
+    <label>Фото или видео</label>
+    <div style="margin-bottom:.85rem;position:relative;">
+      <div class="av-upload" style="width:100%;height:110px;border-radius:12px;" id="post-media-wrap">
+        <img id="post-img-prev" src="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:12px;">
+        <div id="post-media-icon" style="display:flex;flex-direction:column;align-items:center;gap:.3rem;">
+          <svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span style="font-size:.7rem;color:var(--muted)">Добавить фото/видео</span>
+        </div>
+        <input type="file" accept="image/*,video/*" onchange="prevPostMedia(event)">
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-s" onclick="window.closeModal('modal-post')">Отмена</button>
+      <button class="btn-p" onclick="publishPost()">Опубликовать</button>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-ask-question">
+<!-- GDZ MODAL -->
+<div class="modal-overlay" id="modal-gdz">
   <div class="modal">
     <div class="modal-drag"></div>
     <div class="modal-title">Задать вопрос</div>
     <label>Предмет</label>
-    <select class="inp" id="q-subject-inp" style="margin-bottom:.8rem">
+    <select class="inp" id="gdz-subject-inp" style="margin-bottom:.75rem;">
       <option>Математика</option><option>Физика</option><option>Химия</option>
-      <option>Русский язык</option><option>Английский язык</option><option>История</option>
-      <option>География</option><option>Биология</option><option>Литература</option>
-      <option>Информатика</option><option>Другое</option>
+      <option>История</option><option>Русский язык</option><option>Биология</option>
+      <option>География</option><option>Информатика</option><option>Другое</option>
     </select>
     <label>Вопрос</label>
-    <textarea id="q-text-inp" placeholder="Опиши задачу или вопрос подробно…" maxlength="500"></textarea>
-    <label>Фото (если нужно)</label>
-    <div class="av-upload" style="width:100%;height:auto;min-height:60px;border-radius:12px;">
-      <img id="q-img-preview" src="" style="display:none;width:100%;height:auto;border-radius:12px;">
-      <svg viewBox="0 0 24 24" id="q-img-icon"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      <input type="file" accept="image/*" id="q-img-input" onchange="previewQImg(event)">
+    <textarea class="inp" id="gdz-q-inp" placeholder="Опиши задание…" rows="3" style="resize:none;margin-bottom:.75rem;line-height:1.4;"></textarea>
+    <label>Фото задания (необязательно)</label>
+    <div style="margin-bottom:.85rem;position:relative;">
+      <div class="av-upload" style="width:100%;height:90px;border-radius:12px;">
+        <img id="gdz-img-prev" src="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:12px;">
+        <div id="gdz-img-icon" style="display:flex;flex-direction:column;align-items:center;gap:.3rem;">
+          <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span style="font-size:.68rem;color:var(--muted)">Добавить фото</span>
+        </div>
+        <input type="file" accept="image/*" onchange="prevGdzImg(event)">
+      </div>
     </div>
     <div class="modal-btns">
-      <button class="btn-s" onclick="closeModal('modal-ask-question')">Отмена</button>
-      <button class="btn-p" onclick="postQuestion()">Опубликовать</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="modal-add-summary">
-  <div class="modal">
-    <div class="modal-drag"></div>
-    <div class="modal-title">Добавить пересказ</div>
-    <label>Название произведения</label>
-    <input class="inp" id="summary-title-inp" placeholder="«Война и мир»" maxlength="80">
-    <label>Автор</label>
-    <input class="inp" id="summary-author-inp" placeholder="Л. Н. Толстой" maxlength="60">
-    <label>Пересказ</label>
-    <textarea id="summary-text-inp" placeholder="Краткое содержание…" maxlength="5000" style="min-height:150px;"></textarea>
-    <div class="modal-btns">
-      <button class="btn-s" onclick="closeModal('modal-add-summary')">Отмена</button>
-      <button class="btn-p" onclick="addSummary()">Добавить</button>
+      <button class="btn-s" onclick="window.closeModal('modal-gdz')">Отмена</button>
+      <button class="btn-p" onclick="publishGdz()">Опубликовать</button>
     </div>
   </div>
 </div>
 
 <!-- TABS -->
-<div class="tabbar glass">
-  <div class="tab active" onclick="showPage(0)" id="tab-0">
-    <svg class="ti" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-    <span class="tl">Чаты</span>
-    <div class="tab-badge" id="chat-badge">0</div>
-  </div>
-  <div class="tab" onclick="showPage(1)" id="tab-1">
+<div class="tabbar">
+  <div class="tab active" onclick="showPage(0)" id="tab-0"><svg class="ti" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="tl">Чаты</span><div class="tab-badge" id="chat-badge">0</div></div>
+  <div class="tab" onclick="showPage(1)" id="tab-1"><svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M2 20c0-3.31 4.48-6 10-6s10 2.69 10 6"/></svg><span class="tl">Друзья</span><div class="tab-badge" id="friends-badge">0</div></div>
+  <div class="tab" onclick="showPage(2)" id="tab-2"><svg class="ti" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span class="tl">Лента</span></div>
+  <div class="tab" onclick="showPage(3)" id="tab-3"><svg class="ti" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span class="tl">ГДЗ</span></div>
+  <div class="tab" onclick="showPage(4)" id="tab-4"><svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><span class="tl">Статусы</span></div>
+  <div class="tab" onclick="showPage(5)" id="tab-5"><svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><span class="tl">Отсчёт</span></div>
+  <div class="tab" onclick="showPage(6)" id="tab-6"><svg class="ti" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg><span class="tl">Прогресс</span></div>
+  <div class="tab" onclick="showPage(7)" id="tab-7"><svg class="ti" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="tl">Праздники</span></div>
+  <div class="tab" onclick="showPage(8)" id="tab-8"><svg class="ti" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="2"/></svg><span class="tl">Игры</span></div>
+  <div class="tab" onclick="showPage(9)" id="tab-9"><svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg><span class="tl">Профиль</span></div>
+  <div class="tab" onclick="showPage(10)" id="tab-10"><svg class="ti" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="tl">Админ</span></div>
+  <div class="tab" onclick="showPage(9)" id="tab-9">
     <svg class="ti" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    <span class="tl">Лента</span>
+  </div>
+  <div class="tab" onclick="showPage(10)" id="tab-10">
+    <svg class="ti" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3"/></svg>
     <span class="tl">ГДЗ</span>
   </div>
-  <div class="tab" onclick="showPage(2)" id="tab-2">
-    <svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-    <span class="tl">Отсчёт</span>
-  </div>
-  <div class="tab" onclick="showPage(3)" id="tab-3">
-    <svg class="ti" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-    <span class="tl">Прогресс</span>
-  </div>
-  <div class="tab" onclick="showPage(4)" id="tab-4">
-    <svg class="ti" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-    <span class="tl">Праздники</span>
-  </div>
-  <div class="tab" onclick="showPage(5)" id="tab-5">
-    <svg class="ti" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
-    <span class="tl">Профиль</span>
-  </div>
-  <div class="tab" onclick="showPage(6)" id="tab-6">
-    <svg class="ti" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    <span class="tl">Админ</span>
+  <div class="tab" onclick="showPage(11)" id="tab-11">
+    <svg class="ti" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+    <span class="tl">Магазин</span>
   </div>
 </div>
 
 <div class="pages">
 
-<!-- PAGE 0: CHAT -->
+<!-- PAGE 0: CHATS -->
 <div class="page active" id="page-0" style="padding:0;">
   <div class="chat-layout">
     <div class="name-screen" id="name-screen">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      <div class="name-title">Добро пожаловать!</div>
-      <div class="name-sub">Введи имя и добавь аватарку чтобы начать общаться</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.7rem;width:100%;max-width:300px;">
-        <div class="av-upload" onclick="" style="width:72px;height:72px;">
-          <img id="entry-av-preview" src="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:50%;">
-          <svg id="entry-av-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <input type="file" accept="image/*" id="entry-av-input" onchange="previewEntryAv(event)">
+      <div class="name-screen-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="ns-title">Добро пожаловать!</div>
+      <div class="ns-sub">Введи юзернейм и имя</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem;width:100%;max-width:280px;">
+        <div class="av-upload" style="width:65px;height:65px;">
+          <img id="entry-av-prev" src="" style="display:none;">
+          <svg id="entry-av-ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+          <input type="file" accept="image/*" onchange="prevImg(event,'entry-av-prev','entry-av-ico',80)">
         </div>
-        <div class="name-row">
-          <input class="inp" id="name-inp" placeholder="Твоё имя…" maxlength="20" onkeydown="if(event.key==='Enter')enterChat()">
-          <button class="btn-p" onclick="enterChat()">Войти</button>
-        </div>
+        <input class="inp" id="username-inp" placeholder="@юзернейм (без пробелов)" maxlength="20">
+        <input class="inp" id="name-inp" placeholder="Отображаемое имя" maxlength="25">
+        <button class="btn-p" style="width:100%;" onclick="enterChat()">Войти</button>
+        <div class="username-note">Юзернейм <strong>Dev_tomato</strong> даёт права разработчика</div>
       </div>
     </div>
-
     <div class="chat-home" id="chat-home" style="display:none;">
-      <div class="online-strip glass">
+      <div class="chat-topbar">
         <div class="online-dot"></div>
         <span class="online-txt">Онлайн: <span class="online-n" id="online-count">—</span></span>
-        <div class="my-name-strip">
-          <div style="position:relative;">
-            <img class="my-mini-av" id="my-mini-av" src="" style="display:none;">
-            <div class="my-mini-av" id="my-mini-av-letter" style="display:none;background:var(--acc1);font-family:'Syne',sans-serif;font-weight:800;font-size:.7rem;color:#fff;"></div>
-            <div class="av-frame" id="my-mini-frame"></div>
-          </div>
-          <span class="my-name-lbl" id="my-name-lbl"></span>
+        <div class="my-strip">
+          <div class="mini-av" id="mini-av" style="background:var(--a1);width:20px;height:20px;"></div>
+          <span style="font-size:.65rem;color:var(--a1);font-weight:700;" id="my-name-lbl"></span>
         </div>
       </div>
       <div class="users-row" id="users-row"></div>
+      <div class="chat-filters">
+        <div class="cf active" onclick="filterChats('all',this)">Все</div>
+        <div class="cf" onclick="filterChats('groups',this)">Группы</div>
+        <div class="cf" onclick="filterChats('dms',this)">Личные</div>
+        <div class="cf" onclick="filterChats('unread',this)">Непрочитанные</div>
+      </div>
       <div class="chat-sections">
-        <div class="chat-section-hdr glass"><span class="chat-section-title">Группы</span><button onclick="openModal('modal-group')">+ Создать</button></div>
+        <div class="chat-section-hdr">
+          <span class="csh-title">Группы</span>
+          <div class="csh-btns">
+            <button class="csh-btn" onclick="window.openModal('modal-join-group')">Войти</button>
+            <button class="csh-btn" onclick="window.openModal('modal-group')">+ Создать</button>
+          </div>
+        </div>
         <div id="groups-list"></div>
-        <div class="chat-section-hdr glass"><span class="chat-section-title">Личные сообщения</span></div>
+        <div class="chat-section-hdr"><span class="csh-title">Личные сообщения</span></div>
         <div id="dms-list"></div>
       </div>
     </div>
-
-    <div class="chat-room glass" id="chat-room">
-      <div class="chat-room-hdr glass">
+    <div class="chat-room" id="chat-room">
+      <div class="chat-room-hdr">
         <div class="back-btn" onclick="closeRoom()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-        <div class="room-hdr-av grp" id="room-hdr-av"></div>
-        <div class="room-hdr-info">
-          <div class="room-hdr-name" id="room-hdr-name"></div>
-          <div class="room-hdr-sub" id="room-hdr-sub"></div>
-        </div>
-        <div class="room-hdr-btn" id="room-settings-btn" style="display:none;" onclick="openGrpSettings()">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
-        </div>
+        <div class="room-hdr-av" id="room-hdr-av"></div>
+        <div class="room-hdr-info"><div class="room-hdr-name" id="room-hdr-name"></div><div class="room-hdr-sub" id="room-hdr-sub"></div></div>
+        <div class="hdr-btn" id="room-settings-btn" style="display:none;" onclick="openGrpSettings()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
       </div>
+      <div class="typing-ind" id="typing-ind"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div><span style="margin-left:3px;font-size:.6rem;" id="typing-name"></span></div>
       <div class="messages" id="messages"></div>
-      <div class="chat-input-bar glass" id="chat-input-bar">
-        <input class="chat-inp" id="chat-inp" placeholder="Сообщение…" maxlength="300" onkeydown="if(event.key==='Enter')sendMsg()">
+      <div class="chat-input-bar" id="chat-input-bar">
+        <div class="attach-btn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><input type="file" accept="image/*" id="img-file-inp" onchange="sendImage(event)"></div>
+        <input class="chat-inp" id="chat-inp" placeholder="Сообщение…" maxlength="500" onkeydown="if(event.key==='Enter')sendMsg()" oninput="onTyping()">
         <button class="send-btn" onclick="sendMsg()"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PAGE 1: GDZ -->
+<!-- PAGE 1: FRIENDS -->
 <div class="page" id="page-1">
-  <div class="sec-title">ГДЗ и помощь</div>
-  <p class="sec-sub">Задавай вопросы и помогай другим</p>
-  
-  <div class="points-banner">
-    <div class="points-icon">⭐</div>
-    <div class="points-info">
-      <div class="points-num" id="my-points">0</div>
-      <div class="points-label">Твои очки за помощь</div>
-    </div>
+  <div class="sec-title">Друзья</div>
+  <p class="sec-sub">Добавляй по юзернейму</p>
+  <div style="display:flex;gap:.42rem;margin-bottom:.85rem;">
+    <input class="inp" id="add-friend-inp" placeholder="@юзернейм…" maxlength="20">
+    <button class="btn-p" id="add-friend-btn">Добавить</button>
   </div>
-
-  <div class="gdz-tabs">
-    <div class="gdz-tab active" onclick="showGdzTab('questions')">Вопросы</div>
-    <div class="gdz-tab" onclick="showGdzTab('summaries')">Пересказы</div>
-    <div class="gdz-tab" onclick="showGdzTab('shop')">Магазин</div>
-  </div>
-
-  <div id="gdz-questions" class="gdz-content">
-    <button class="ask-btn" onclick="openModal('modal-ask-question')">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
-      Задать вопрос
-    </button>
-    <div id="questions-list"></div>
-  </div>
-
-  <div id="gdz-summaries" class="gdz-content" style="display:none;">
-    <div id="summaries-list"></div>
-  </div>
-
-  <div id="gdz-shop" class="gdz-content" style="display:none;">
-    <div class="shop-grid" id="shop-list"></div>
-  </div>
-
-  <div class="q-detail" id="q-detail">
-    <div class="q-detail-hdr glass">
-      <div class="back-btn" onclick="closeQuestion()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div class="room-hdr-info">
-        <div class="room-hdr-name">Вопрос</div>
-        <div class="room-hdr-sub" id="q-detail-subject"></div>
-      </div>
-    </div>
-    <div class="q-detail-content" id="q-detail-body"></div>
-    <div class="answer-input-bar glass">
-      <textarea class="answer-inp" id="answer-inp" placeholder="Напиши ответ…" maxlength="1000"></textarea>
-      <button class="send-btn" onclick="postAnswer()"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
-    </div>
-  </div>
-
-  <div class="summary-detail" id="summary-detail">
-    <div class="q-detail-hdr glass">
-      <div class="back-btn" onclick="closeSummary()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-      <div class="room-hdr-info">
-        <div class="room-hdr-name" id="summary-detail-title"></div>
-        <div class="room-hdr-sub" id="summary-detail-author"></div>
-      </div>
-    </div>
-    <div class="summary-detail-content">
-      <div class="summary-text" id="summary-detail-text"></div>
-    </div>
-  </div>
+  <div class="asec-title" id="freq-title" style="display:none;">Заявки</div>
+  <div id="friend-requests"></div>
+  <div class="asec-title" style="margin-top:.45rem;">Мои друзья</div>
+  <div id="friends-list"></div>
 </div>
 
-<!-- PAGE 2: COUNTDOWN -->
+<!-- PAGE 2: FEED / POSTS -->
 <div class="page" id="page-2">
-  <div class="badge">🇰🇿 КАЗАХСТАН · <span id="badge-yr">2026</span></div>
-  <h1>Осталось до<br><em id="ev-title">Каникул</em></h1>
-  <p class="subtitle" id="ev-sub">Считаем каждую секунду</p>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+    <div><div class="sec-title">Лента</div><p class="sec-sub" style="margin:0">Посты и публикации</p></div>
+    <button class="btn-p" onclick="window.openModal('modal-new-post')">+ Пост</button>
+  </div>
+  <div id="posts-list"></div>
+</div>
+
+<!-- PAGE 3: GDZ -->
+<div class="page" id="page-3">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+    <div><div class="sec-title">ГДЗ</div><p class="sec-sub" style="margin:0">Задавай вопросы и помогай</p></div>
+    <button class="btn-p" onclick="window.openModal('modal-new-gdz')">+ Вопрос</button>
+  </div>
+  <div id="gdz-list"></div>
+</div>
+
+<!-- PAGE 4: STATUSES -->
+<div class="page" id="page-4" style="padding:0;">
+  <div style="display:flex;align-items:center;gap:.62rem;padding:.68rem .9rem;border-bottom:1px solid var(--border);cursor:pointer;background:var(--bg2);" onclick="window.openModal('modal-status')">
+    <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;">
+      <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+      <div style="position:absolute;bottom:-1px;right:-1px;width:15px;height:15px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#fff;font-weight:800;">+</div>
+    </div>
+    <div><div style="font-size:.8rem;font-weight:700;">Мой статус</div><div style="font-size:.65rem;color:var(--muted);">Добавить фото или текст</div></div>
+  </div>
+  <div id="statuses-list"></div>
+</div>
+
+<!-- PAGE 5: COUNTDOWN -->
+<div class="page" id="page-5">
+  <div style="display:inline-flex;align-items:center;gap:5px;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:.54rem;font-weight:700;letter-spacing:.12em;padding:.24rem .75rem;border-radius:999px;margin-bottom:.75rem;">🇰🇿 КАЗАХСТАН · <span id="badge-yr">2026</span></div>
+  <div style="font-family:'Syne',sans-serif;font-size:clamp(1.4rem,5vw,2.4rem);font-weight:800;line-height:1.08;margin-bottom:.38rem;letter-spacing:-.02em;">Осталось до<br><span style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;" id="ev-title">Каникул</span></div>
+  <p style="font-size:.76rem;color:var(--muted);margin-bottom:1rem;" id="ev-sub"></p>
   <div class="cd-grid">
     <div class="cd-card"><div class="num" id="cd-d">--</div><div class="lbl2">Дней</div></div>
     <div class="cd-card"><div class="num" id="cd-h">--</div><div class="lbl2">Часов</div></div>
@@ -730,16 +850,15 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   <div class="tags">
     <div class="tag"><svg viewBox="0 0 24 24" style="stroke:#fbbf24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Каникулы — 25 мая <strong id="yr-k" style="margin-left:3px"></strong></div>
     <div class="tag"><svg viewBox="0 0 24 24" style="stroke:#34d399"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>Лето — 1 июня <strong id="yr-l" style="margin-left:3px"></strong></div>
-    <div class="tag" id="tag-sept" style="display:none"><svg viewBox="0 0 24 24" style="stroke:#f87171"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>До школы — 1 сент <strong id="yr-sept" style="margin-left:3px"></strong></div>
-    <div class="tag"><svg viewBox="0 0 24 24" style="stroke:#818cf8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Сегодня: <strong id="today-tag" style="margin-left:4px"></strong></div>
+    <div class="tag" id="tag-sept" style="display:none;"><svg viewBox="0 0 24 24" style="stroke:#f87171"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/></svg>До школы — 1 сент <strong id="yr-sept" style="margin-left:3px"></strong></div>
+    <div class="tag"><svg viewBox="0 0 24 24" style="stroke:var(--a1)"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Сегодня: <strong id="today-tag" style="margin-left:4px"></strong></div>
   </div>
   <div class="sun-wrap"><div class="sun"></div></div>
 </div>
 
-<!-- PAGE 3: PROGRESS -->
-<div class="page" id="page-3">
-  <div class="sec-title">Учебный год</div>
-  <p class="sec-sub" id="school-year-lbl">2025–2026</p>
+<!-- PAGE 6: PROGRESS -->
+<div class="page" id="page-6">
+  <div class="sec-title">Учебный год</div><p class="sec-sub" id="school-year-lbl">2025–2026</p>
   <div class="prog-card">
     <div class="prog-label">Пройдено учебного года</div>
     <div class="bar-labels"><span id="bl-s">1 сент 2025</span><span id="bl-e">25 мая 2026</span></div>
@@ -755,523 +874,509 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--acc1),var(--acc2
   </div>
 </div>
 
-<!-- PAGE 4: CALENDAR -->
-<div class="page" id="page-4">
-  <div class="sec-title">Праздники</div>
-  <p class="sec-sub">Казахстан + свои праздники</p>
-  <div class="month-nav glass">
-    <button onclick="changeMonth(-1)">‹</button>
-    <div class="month-name" id="month-label"></div>
-    <button onclick="changeMonth(1)">›</button>
-  </div>
+<!-- PAGE 7: CALENDAR -->
+<div class="page" id="page-7">
+  <div class="sec-title">Праздники</div><p class="sec-sub">Казахстан + свои праздники</p>
+  <div class="month-nav"><button onclick="changeMonth(-1)">‹</button><div class="month-name" id="month-label"></div><button onclick="changeMonth(1)">›</button></div>
   <div class="cal-grid" id="cal-grid"></div>
-  <div class="add-hol-btn" onclick="openModal('modal-add-hol')">
-    <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#fbbf24;fill:none;stroke-width:2;stroke-linecap:round;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    Добавить свой праздник
+  <div class="add-hol-btn" onclick="window.openModal('modal-add-hol')">
+    <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:#fbbf24;fill:none;stroke-width:2;stroke-linecap:round;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Добавить свой праздник
   </div>
   <div class="hol-list" id="hol-list"></div>
 </div>
 
-<!-- PAGE 5: PROFILE/SETTINGS -->
-<div class="page" id="page-5">
-  <div class="sec-title">Профиль и настройки</div>
-  <p class="sec-sub">Персонализация</p>
+<!-- PAGE 8: GAMES -->
+<div class="page" id="page-8">
+  <div class="sec-title">Игры</div><p class="sec-sub">Мини-игры</p>
+  <div class="games-grid">
+    <div class="game-card" onclick="startGame('minesweeper')"><div class="game-icon">💣</div><div class="game-name">Сапёр</div><div class="game-sub">Найди все мины</div></div>
+    <div class="game-card" onclick="startGame('dino')"><div class="game-icon">🦕</div><div class="game-name">Динозаврик</div><div class="game-sub">Прыгай!</div></div>
+    <div class="game-card" onclick="startGame('snake')"><div class="game-icon">🐍</div><div class="game-name">Змейка</div><div class="game-sub">Классика</div></div>
+    <div class="game-card" onclick="startGame('2048')"><div class="game-icon">🔢</div><div class="game-name">2048</div><div class="game-sub">Складывай числа</div></div>
+    <div class="game-card" onclick="startGame('flappy')"><div class="game-icon">🐦</div><div class="game-name">Flappy Bird</div><div class="game-sub">Лети!</div></div>
+    <div class="game-card" onclick="startGame('pong')"><div class="game-icon">🏓</div><div class="game-name">Понг</div><div class="game-sub">Vs компьютер</div></div>
+  </div>
+</div>
 
-  <div class="settings-av-row glass">
+<!-- PAGE 9: PROFILE -->
+<div class="page" id="page-9">
+  <div class="sec-title">Профиль</div><p class="sec-sub">Настройки и персонализация</p>
+  <div class="settings-av-row">
     <div class="settings-av">
       <img id="profile-av-img" src="" style="display:none;">
-      <div id="profile-av-letter" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;color:#fff;background:linear-gradient(135deg,var(--acc1),var(--acc2));">?</div>
+      <div id="profile-av-letter" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:#fff;background:linear-gradient(135deg,var(--a1),var(--a2));">?</div>
       <input type="file" accept="image/*" onchange="changeProfileAv(event)">
       <div class="settings-av-edit"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-      <div class="av-frame" id="profile-frame"></div>
     </div>
     <div style="flex:1">
-      <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;display:flex;align-items:center;gap:.4rem;">
-        <span id="profile-name-display">Гость</span>
-        <span id="profile-badge" style="display:none;"></span>
-      </div>
-      <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">Нажми на аватар чтобы изменить</div>
-      <div style="display:flex;gap:.4rem;margin-top:.5rem;">
-        <input class="inp" id="profile-name-inp" placeholder="Новый ник…" maxlength="20" style="font-size:.75rem;padding:.38rem .65rem;">
-        <button class="btn-p" style="padding:.38rem .7rem;font-size:.72rem;" onclick="changeNick()">Сохр.</button>
+      <div style="font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;display:flex;align-items:center;gap:3px;" id="profile-name-display">Гость</div>
+      <div style="font-size:.62rem;color:var(--muted);margin:.1rem 0 .4rem;" id="profile-username-display">@—</div>
+      <div style="display:flex;gap:.32rem;">
+        <input class="inp" id="profile-name-inp" placeholder="Новое имя…" maxlength="25" style="font-size:.72rem;padding:.34rem .58rem;">
+        <button class="btn-p" style="padding:.34rem .62rem;font-size:.68rem;" onclick="changeNick()">Сохр.</button>
       </div>
     </div>
   </div>
-
+  <!-- Wallet -->
+  <div style="background:linear-gradient(135deg,var(--a1),var(--a2));border-radius:13px;padding:.9rem;margin-bottom:.9rem;display:flex;align-items:center;justify-content:space-between;">
+    <div>
+      <div style="font-size:.62rem;color:rgba(255,255,255,.7);margin-bottom:.18rem;">Мой баланс</div>
+      <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;display:flex;align-items:center;gap:.3rem;">
+        <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fbbf24;"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">₿</text></svg>
+        <span id="my-coins-display">0</span>
+      </div>
+    </div>
+    <button class="btn-p" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);font-size:.7rem;" onclick="showPage(10)">Магазин →</button>
+  </div>
   <div class="settings-section">
     <div class="settings-section-title">Внешний вид</div>
-    <div class="settings-row glass">
-      <div><div class="settings-row-label">Тёмная тема</div><div class="settings-row-sub">Переключить тему оформления</div></div>
-      <div class="toggle on" id="theme-toggle" onclick="toggleTheme()"><div class="toggle-knob"></div></div>
+    <div class="settings-row"><div><div class="srl">Тёмная тема</div></div><div class="toggle on" id="theme-toggle" onclick="toggleTheme()"><div class="toggle-knob"></div></div></div>
+    <div class="settings-row" style="margin-top:.3rem;flex-direction:column;align-items:flex-start;gap:.45rem;">
+      <div class="srl">Цвет акцента</div>
+      <div class="color-row">
+        <div class="color-dot active" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)" onclick="setColor('indigo',this)"></div>
+        <div class="color-dot" style="background:linear-gradient(135deg,#e11d48,#be123c)" onclick="setColor('rose',this)"></div>
+        <div class="color-dot" style="background:linear-gradient(135deg,#d97706,#b45309)" onclick="setColor('amber',this)"></div>
+        <div class="color-dot" style="background:linear-gradient(135deg,#0d9488,#0f766e)" onclick="setColor('teal',this)"></div>
+        <div class="color-dot" style="background:linear-gradient(135deg,#16a34a,#15803d)" onclick="setColor('green',this)"></div>
+        <div class="color-dot" style="background:linear-gradient(135deg,#db2777,#be185d)" onclick="setColor('pink',this)"></div>
+      </div>
     </div>
-    <div class="settings-row glass" style="margin-top:.4rem;">
-      <div style="flex:1"><div class="settings-row-label">Цвет акцента</div><div class="settings-row-sub" style="margin-bottom:.6rem">Основной цвет интерфейса</div>
-        <div class="color-row">
-          <div class="color-dot active" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)" onclick="setColor('indigo',this)"></div>
-          <div class="color-dot" style="background:linear-gradient(135deg,#e11d48,#be123c)" onclick="setColor('rose',this)"></div>
-          <div class="color-dot" style="background:linear-gradient(135deg,#d97706,#b45309)" onclick="setColor('amber',this)"></div>
-          <div class="color-dot" style="background:linear-gradient(135deg,#0d9488,#0f766e)" onclick="setColor('teal',this)"></div>
-          <div class="color-dot" style="background:linear-gradient(135deg,#16a34a,#15803d)" onclick="setColor('green',this)"></div>
+  </div>
+</div>
+
+<!-- PAGE 10: SHOP + ADMIN -->
+<div class="page" id="page-10">
+  <div id="shop-section">
+    <div class="sec-title">Магазин</div><p class="sec-sub">Подписки и косметика</p>
+    <div class="shop-header">
+      <div class="shop-coins"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><span id="shop-coins-display">0</span></div>
+      <div class="shop-coins-label">монет</div>
+    </div>
+    <div class="shop-section">
+      <div class="shop-section-title">Подписки</div>
+      <div class="shop-item">
+        <div class="shop-item-icon">👑</div>
+        <div class="shop-item-info">
+          <div class="shop-item-name">Подписка «Мажор»</div>
+          <div class="shop-item-desc">Тег «мажор», градиент ника, особый цвет</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.28rem;">
+          <div class="shop-item-price"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>500</div>
+          <button class="shop-buy-btn" onclick="buySub('major',500)">Купить</button>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-item-icon">😎</div>
+        <div class="shop-item-info">
+          <div class="shop-item-name">Подписка «Крутой»</div>
+          <div class="shop-item-desc">Тег «крутой», другой градиент ника</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.28rem;">
+          <div class="shop-item-price"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>300</div>
+          <button class="shop-buy-btn" onclick="buySub('cool',300)">Купить</button>
+        </div>
+      </div>
+    </div>
+    <div class="shop-section">
+      <div class="shop-section-title">Градиенты ника</div>
+      <div id="gradient-shop"></div>
+    </div>
+  </div>
+  <!-- Admin section (shown only to dev) -->
+  <div id="admin-section" style="display:none;margin-top:1.5rem;">
+    <div style="height:1px;background:var(--border);margin-bottom:1rem;"></div>
+    <div class="sec-title">Админ панель</div><p class="sec-sub">Права разработчика</p>
+    <div class="admin-panel visible">
+      <div class="asec">
+        <div class="asec-title">Управление пользователями</div>
+        <div style="display:flex;gap:.42rem;margin-bottom:.65rem;">
+          <input class="inp" id="admin-user-inp" placeholder="@юзернейм…" maxlength="20">
+          <button class="btn-p" style="font-size:.7rem;padding:.5rem .8rem;" onclick="adminGiveCoins()">💰 Монеты</button>
+        </div>
+        <div style="display:flex;gap:.42rem;margin-bottom:.65rem;">
+          <input class="inp" id="admin-coins-amt" placeholder="Сумма монет" type="number" style="width:40%">
+          <button class="btn-p" style="font-size:.7rem;padding:.5rem .8rem;" onclick="adminVerify()">✓ Верифицировать</button>
+          <button class="btn-s" style="font-size:.7rem;padding:.5rem .8rem;" onclick="adminRemoveVerify()">Убрать ✓</button>
+        </div>
+      </div>
+      <div class="asec">
+        <div class="asec-title">Эффекты для всех</div>
+        <div class="admin-grid">
+          <button class="admin-btn" onclick="adminEffect('fireworks')"><svg viewBox="0 0 24 24"><path d="M12 2L9 9H2l6 4-2 7 6-4 6 4-2-7 6-4h-7z"/></svg><span>Салют</span></button>
+          <button class="admin-btn" onclick="adminEffect('confetti')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg><span>Конфетти</span></button>
+          <button class="admin-btn" onclick="adminEffect('snow')"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg><span>Снег</span></button>
+          <button class="admin-btn" onclick="adminEffect('rainbow')"><svg viewBox="0 0 24 24"><path d="M22 17a10 10 0 00-20 0"/><path d="M18 17a6 6 0 00-12 0"/><path d="M14 17a2 2 0 00-4 0"/></svg><span>Радуга</span></button>
+          <button class="admin-btn special" onclick="adminEffect('matrix')"><svg viewBox="0 0 24 24"><path d="M4 7l4-4 4 4M12 3v10M8 17l4 4 4-4M12 11v10"/></svg><span>Матрица</span></button>
+          <button class="admin-btn special" onclick="adminEffect('earthquake')"><svg viewBox="0 0 24 24"><path d="M2 12h4l2-6 4 12 2-8 2 4h6"/></svg><span>Землетрясение</span></button>
+          <button class="admin-btn special" onclick="adminEffect('hearts')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Сердечки</span></button>
+          <button class="admin-btn danger" onclick="adminEffect('screamer')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>😱 Скример</span></button>
+        </div>
+      </div>
+      <div class="asec">
+        <div class="asec-title">Управление чатом</div>
+        <div class="admin-grid">
+          <button class="admin-btn danger" onclick="adminClearChat()"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg><span>Очистить чат</span></button>
+          <button class="admin-btn" onclick="adminAnnounce()"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Объявление</span></button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PAGE 6: ADMIN -->
-<div class="page" id="page-6">
-  <div class="sec-title">Админ панель</div>
-  <p class="sec-sub">Только для администратора</p>
-  <div class="admin-lock" id="admin-lock">
-    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-    <div class="admin-title">Введи пароль</div>
-    <div class="admin-sub">Доступ только для администратора</div>
-    <div class="pass-row">
-      <input class="pass-inp" id="pass-inp" type="password" placeholder="Пароль" onkeydown="if(event.key==='Enter')checkPass()">
-      <button class="btn-p" onclick="checkPass()">Войти</button>
-    </div>
-    <div id="pass-err" style="font-size:.7rem;color:#f87171;margin-top:.22rem;display:none;">Неверный пароль</div>
+
+<!-- PAGE 9: FEED (Posts) -->
+<div class="page" id="page-9">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem;">
+    <div><div class="sec-title">Лента</div><p class="sec-sub">Посты и видео от всех</p></div>
+    <button class="btn-p" style="padding:.4rem .75rem;font-size:.72rem;" onclick="openModal('modal-post')">+ Пост</button>
   </div>
-  <div class="admin-panel" id="admin-panel">
-    <div class="asec">
-      <div class="asec-title">ГДЗ управление</div>
-      <button class="admin-btn" onclick="openModal('modal-add-summary')" style="margin-bottom:.65rem;">
-        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-        <span>Добавить пересказ</span>
-      </button>
-    </div>
-    <div class="asec">
-      <div class="asec-title">Эффекты для всех</div>
-      <div class="admin-grid">
-        <button class="admin-btn" onclick="adminAction('fireworks')"><svg viewBox="0 0 24 24"><path d="M12 2L9 9H2l6 4-2 7 6-4 6 4-2-7 6-4h-7z"/></svg><span>Салют</span></button>
-        <button class="admin-btn" onclick="adminAction('confetti')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg><span>Конфетти</span></button>
-        <button class="admin-btn" onclick="adminAction('snow')"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg><span>Снегопад</span></button>
-        <button class="admin-btn" onclick="adminAction('rainbow')"><svg viewBox="0 0 24 24"><path d="M22 17a10 10 0 00-20 0"/><path d="M18 17a6 6 0 00-12 0"/><path d="M14 17a2 2 0 00-4 0"/></svg><span>Радуга</span></button>
-        <button class="admin-btn special" onclick="adminAction('matrix')"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 8h.01M12 8h.01M17 8h.01M7 12h.01M12 12h.01M17 12h.01M7 16h.01M12 16h.01M17 16h.01"/></svg><span>Матрица</span></button>
-        <button class="admin-btn special" onclick="adminAction('earthquake')"><svg viewBox="0 0 24 24"><path d="M2 12h4l2-6 4 12 2-8 2 4h6"/></svg><span>Землетрясение</span></button>
-        <button class="admin-btn special" onclick="adminAction('hearts')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Сердечки</span></button>
-        <button class="admin-btn danger" onclick="adminAction('screamer')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>😱 Скример</span></button>
-      </div>
-    </div>
-    <div class="asec">
-      <div class="asec-title">Управление</div>
-      <div class="admin-grid">
-        <button class="admin-btn danger" onclick="adminAction('clearchat')"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg><span>Очистить чат</span></button>
-        <button class="admin-btn" onclick="adminAction('announce')"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Объявление</span></button>
-      </div>
-    </div>
-    <button class="btn-d" style="width:100%;margin-top:.3rem;" onclick="adminLogout()">Выйти из админки</button>
-  </div>
+  <div id="posts-list"><div style="text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;">Загружаем посты…</div></div>
 </div>
 
+<!-- PAGE 10: GDZ -->
+<div class="page" id="page-10">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem;">
+    <div><div class="sec-title">ГДЗ</div><p class="sec-sub">Задай вопрос — получи ответ</p></div>
+    <button class="btn-p" style="padding:.4rem .75rem;font-size:.72rem;" onclick="openModal('modal-gdz')">+ Вопрос</button>
+  </div>
+  <div id="gdz-list"><div style="text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;">Загружаем вопросы…</div></div>
+</div>
+
+<!-- PAGE 11: SHOP -->
+<div class="page" id="page-11">
+  <div class="sec-title">Магазин</div>
+  <p class="sec-sub">Трать монеты на крутые вещи</p>
+  <div class="balance-bar">
+    <div><div class="balance-lbl">Твой баланс</div><div class="balance-num" id="balance-display">0</div></div>
+    <div style="font-size:1.8rem;">🪙</div>
+  </div>
+  <div class="asec-title">Градиенты для ника</div>
+  <div class="shop-item">
+    <div class="shop-item-icon">🌈</div>
+    <div class="shop-item-info">
+      <div class="shop-item-name">Фиолетовый градиент</div>
+      <div style="display:flex;gap:4px;margin:.3rem 0;"><div class="grad-pill" style="background:linear-gradient(135deg,#818cf8,#c084fc)"></div></div>
+      <div class="shop-item-desc">Ник с фиолетово-розовым градиентом</div>
+    </div>
+    <div style="text-align:right"><div class="shop-item-price">500</div><button class="btn-p" style="padding:.28rem .6rem;font-size:.65rem;margin-top:.3rem;" onclick="buyItem('grad1',500)">Купить</button></div>
+  </div>
+  <div class="shop-item">
+    <div class="shop-item-icon">🔥</div>
+    <div class="shop-item-info">
+      <div class="shop-item-name">Огненный градиент</div>
+      <div style="display:flex;gap:4px;margin:.3rem 0;"><div class="grad-pill" style="background:linear-gradient(135deg,#f472b6,#fb923c)"></div></div>
+      <div class="shop-item-desc">Розово-оранжевый горячий ник</div>
+    </div>
+    <div style="text-align:right"><div class="shop-item-price">500</div><button class="btn-p" style="padding:.28rem .6rem;font-size:.65rem;margin-top:.3rem;" onclick="buyItem('grad2',500)">Купить</button></div>
+  </div>
+  <div class="shop-item">
+    <div class="shop-item-icon">🌊</div>
+    <div class="shop-item-info">
+      <div class="shop-item-name">Океанский градиент</div>
+      <div style="display:flex;gap:4px;margin:.3rem 0;"><div class="grad-pill" style="background:linear-gradient(135deg,#34d399,#60a5fa)"></div></div>
+      <div class="shop-item-desc">Зелёно-синий прохладный ник</div>
+    </div>
+    <div style="text-align:right"><div class="shop-item-price">500</div><button class="btn-p" style="padding:.28rem .6rem;font-size:.65rem;margin-top:.3rem;" onclick="buyItem('grad3',500)">Купить</button></div>
+  </div>
+  <div class="shop-item">
+    <div class="shop-item-icon">⚡</div>
+    <div class="shop-item-info">
+      <div class="shop-item-name">Золотой градиент</div>
+      <div style="display:flex;gap:4px;margin:.3rem 0;"><div class="grad-pill" style="background:linear-gradient(135deg,#fbbf24,#f87171)"></div></div>
+      <div class="shop-item-desc">Золотисто-красный ник</div>
+    </div>
+    <div style="text-align:right"><div class="shop-item-price">500</div><button class="btn-p" style="padding:.28rem .6rem;font-size:.65rem;margin-top:.3rem;" onclick="buyItem('grad4',500)">Купить</button></div>
+  </div>
+  <div class="asec-title" style="margin-top:.8rem;">Теги</div>
+  <div class="shop-item">
+    <div class="shop-item-icon">👑</div>
+    <div class="shop-item-info">
+      <div class="shop-item-name">Тег <span class="user-tag tag-major">МАЖОР</span></div>
+      <div class="shop-item-desc">Золотой тег рядом с именем</div>
+    </div>
+    <div style="text-align:right"><div class="shop-item-price">1000</div><button class="btn-p" style="padding:.28rem .6rem;font-size:.65rem;margin-top:.3rem;" onclick="buyItem('tag_major',1000)">Купить</button></div>
+  </div>
+  <div class="shop-item">
+    <div class="shop-item-icon">😎</div>
+    <div class="shop-item-info">
+      <div class="shop-item-name">Тег <span class="user-tag tag-cool">КРУТОЙ</span></div>
+      <div class="shop-item-desc">Фиолетовый тег рядом с именем</div>
+    </div>
+    <div style="text-align:right"><div class="shop-item-price">1000</div><button class="btn-p" style="padding:.28rem .6rem;font-size:.65rem;margin-top:.3rem;" onclick="buyItem('tag_cool',1000)">Купить</button></div>
+  </div>
+</div>
 </div><!-- /pages -->
 
-<!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, limit,
-         deleteDoc, getDocs, doc, setDoc, serverTimestamp, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  deleteDoc, getDocs, doc, setDoc, serverTimestamp, getDoc, updateDoc,
+  where, arrayUnion, arrayRemove, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const cfg={apiKey:"AIzaSyBlJ5x2lYIVuVL2qB0r4FX3a8zGe2SnFQk",authDomain:"do-leta-kz.firebaseapp.com",projectId:"do-leta-kz",storageBucket:"do-leta-kz.firebasestorage.app",messagingSenderId:"140919023504",appId:"1:140919023504:web:9306b083c3b91b7b42f515"};
 const app=initializeApp(cfg);
 const db=getFirestore(app);
 
-const sessionId=Math.random().toString(36).slice(2);
-let userName=localStorage.getItem('chat-name')||'';
-let userAvatar=localStorage.getItem('chat-avatar')||'';
-let currentRoomId=null,currentRoomType=null,currentRoomUnsub=null,currentGrpData=null;
-let currentQuestionId=null,currentQuestionUnsub=null;
-let unreadCounts={};
+const DEV_USERNAME='Dev_tomato';
+const SID=Math.random().toString(36).slice(2);
+let uName='',uUsername='',uAv='',uCoins=0,uSub='',uGrad='',uVerified=false,uIsDev=false;
+let curRoom=null,curType=null,curGrp=null,curRoomUnsub=null;
+let unread={};let chatFilter='all';let typingTimeout=null;
+
 const AVC=['#4f46e5','#7c3aed','#2563eb','#0891b2','#059669','#d97706','#dc2626','#db2777'];
-function nc(n){let h=0;for(let c of n)h=(h*31+c.charCodeAt(0))%AVC.length;return AVC[h];}
-function ni(n){return n.charAt(0).toUpperCase();}
+const nc=n=>{let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%AVC.length;return AVC[h];};
+const ni=n=>n.charAt(0).toUpperCase();
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const pad=n=>String(n).padStart(2,'0');
 
-// User profile with points
-let userPoints=parseInt(localStorage.getItem('user-points')||'0');
-let ownedItems=JSON.parse(localStorage.getItem('owned-items')||'[]');
-let activeFrame=localStorage.getItem('active-frame')||'';
-let activeBadge=localStorage.getItem('active-badge')||'';
+function getUserData(){return {username:uUsername,name:uName,avatar:uAv,coins:uCoins,sub:uSub,grad:uGrad,verified:uVerified,isDev:uIsDev};}
 
-function updatePoints(delta){
-  userPoints=Math.max(0,userPoints+delta);
-  localStorage.setItem('user-points',userPoints);
-  document.getElementById('my-points').textContent=userPoints;
+// ── USER PROFILE IN FIRESTORE ──
+async function loadUserProfile(username){
+  const ref=doc(db,'users',username);
+  const snap=await getDoc(ref);
+  if(snap.exists()){
+    const d=snap.data();
+    uCoins=d.coins||0;uSub=d.sub||'';uGrad=d.grad||'';
+    uVerified=d.verified||false;uIsDev=d.isDev||false;
+    uAv=d.avatar||localStorage.getItem('chat-av')||'';
+    uName=d.name||uName;
+    if(username===DEV_USERNAME){uIsDev=true;if(uCoins===0)uCoins=9999999;}
+  } else {
+    // New user
+    const isDevUser=username===DEV_USERNAME;
+    uCoins=isDevUser?9999999:0;uIsDev=isDevUser;
+    await setDoc(ref,{username,name:uName,avatar:uAv,coins:uCoins,sub:'',grad:'',verified:false,isDev:isDevUser,t:serverTimestamp()});
+  }
+  updateCoinsUI();
+  if(uIsDev)document.getElementById('admin-section').style.display='block';
 }
 
-function buyItem(item){
-  if(ownedItems.includes(item.id)){alert('Уже куплено!');return;}
-  if(userPoints<item.price){alert('Недостаточно очков!');return;}
-  updatePoints(-item.price);
-  ownedItems.push(item.id);
-  localStorage.setItem('owned-items',JSON.stringify(ownedItems));
-  if(item.type==='frame'){activeFrame=item.id;localStorage.setItem('active-frame',activeFrame);applyFrame();}
-  if(item.type==='badge'){activeBadge=item.id;localStorage.setItem('active-badge',activeBadge);applyBadge();}
-  renderShop();
+async function saveUserProfile(){
+  if(!uUsername)return;
+  await updateDoc(doc(db,'users',uUsername),{name:uName,avatar:uAv,sub:uSub,grad:uGrad,coins:uCoins,verified:uVerified,isDev:uIsDev});
 }
 
-function applyFrame(){
-  const frames=[document.getElementById('my-mini-frame'),document.getElementById('profile-frame')];
-  frames.forEach(f=>{if(f){f.className='av-frame';if(activeFrame)f.classList.add(activeFrame);}});
+function updateCoinsUI(){
+  const el1=document.getElementById('my-coins-display');const el2=document.getElementById('shop-coins-display');
+  if(el1)el1.textContent=uCoins.toLocaleString();
+  if(el2)el2.textContent=uCoins.toLocaleString();
 }
 
-function applyBadge(){
-  const pb=document.getElementById('profile-badge');
-  if(!pb)return;
-  if(!activeBadge){pb.style.display='none';return;}
-  const badges={genius:'🧠 Гений',megamind:'🌟 Мегамозг',helper:'🤝 Помощник',star:'⭐ Звезда'};
-  pb.textContent=badges[activeBadge]||'';
-  pb.style.display='inline-block';
-  pb.style.background='rgba(251,191,36,.2)';
-  pb.style.border='1px solid rgba(251,191,36,.4)';
-  pb.style.color='#fbbf24';
-  pb.style.fontSize='.65rem';
-  pb.style.fontWeight='800';
-  pb.style.padding='2px 7px';
-  pb.style.borderRadius='6px';
+function renderNameTag(name,username,sub,grad,verified,isDev){
+  let nick=esc(name);
+  if(grad){nick=`<span class="nick-grad-${grad}">${esc(name)}</span>`;}
+  let badges='';
+  if(isDev)badges+=`<span class="ubadge dev">DEV</span>`;
+  else if(sub==='major')badges+=`<span class="ubadge major">мажор</span>`;
+  else if(sub==='cool')badges+=`<span class="ubadge cool">крутой</span>`;
+  if(verified)badges+=`<span class="verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>`;
+  return `${nick}${badges}`;
 }
 
-function makeAv(name,img,size=38,frame=''){
-  const f=frame?`<div class="av-frame ${frame}"></div>`:'';
-  if(img)return `<div style="position:relative;width:${size}px;height:${size}px;"><img src="${img}" style="width:${size}px;height:${size}px;border-radius:50%;object-fit:cover;">${f}</div>`;
-  return `<div style="position:relative;width:${size}px;height:${size}px;"><div style="width:${size}px;height:${size}px;border-radius:50%;background:${nc(name)};display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:${Math.round(size*0.38)}px;color:#fff;">${ni(name)}</div>${f}</div>`;
-}
-
-// Presence
-const presRef=doc(db,'presence',sessionId);
+// ── PRESENCE ──
+const presRef=doc(db,'presence',SID);
 async function ping(){
-  if(!userName)return;
-  await setDoc(presRef,{name:userName,avatar:userAvatar,t:serverTimestamp(),active:true,frame:activeFrame,badge:activeBadge});
+  if(!uUsername)return;
+  await setDoc(presRef,{username:uUsername,name:uName,avatar:uAv,sub:uSub,grad:uGrad,verified:uVerified,isDev:uIsDev,t:serverTimestamp(),active:true});
 }
 window.addEventListener('beforeunload',()=>setDoc(presRef,{active:false,t:serverTimestamp()}));
 let onlineUsers=[];
 onSnapshot(collection(db,'presence'),snap=>{
-  const now=Date.now();onlineUsers=[];
-  const seen=new Set();
-  snap.forEach(d=>{
-    const v=d.data();
-    if(v.active&&v.name&&v.t&&(now-v.t.toMillis())<70000&&!seen.has(v.name)){
-      seen.add(v.name);onlineUsers.push({name:v.name,avatar:v.avatar||'',frame:v.frame||'',badge:v.badge||''});
-    }
-  });
-  document.getElementById('online-count').textContent=onlineUsers.length;
+  const now=Date.now();onlineUsers=[];const seen=new Set();
+  snap.forEach(d=>{const v=d.data();if(v.active&&v.name&&v.t&&(now-v.t.toMillis())<70000&&!seen.has(v.username)){seen.add(v.username);onlineUsers.push(v);}});
+  const el=document.getElementById('online-count');if(el)el.textContent=onlineUsers.length;
   renderUsersRow();renderDMsList();
 });
 
-// Profile avatar preview
-window.previewEntryAv=function(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    const img=document.getElementById('entry-av-preview');
-    const ico=document.getElementById('entry-av-icon');
-    img.src=ev.target.result;img.style.display='block';ico.style.display='none';
-    userAvatar=ev.target.result;
-  };r.readAsDataURL(f);
+// ── ENTER CHAT ──
+window.enterChat=function(){
+  const rawUser=document.getElementById('username-inp').value.trim().replace(/^@/,'');
+  const rawName=document.getElementById('name-inp').value.trim();
+  if(!rawUser||!rawName){alert('Введи юзернейм и имя!');return;}
+  if(rawUser.includes(' ')){alert('Юзернейм без пробелов!');return;}
+  uUsername=rawUser;uName=rawName;
+  localStorage.setItem('chat-username',uUsername);
+  localStorage.setItem('chat-name',uName);
+  const entryAv=document.getElementById('entry-av-prev');
+  if(entryAv&&entryAv.src&&entryAv.src.startsWith('data:')){uAv=entryAv.src;localStorage.setItem('chat-av',uAv);}
+  else{uAv=localStorage.getItem('chat-av')||'';}
+  document.getElementById('name-screen').style.display='none';
+  document.getElementById('chat-home').style.display='flex';
+  loadUserProfile(uUsername).then(()=>{
+    ping();setInterval(ping,20000);
+    listenGroups();listenFriends();listenStatuses();listenPosts();listenGDZ();
+    updateMeUI();
+  });
 };
+
+if(localStorage.getItem('chat-username')){
+  uUsername=localStorage.getItem('chat-username');
+  uName=localStorage.getItem('chat-name')||'';
+  uAv=localStorage.getItem('chat-av')||'';
+  document.getElementById('name-screen').style.display='none';
+  document.getElementById('chat-home').style.display='flex';
+  loadUserProfile(uUsername).then(()=>{
+    ping();setInterval(ping,20000);
+    listenGroups();listenFriends();listenStatuses();listenPosts();listenGDZ();
+    updateMeUI();
+  });
+}
+
+function updateMeUI(){
+  const mav=document.getElementById('mini-av');
+  if(mav){if(uAv){mav.innerHTML=`<img src="${uAv}" style="width:20px;height:20px;object-fit:cover;border-radius:50%;">`;}else{mav.textContent=uName?ni(uName):'?';}}
+  const nl=document.getElementById('my-name-lbl');if(nl)nl.textContent=uName;
+  const pi=document.getElementById('profile-av-img');const pl=document.getElementById('profile-av-letter');
+  if(pi&&pl){if(uAv){pi.src=uAv;pi.style.display='block';pl.style.display='none';}else{pi.style.display='none';pl.style.display='flex';pl.textContent=uName?ni(uName):'?';}}
+  const pd=document.getElementById('profile-name-display');if(pd)pd.innerHTML=renderNameTag(uName,uUsername,uSub,uGrad,uVerified,uIsDev);
+  const pud=document.getElementById('profile-username-display');if(pud)pud.textContent=`@${uUsername}`;
+  updateCoinsUI();
+}
 
 window.changeProfileAv=function(e){
   const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    userAvatar=ev.target.result;
-    localStorage.setItem('chat-avatar',userAvatar);
-    updateProfileUI();
-    if(userName)ping();
-  };r.readAsDataURL(f);
+  compressImg(f,80,data=>{uAv=data;localStorage.setItem('chat-av',data);updateMeUI();if(uUsername)ping();saveUserProfile();});
 };
-
 window.changeNick=function(){
-  const v=document.getElementById('profile-name-inp').value.trim();
-  if(!v)return;
-  userName=v;localStorage.setItem('chat-name',v);
-  updateProfileUI();
-  if(userName)ping();
+  const v=document.getElementById('profile-name-inp').value.trim();if(!v)return;
+  uName=v;localStorage.setItem('chat-name',v);updateMeUI();if(uUsername)ping();saveUserProfile();
 };
 
-function updateProfileUI(){
-  const img=document.getElementById('profile-av-img');
-  const ltr=document.getElementById('profile-av-letter');
-  const nd=document.getElementById('profile-name-display');
-  if(userAvatar){img.src=userAvatar;img.style.display='block';ltr.style.display='none';}
-  else{img.style.display='none';ltr.style.display='flex';ltr.textContent=userName?ni(userName):'?';}
-  if(nd)nd.textContent=userName||'Гость';
-  // mini av in chat
-  const mav=document.getElementById('my-mini-av');
-  const mavl=document.getElementById('my-mini-av-letter');
-  if(userAvatar&&mav){mav.src=userAvatar;mav.style.display='block';if(mavl)mavl.style.display='none';}
-  else if(mavl){mavl.style.display='flex';mavl.textContent=userName?ni(userName):'?';if(mav)mav.style.display='none';}
-  if(document.getElementById('my-name-lbl'))document.getElementById('my-name-lbl').textContent=userName;
-  applyFrame();applyBadge();
-}
+// ── SHOP ──
+const GRADIENTS=[
+  {id:'1',name:'Огонь',preview:'linear-gradient(135deg,#f59e0b,#ef4444)',price:100},
+  {id:'2',name:'Закат',preview:'linear-gradient(135deg,#8b5cf6,#ec4899)',price:100},
+  {id:'3',name:'Океан',preview:'linear-gradient(135deg,#06b6d4,#3b82f6)',price:100},
+  {id:'4',name:'Лес',preview:'linear-gradient(135deg,#10b981,#3b82f6)',price:100},
+  {id:'5',name:'Золото',preview:'linear-gradient(135deg,#f97316,#eab308)',price:150},
+];
+(function renderGradShop(){
+  const cont=document.getElementById('gradient-shop');if(!cont)return;
+  GRADIENTS.forEach(g=>{
+    cont.innerHTML+=`<div class="shop-item">
+      <div style="width:42px;height:42px;border-radius:11px;background:${g.preview};flex-shrink:0;"></div>
+      <div class="shop-item-info"><div class="shop-item-name" style="background:${g.preview};-webkit-background-clip:text;-webkit-text-fill-color:transparent;">${g.name}</div><div class="shop-item-desc">Градиент для ника</div></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.28rem;">
+        <div class="shop-item-price"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>${g.price}</div>
+        <button class="shop-buy-btn" onclick="buyGrad('${g.id}',${g.price})">Купить</button>
+      </div>
+    </div>`;
+  });
+})();
 
-// Enter chat
-window.enterChat=function(){
-  const v=document.getElementById('name-inp').value.trim();if(!v)return;
-  userName=v;localStorage.setItem('chat-name',v);
-  if(userAvatar)localStorage.setItem('chat-avatar',userAvatar);
-  document.getElementById('name-screen').style.display='none';
-  document.getElementById('chat-home').style.display='flex';
-  updateProfileUI();
-  ping();setInterval(ping,20000);
-  listenGroups();
+window.buySub=async function(type,price){
+  if(uCoins<price){alert('Недостаточно монет!');return;}
+  uCoins-=price;uSub=type;
+  await updateDoc(doc(db,'users',uUsername),{coins:uCoins,sub:type});
+  updateMeUI();alert(`Подписка «${type}» активирована!`);
 };
-if(userName){
-  userAvatar=localStorage.getItem('chat-avatar')||'';
-  activeFrame=localStorage.getItem('active-frame')||'';
-  activeBadge=localStorage.getItem('active-badge')||'';
-  document.getElementById('name-screen').style.display='none';
-  document.getElementById('chat-home').style.display='flex';
-  updateProfileUI();
-  ping();setInterval(ping,20000);
-  listenGroups();
+window.buyGrad=async function(id,price){
+  if(uCoins<price){alert('Недостаточно монет!');return;}
+  uCoins-=price;uGrad=id;
+  await updateDoc(doc(db,'users',uUsername),{coins:uCoins,grad:id});
+  updateMeUI();alert('Градиент активирован!');
+};
+
+// ── ADMIN ACTIONS ──
+window.adminGiveCoins=async function(){
+  const target=document.getElementById('admin-user-inp').value.trim().replace(/^@/,'');
+  const amt=parseInt(document.getElementById('admin-coins-amt').value)||0;
+  if(!target||!amt){alert('Введи юзернейм и сумму');return;}
+  try{
+    await updateDoc(doc(db,'users',target),{coins:increment(amt)});
+    alert(`✅ Отправлено ${amt} монет → @${target}`);
+  }catch(e){alert('Ошибка: '+e.message);}
+};
+window.adminVerify=async function(){
+  const target=document.getElementById('admin-user-inp').value.trim().replace(/^@/,'');
+  if(!target)return;
+  try{await updateDoc(doc(db,'users',target),{verified:true});alert(`✅ @${target} верифицирован`);}
+  catch(e){alert('Ошибка: '+e.message);}
+};
+window.adminRemoveVerify=async function(){
+  const target=document.getElementById('admin-user-inp').value.trim().replace(/^@/,'');
+  if(!target)return;
+  try{await updateDoc(doc(db,'users',target),{verified:false});alert(`✅ Верификация убрана у @${target}`);}
+  catch(e){alert('Ошибка: '+e.message);}
+};
+window.adminEffect=async function(type){
+  await setDoc(doc(db,'admin','effect'),{type,id:Date.now()});
+};
+window.adminClearChat=async function(){
+  if(!curRoom||!confirm('Очистить?'))return;
+  const col=curType==='group'?`groups/${curRoom}/messages`:`dms/${curRoom}/messages`;
+  const s=await getDocs(collection(db,col));
+  for(const d of s.docs)await deleteDoc(doc(db,col,d.id));
+  await addDoc(collection(db,col),{system:true,text:'Чат очищен администратором',t:serverTimestamp()});
+};
+window.adminAnnounce=async function(){
+  const txt=prompt('Объявление:');if(!txt)return;
+  const gs=await getDocs(collection(db,'groups'));
+  for(const d of gs.docs)await addDoc(collection(db,`groups/${d.id}/messages`),{system:true,text:'📢 '+txt,t:serverTimestamp()});
+};
+
+// ── EFFECT LISTENER ──
+const effectRef=doc(db,'admin','effect');
+let lastEffect=null;let effectReady=false;
+onSnapshot(effectRef,snap=>{
+  if(!snap.exists())return;
+  const d=snap.data();
+  if(!effectReady){lastEffect=d.id;effectReady=true;return;}
+  if(d.id===lastEffect)return;
+  lastEffect=d.id;runEffect(d.type);
+});
+function runEffect(type){
+  if(type==='fireworks')FX.fireworks();
+  else if(type==='confetti')FX.confetti();
+  else if(type==='snow')FX.snow();
+  else if(type==='rainbow')FX.rainbow();
+  else if(type==='matrix')FX.matrix();
+  else if(type==='earthquake')FX.earthquake();
+  else if(type==='hearts')FX.hearts();
+  else if(type==='screamer')document.getElementById('screamer').classList.add('show');
 }
 
+// ── USERS ROW ──
 function renderUsersRow(){
   const row=document.getElementById('users-row');if(!row)return;
   row.innerHTML='';
   onlineUsers.forEach(u=>{
-    const chip=document.createElement('div');chip.className='user-chip'+(u.name===userName?' me':'');
-    const av=u.avatar?`<img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`:ni(u.name);
-    const frame=u.frame?`<div class="av-frame ${u.frame}"></div>`:'';
-    chip.innerHTML=`<div class="user-chip-av" style="background:${nc(u.name)};position:relative;">${av}${frame}</div><div class="user-chip-name">${esc(u.name)}</div>`;
-    if(u.name!==userName)chip.onclick=()=>openDM(u.name,u.avatar,u.frame);
+    const chip=document.createElement('div');chip.className='user-chip';
+    chip.innerHTML=`<div class="uc-av" style="background:${nc(u.name)}">${u.avatar?`<img src="${u.avatar}">`:`${ni(u.name)}`}</div><div class="uc-name">${esc(u.name)}</div>`;
+    if(u.username!==uUsername)chip.onclick=()=>openDM(u.username,u.name,u.avatar||'',u);
     row.appendChild(chip);
   });
 }
 
-// Groups
-window.previewGrpAv=function(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    const img=document.getElementById('grp-av-preview');
-    const ico=document.getElementById('grp-av-icon');
-    img.src=ev.target.result;img.style.display='block';ico.style.display='none';
-  };r.readAsDataURL(f);
+// ── FRIENDS ──
+window.sendFriendReq=async function(){
+  const target=document.getElementById('add-friend-inp').value.trim().replace(/^@/,'');
+  if(!target||target===uUsername)return;
+  await setDoc(doc(db,'friend_requests',`${uUsername}_${target}`),{from:uUsername,fromName:uName,fromAv:uAv,to:target,t:serverTimestamp(),status:'pending'});
+  document.getElementById('add-friend-inp').value='';
+  alert(`Заявка отправлена @${target}!`);
 };
+document.getElementById('add-friend-btn').onclick=window.sendFriendReq;
 
-window.createGroup=async function(){
-  const name=document.getElementById('group-name-inp').value.trim();
-  const icon=document.getElementById('group-icon-inp').value.trim()||'💬';
-  const img=document.getElementById('grp-av-preview').src||'';
-  if(!name)return;
-  const ref=await addDoc(collection(db,'groups'),{
-    name,icon,avatar:img,creator:userName,
-    admins:[userName],adminOnly:false,
-    members:[userName],t:serverTimestamp()
-  });
-  closeModal('modal-group');
-  document.getElementById('group-name-inp').value='';
-  document.getElementById('group-icon-inp').value='';
-  document.getElementById('grp-av-preview').style.display='none';
-  document.getElementById('grp-av-icon').style.display='block';
-  openRoom(ref.id,'group',name,icon,img,{admins:[userName],adminOnly:false,creator:userName,members:[userName]});
-};
-
-function listenGroups(){
-  onSnapshot(collection(db,'groups'),snap=>{
-    const list=document.getElementById('groups-list');list.innerHTML='';
-    if(snap.empty){list.innerHTML='<div style="padding:.6rem 1rem;font-size:.73rem;color:var(--muted)">Нет групп. Создай первую!</div>';return;}
+function listenFriends(){
+  onSnapshot(query(collection(db,'friend_requests'),where('to','==',uUsername),where('status','==','pending')),snap=>{
+    const list=document.getElementById('friend-requests');const title=document.getElementById('freq-title');if(!list)return;
+    list.innerHTML='';
+    const badge=document.getElementById('friends-badge');badge.textContent=snap.size;badge.classList.toggle('show',snap.size>0);
+    title.style.display=snap.empty?'none':'block';
     snap.forEach(d=>{
-      const g=d.data();const id=d.id;
-      const item=document.createElement('div');item.className='room-item';
-      const unread=unreadCounts[id]||0;
-      const av=g.avatar?`<div class="room-av grp" style="border-radius:12px;overflow:hidden;"><img src="${g.avatar}" style="width:100%;height:100%;object-fit:cover;"></div>`
-        :`<div class="room-av grp" style="font-size:1.1rem;">${g.icon||'💬'}</div>`;
-      item.innerHTML=`${av}<div class="room-info"><div class="room-name">${esc(g.name)}</div><div class="room-prev">${g.members?g.members.length:0} участников</div></div>${unread>0?`<div class="room-unread">${unread}</div>`:''}`;
-      item.onclick=()=>openRoom(id,'group',g.name,g.icon||'💬',g.avatar||'',g);
-      list.appendChild(item);
+      const v=d.data();
+      const el=document.createElement('div');el.className='friend-req';
+      el.innerHTML=`<div class="freq-av" style="background:${nc(v.fromName)}">${v.fromAv?`<img src="${v.fromAv}">`:`${ni(v.fromName)}`}</div>
+        <div style="flex:1"><div style="font-size:.78rem;font-weight:700;">@${esc(v.from)}</div><div style="font-size:.63rem;color:var(--muted)">Хочет добавить тебя</div></div>
+        <div class="freq-btns">
+          <button class="btn-p" style="padding:.28rem .58rem;font-size:.65rem;" onclick="acceptFriend('${d.id}','${v.from}','${(v.fromAv||'').replace(/'/g,'')}','${esc(v.fromName)}')">✓</button>
+          <button class="btn-d" style="padding:.28rem .58rem;font-size:.65rem;" onclick="declineFriend('${d.id}')">✕</button>
+        </div>`;
+      list.appendChild(el);
     });
   });
-}
-
-// DMs
-function dmId(a,b){return[a,b].sort().join('__');}
-function renderDMsList(){
-  const list=document.getElementById('dms-list');if(!list)return;
-  list.innerHTML='';
-  const others=onlineUsers.filter(u=>u.name!==userName);
-  if(!others.length){list.innerHTML='<div style="padding:.6rem 1rem;font-size:.73rem;color:var(--muted)">Нет пользователей онлайн</div>';return;}
-  others.forEach(u=>{
-    const id=dmId(userName,u.name);
-    const item=document.createElement('div');item.className='room-item';
-    const unread=unreadCounts[id]||0;
-    const frame=u.frame?`<div class="av-frame ${u.frame}"></div>`:'';
-    const av=u.avatar?`<div class="room-av dm" style="width:40px;height:40px;overflow:hidden;position:relative;"><img src="${u.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">${frame}</div>`
-      :`<div class="room-av dm" style="width:40px;height:40px;background:${nc(u.name)};border-radius:50%;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;position:relative;">${ni(u.name)}${frame}</div>`;
-    item.innerHTML=`${av}<div class="room-info"><div class="room-name">${esc(u.name)}</div><div class="room-prev">Онлайн</div></div><div class="online-ind"></div>${unread>0?`<div class="room-unread">${unread}</div>`:''}`;
-    item.onclick=()=>openDM(u.name,u.avatar,u.frame);
-    list.appendChild(item);
-  });
-}
-function openDM(name,avatar,frame){openRoom(dmId(userName,name),'dm',name,'',avatar||'',null,frame);}
-
-// Open room
-function openRoom(roomId,type,name,icon,avatar,grpData,frame=''){
-  currentRoomId=roomId;currentRoomType=type;currentGrpData=grpData;
-  unreadCounts[roomId]=0;updateBadge();
-  const av=document.getElementById('room-hdr-av');
-  av.className='room-hdr-av '+(type==='group'?'grp':'');
-  const f=frame?`<div class="av-frame ${frame}"></div>`:'';
-  if(avatar){av.innerHTML=`<div style="position:relative;width:100%;height:100%;"><img src="${avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:${type==='group'?'10px':'50%'};">${f}</div>`;}
-  else if(type==='group'){av.innerHTML=icon||'💬';}
-  else{av.style.background=nc(name);av.style.borderRadius='50%';av.style.color='#fff';av.style.fontFamily="'Syne',sans-serif";av.style.fontWeight='800';av.style.fontSize='.85rem';av.innerHTML=`<div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;">${ni(name)}${f}</div>`;}
-  document.getElementById('room-hdr-name').textContent=name;
-  document.getElementById('room-hdr-sub').textContent=type==='group'?'Групповой чат':'Личные сообщения';
-  const settBtn=document.getElementById('room-settings-btn');
-  if(settBtn)settBtn.style.display=(type==='group'&&grpData&&(grpData.admins||[]).includes(userName))?'flex':'none';
-  document.getElementById('chat-home').style.display='none';
-  document.getElementById('chat-room').classList.add('open');
-
-  // Admin-only mode
-  const bar=document.getElementById('chat-input-bar');
-  if(type==='group'&&grpData&&grpData.adminOnly&&!(grpData.admins||[]).includes(userName)){
-    bar.style.display='none';
-  } else {bar.style.display='flex';}
-
-  if(currentRoomUnsub)currentRoomUnsub();
-  const col=type==='group'?`groups/${roomId}/messages`:`dms/${roomId}/messages`;
-  const q=query(collection(db,col),orderBy('t','asc'),limit(100));
-  currentRoomUnsub=onSnapshot(q,snap=>{
-    const el=document.getElementById('messages');el.innerHTML='';
-    if(snap.empty){el.innerHTML='<div class="sys-msg">Сообщений пока нет 👋</div>';return;}
-    snap.forEach(d=>{
-      const data=d.data();
-      if(data.system){const s=document.createElement('div');s.className='sys-msg';s.textContent=data.text;el.appendChild(s);return;}
-      const isMe=data.name===userName;
-      const div=document.createElement('div');div.className=`msg ${isMe?'me':'other'}`;
-      const time=data.t?new Date(data.t.toMillis()).toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'}):'';
-      const avHtml=!isMe?`<div style="margin-bottom:2px;">${makeAv(data.name,data.avatar||'',22,data.frame||'')}</div>`:'';
-      div.innerHTML=`${!isMe?`<div class="msg-name">${esc(data.name)}</div>`:''}<div style="display:flex;align-items:flex-end;gap:4px;">${avHtml}<div class="msg-bubble">${esc(data.text)}</div></div><div class="msg-time">${time}</div>`;
-      el.appendChild(div);
-    });
-    el.scrollTop=el.scrollHeight;
-  });
-}
-
-window.closeRoom=function(){
-  if(currentRoomUnsub){currentRoomUnsub();currentRoomUnsub=null;}
-  currentRoomId=null;currentRoomType=null;currentGrpData=null;
-  document.getElementById('chat-room').classList.remove('open');
-  document.getElementById('chat-home').style.display='flex';
-};
-
-window.sendMsg=async function(){
-  if(!currentRoomId||!userName)return;
-  const inp=document.getElementById('chat-inp');
-  const text=inp.value.trim();if(!text)return;
-  inp.value='';
-  const col=currentRoomType==='group'?`groups/${currentRoomId}/messages`:`dms/${currentRoomId}/messages`;
-  await addDoc(collection(db,col),{name:userName,avatar:userAvatar,frame:activeFrame,text,t:serverTimestamp()});
-};
-
-// Group settings
-window.openGrpSettings=async function(){
-  if(!currentGrpData||!currentRoomId)return;
-  const g=currentGrpData;
-  document.getElementById('gs-name').value=g.name||'';
-  const gav=document.getElementById('gs-av');
-  if(g.avatar){gav.innerHTML=`<img src="${g.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">`;}
-  else{gav.innerHTML=g.icon||'💬';}
-  const ao=document.getElementById('gs-admin-only');
-  ao.className='toggle'+(g.adminOnly?' on':'');
-  // members
-  const ml=document.getElementById('gs-members');ml.innerHTML='';
-  (g.members||[]).forEach(m=>{
-    const isAdmin=(g.admins||[]).includes(m);
-    const div=document.createElement('div');div.className='grp-member';
-    div.innerHTML=`<div class="grp-member-av" style="background:${nc(m)}">${ni(m)}</div>
-      <div class="grp-member-info"><div class="grp-member-name">${esc(m)}</div><div class="grp-member-role">${isAdmin?'👑 Админ':'Участник'}</div></div>
-      <div class="grp-member-actions">${m!==userName&&m!==g.creator?`
-        ${!isAdmin?`<button class="grp-action-btn promote" onclick="promoteAdmin('${m}')">Админ</button>`:''}
-        <button class="grp-action-btn kick" onclick="kickMember('${m}')">Выкинуть</button>`:''}
-      </div>`;
-    ml.appendChild(div);
-  });
-  openModal('modal-grp-settings');
-};
-
-window.saveGrpSettings=async function(){
-  if(!currentRoomId)return;
-  const name=document.getElementById('gs-name').value.trim();
-  const adminOnly=document.getElementById('gs-admin-only').classList.contains('on');
-  const update={adminOnly};if(name)update.name=name;
-  await updateDoc(doc(db,'groups',currentRoomId),update);
-  currentGrpData={...currentGrpData,...update};
-  document.getElementById('room-hdr-name').textContent=name||currentGrpData.name;
-  closeModal('modal-grp-settings');
-};
-
-window.changeGrpAvatar=function(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=async ev=>{
-    const img=ev.target.result;
-    await updateDoc(doc(db,'groups',currentRoomId),{avatar:img});
-    document.getElementById('gs-av').innerHTML=`<img src="${img}" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">`;
-    currentGrpData={...currentGrpData,avatar:img};
-  };r.readAsDataURL(f);
-};
-
-window.promoteAdmin=async function(member){
-  if(!currentRoomId||!currentGrpData)return;
-  const admins=[...(currentGrpData.admins||[]),member];
-  await updateDoc(doc(db,'groups',currentRoomId),{admins});
-  currentGrpData={...currentGrpData,admins};
-  openGrpSettings();
-};
-
-window.kickMember=async function(member){
-  if(!currentRoomId||!currentGrpData)return;
-  if(!confirm(`Выкинуть ${member} из группы?`))return;
-  const members=(currentGrpData.members||[]).filter(m=>m!==member);
-  const admins=(currentGrpData.admins||[]).filter(m=>m!==member);
-  await updateDoc(doc(db,'groups',currentRoomId),{members,admins});
-  await addDoc(collection(db,`groups/${currentRoomId}/messages`),{system:true,text:`${member} покинул группу`,t:serverTimestamp()});
-  currentGrpData={...currentGrpData,members,admins};
-  openGrpSettings();
-};
-
-// ══ GDZ SECTION ══
-window.previewQImg=function(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    document.getElementById('q-img-preview').src=ev.target.result;
-    document.getElementById('q-img-preview').style.display='block';
-    document.getElementById('q-img-icon').style.display='none';
-  };r.readAsDataURL(f);
-};
-
-window.postQuestion=async function(){
-  const subject=document.getElementById('q-subject-inp').value;
-  const text=document.getElementById('q-text-inp').value.trim();
-  const img=document.getElementById('q-img-preview').src||'';
-  if(!text){alert('Опиши вопрос!');return;}
-  await addDoc(collection(db,'questions'),{
-    author:userName,avatar:userAvatar,frame:activeFrame,badge:activeBadge,
-    subject,text,image:img,t:serverTimestamp(),answers:0
-  });
-  closeModal('modal-ask-question');
-  document.getElementById('q-subject-inp').selectedIndex=0;
-  document.getElementById('q-text-inp').value='';
-  document.getElementById('q-img-preview').src='';
-  document.getElementById('q-img-preview').style.display='none';
-  document.getElementById('q-img-icon').style.display='block';
-};
-
-onSnapshot(query(collection(db,'questions'),orderBy('t','desc'),limit(50)),snap=>{
-  const list=document.getElementById('questions-list');
-  if(!list)return;
-  list.innerHTML='';
-  if(snap.empty){list.innerHTML='<div class="no-questions">Вопросов пока нет. Задай первый!</div>';return;}
-  snap.forEach(d=>{
-    const q=d.data();const id=d.id;
-    const card=document.createElement('div');card.className='question-card';
-    const time=q.t?new Date(q.t.toMillis()).toLocaleString('ru',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
-    const badge=q.badge?`<span class="q-badge">${{genius:'🧠 Гений',megamind:'🌟 Мегамозг',helper:'🤝 Помощник',star:'⭐ Звезда'}[q.badge]||''}</span>`:'';
-    const frame=q.frame?`<div class="av-frame ${q.frame}"></div>`:'';
-    card.innerHTML=`
-      <div class="q-header">
-        <div class="q-av" style="background:${nc(q.author)};position:relative;">
-          ${q.avatar?`<img src="${q.avatar}"
+  onSnapshot(query(collection(db,'friends'),where('users','array-contains',uUsername)),snap=>{
+   
