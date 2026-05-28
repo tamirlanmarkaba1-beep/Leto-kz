@@ -496,7 +496,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
     <div class="login-sub">Введи данные чтобы начать</div>
     <div class="av-upload" style="width:66px;height:66px;"><img id="e-av-img" src="" style="display:none;"><svg id="e-av-ico" viewBox="0 0 24 24" style="width:22px;height:22px;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg><input type="file" accept="image/*" onchange="prevImg(event,'e-av-img','e-av-ico',80)"></div>
     <div style="width:100%;max-width:280px;display:flex;flex-direction:column;gap:.45rem;">
-      <input class="inp" id="e-username" placeholder="@юзернейм (без пробелов)" maxlength="20" oninput="this.value=this.value.replace(/\s/g,'')">
+      <input class="inp" id="e-username" placeholder="@юзернейм (без пробелов)" maxlength="20">
       <input class="inp" id="e-name" placeholder="Отображаемое имя" maxlength="20">
       <button class="btn-p" onclick="doLogin()">Войти →</button>
     </div>
@@ -749,11 +749,10 @@ onSnapshot(collection(db,'presence'),snap=>{
 
 // ── LOGIN ─────────────────────────────────────────────────────────
 window.doLogin=async function(){
-  const rawU=(document.getElementById('e-username').value||'').trim().replace(/^@/,'').replace(/\s/g,'');
+  const rawU=(document.getElementById('e-username').value||'').trim().replace(/^@/,'').split(' ').join('');
   const rawN=(document.getElementById('e-name').value||'').trim();
   if(!rawU){alert('Введи юзернейм!');return;}
   if(!rawN){alert('Введи имя!');return;}
-  if(rawU.includes(' ')){alert('Юзернейм без пробелов!');return;}
   uUsername=rawU;uName=rawN;
   const avEl=document.getElementById('e-av-img');
   if(avEl&&avEl.src&&avEl.src.startsWith('data:')){uAv=avEl.src;}
@@ -761,8 +760,13 @@ window.doLogin=async function(){
   localStorage.setItem('username',uUsername);
   localStorage.setItem('name-'+uUsername,uName);
   if(uAv)localStorage.setItem('av-'+uUsername,uAv);
-  await initProfile();
-  startApp();
+  try{
+    await initProfile();
+    startApp();
+  }catch(e){
+    alert('Ошибка входа: '+e.message);
+    console.error(e);
+  }
 };
 
 // Auto-login
@@ -771,17 +775,29 @@ if(savedU){
   uUsername=savedU;
   uName=localStorage.getItem('name-'+savedU)||savedU;
   uAv=localStorage.getItem('av-'+savedU)||'';
-  initProfile().then(startApp);
+  initProfile().then(startApp).catch(e=>{
+    console.error('Auto-login failed:',e);
+    // Show login screen if auto-login fails
+    localStorage.removeItem('username');
+    document.getElementById('login-screen').style.display='flex';
+  });
 }
 
 async function initProfile(){
-  const ref=doc(db,'users',uUsername);
-  const d=await getDoc(ref);
-  if(!d.exists()){
+  try{
+    const ref=doc(db,'users',uUsername);
+    const d=await getDoc(ref);
     const isDev=uUsername===DEV;
-    await setDoc(ref,{username:uUsername,name:uName,avatar:uAv,coins:isDev?9999999:0,verified:isDev,isDev,tag:isDev?'dev':'',nickGrad:'',createdAt:serverTimestamp()});
-  } else {
-    await updateDoc(ref,{name:uName,avatar:uAv});
+    if(!d.exists()){
+      await setDoc(ref,{username:uUsername,name:uName,avatar:uAv,coins:isDev?9999999:0,verified:isDev,isDev,tag:isDev?'dev':'',nickGrad:'',createdAt:serverTimestamp()});
+    } else {
+      const updates={name:uName};
+      if(uAv)updates.avatar=uAv;
+      await updateDoc(ref,updates);
+    }
+  }catch(e){
+    console.warn('Profile init error (non-fatal):',e.message);
+    // Don't block login if profile fails - continue anyway
   }
 }
 
@@ -1161,8 +1177,4 @@ function listenPosts(){
       const time=v.t?new Date(v.t.toMillis()).toLocaleDateString('ru',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
       const nick=buildNick(v.author,v.nickGrad,v.verified,v.isDev,v.tag);
       const card=document.createElement('div');card.className='post-card';
-      card.innerHTML=`<div class="post-head"><div class="p-av" style="background:${nc(v.author)}">${v.avatar?`<img src="${v.avatar}">`:`${ni(v.author)}`}</div><div><div class="p-author">${nick}</div><div class="p-time">${time}</div></div></div>
-        ${v.text?`<div class="post-text">${esc(v.text)}</div>`:''}
-        ${v.img?`<img class="post-media" src="${v.img}" onclick="viewImg('${v.img}')">`:''}
-        <div class="post-actions">
-          <button class="p-action ${liked?'liked':''}" id="lb-${pid}" onclick="toggl
+      card.innerHTML=`<div class="post-head"><div class="p-av" style="background:${nc(v.author)}">${v.avatar?`<img src="${v.a
