@@ -395,7 +395,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
 </div>
 <div class="toast" id="toast"><div class="t-av" id="t-av"></div><div><div class="t-name" id="t-name"></div><div class="t-msg" id="t-msg"></div></div></div>
 <div id="img-viewer" onclick="this.classList.remove('open')"><img id="iv-img" src=""></div>
-<div class="status-viewer" id="sv"><div class="sv-hdr"><div class="back-btn" onclick="closeSV()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div></div><div class="sv-content" id="sv-content"></div></div>
+<div class="status-viewer" id="sv"><div class="sv-hdr"><div class="back-btn" onclick="window.closeSV&&window.closeSV()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div></div><div class="sv-content" id="sv-content"></div></div>
 <div class="game-wrap" id="game-wrap"><div class="game-hdr"><div class="back-btn" onclick="closeGame()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="game-title-txt" id="game-title">Игра</div><div class="game-score-txt" id="game-score">0</div></div><div id="game-content"></div></div>
 
 <!-- MODALS -->
@@ -408,23 +408,23 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
     <div style="flex:1"><label>Название</label><input class="inp" id="grp-name" placeholder="Класс 8А…" maxlength="30" style="margin-bottom:0"></div>
   </div>
   <label>Иконка (если нет фото)</label><input class="inp" id="grp-icon" placeholder="🎓" maxlength="2">
-  <div class="mbtns"><button class="btn-s" onclick="M.close('m-group')">Отмена</button><button class="btn-p" onclick="createGroup()">Создать</button></div>
+  <div class="mbtns"><button class="btn-s" onclick="M.close('m-group')">Отмена</button><button class="btn-p" onclick="window.createGroup&&window.createGroup()">Создать</button></div>
 </div></div>
 
 <div class="overlay" id="m-join"><div class="modal"><div class="drag"></div><div class="modal-title">Войти в группу</div>
   <label>Код приглашения</label><input class="inp" id="join-code" placeholder="ABC123" maxlength="8" style="text-transform:uppercase;letter-spacing:.1em;">
-  <div class="mbtns"><button class="btn-s" onclick="M.close('m-join')">Отмена</button><button class="btn-p" onclick="joinGroup()">Войти</button></div>
+  <div class="mbtns"><button class="btn-s" onclick="M.close('m-join')">Отмена</button><button class="btn-p" onclick="window.joinGroup&&window.joinGroup()">Войти</button></div>
 </div></div>
 
 <div class="overlay" id="m-grp-settings"><div class="modal"><div class="drag"></div>
   <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem;">
     <div style="position:relative;cursor:pointer;"><div id="gs-av" style="width:46px;height:46px;border-radius:13px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;overflow:hidden;"></div><input type="file" accept="image/*" style="position:absolute;inset:0;opacity:0;" onchange="changeGrpAv(event)"></div>
-    <div style="flex:1"><input class="inp" id="gs-name" placeholder="Название" style="margin-bottom:.3rem"><div style="font-size:.6rem;color:var(--muted)">Код: <span id="gs-code" style="color:var(--a1);font-weight:700;cursor:pointer;" onclick="copyCode()"></span></div></div>
-    <button class="btn-p" style="padding:.4rem .7rem;font-size:.7rem;" onclick="saveGrpSettings()">Сохр.</button>
+    <div style="flex:1"><input class="inp" id="gs-name" placeholder="Название" style="margin-bottom:.3rem"><div style="font-size:.6rem;color:var(--muted)">Код: <span id="gs-code" style="color:var(--a1);font-weight:700;cursor:pointer;" onclick="window.copyCode&&window.copyCode()"></span></div></div>
+    <button class="btn-p" style="padding:.4rem .7rem;font-size:.7rem;" onclick="window.saveGrpSettings&&window.saveGrpSettings()">Сохр.</button>
   </div>
   <div style="margin-bottom:.8rem;"><div class="s-row" style="border-radius:11px;"><div><div class="s-row-l">Только админы пишут</div></div><div class="toggle" id="gs-ao" onclick="this.classList.toggle('on')"><div class="tknob"></div></div></div></div>
   <div class="asec-title">Участники</div><div id="gs-members"></div>
-  <div class="mbtns" style="margin-top:.85rem;"><button class="btn-d" onclick="deleteGroup()">Удалить группу</button><button class="btn-s" onclick="M.close('m-grp-settings')">Закрыть</button></div>
+  <div class="mbtns" style="margin-top:.85rem;"><button class="btn-d" onclick="window.deleteGroup&&window.deleteGroup()">Удалить группу</button><button class="btn-s" onclick="M.close('m-grp-settings')">Закрыть</button></div>
 </div></div>
 
 <div class="overlay" id="m-post"><div class="modal"><div class="drag"></div><div class="modal-title">Новый пост</div>
@@ -435,7 +435,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
     <div id="post-media-ico" style="display:flex;flex-direction:column;align-items:center;gap:.3rem;"><svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span style="font-size:.68rem;color:var(--muted);">Добавить медиа</span></div>
     <input type="file" accept="image/*,video/*" onchange="prevPostMedia(event)">
   </div>
-  <div class="mbtns"><button class="btn-s" onclick="M.close('m-post')">Отмена</button><button class="btn-p" onclick="publishPost()">Опубликовать</button></div>
+  <div class="mbtns"><button class="btn-s" onclick="M.close('m-post')">Отмена</button><button class="btn-p" onclick="window.publishPost&&window.publishPost()">Опубликовать</button></div>
 </div></div>
 
 <div class="overlay" id="m-gdz"><div class="modal"><div class="drag"></div><div class="modal-title">Задать вопрос ГДЗ</div>
@@ -448,7 +448,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
     <div id="gdz-img-ico" style="display:flex;flex-direction:column;align-items:center;gap:.3rem;"><svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span style="font-size:.66rem;color:var(--muted);">Фото</span></div>
     <input type="file" accept="image/*" onchange="prevImg(event,'gdz-img-prev','gdz-img-ico',600)">
   </div>
-  <div class="mbtns"><button class="btn-s" onclick="M.close('m-gdz')">Отмена</button><button class="btn-p" onclick="publishGdz()">Опубликовать</button></div>
+  <div class="mbtns"><button class="btn-s" onclick="M.close('m-gdz')">Отмена</button><button class="btn-p" onclick="window.publishGdz&&window.publishGdz()">Опубликовать</button></div>
 </div></div>
 
 <div class="overlay" id="m-status"><div class="modal"><div class="drag"></div><div class="modal-title">Добавить статус</div>
@@ -459,7 +459,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
     <div id="status-img-ico" style="display:flex;flex-direction:column;align-items:center;gap:.3rem;"><svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span style="font-size:.68rem;color:var(--muted);">Добавить фото</span></div>
     <input type="file" accept="image/*" onchange="prevImg(event,'status-img-prev','status-img-ico',400)">
   </div>
-  <div class="mbtns"><button class="btn-s" onclick="M.close('m-status')">Отмена</button><button class="btn-p" onclick="publishStatus()">Опубликовать</button></div>
+  <div class="mbtns"><button class="btn-s" onclick="M.close('m-status')">Отмена</button><button class="btn-p" onclick="window.publishStatus&&window.publishStatus()">Опубликовать</button></div>
 </div></div>
 
 <div class="overlay" id="m-hol"><div class="modal"><div class="drag"></div><div class="modal-title">Добавить праздник</div>
@@ -498,7 +498,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
     <div style="width:100%;max-width:280px;display:flex;flex-direction:column;gap:.45rem;">
       <input class="inp" id="e-username" placeholder="@юзернейм (без пробелов)" maxlength="20">
       <input class="inp" id="e-name" placeholder="Отображаемое имя" maxlength="20">
-      <button class="btn-p" onclick="doLogin()">Войти →</button>
+      <button class="btn-p" onclick="window.doLogin && window.doLogin()">Войти →</button>
     </div>
   </div>
   <div class="chat-home" id="chat-home" style="display:none;">
@@ -513,7 +513,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
     </div>
   </div>
   <div class="chat-room" id="chat-room">
-    <div class="room-hdr"><div class="back-btn" onclick="closeRoom()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="r-hdr-av" id="r-hdr-av"></div><div class="r-hdr-info"><div class="r-hdr-name" id="r-hdr-name"></div><div class="r-hdr-sub" id="r-hdr-sub"></div></div><div class="hdr-btn" id="r-settings-btn" style="display:none;" onclick="openGrpSettings()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div></div>
+    <div class="room-hdr"><div class="back-btn" onclick="window.closeRoom&&window.closeRoom()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="r-hdr-av" id="r-hdr-av"></div><div class="r-hdr-info"><div class="r-hdr-name" id="r-hdr-name"></div><div class="r-hdr-sub" id="r-hdr-sub"></div></div><div class="hdr-btn" id="r-settings-btn" style="display:none;" onclick="window.openGrpSettings&&window.openGrpSettings()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div></div>
     <div class="typing-row" id="typing-row"></div>
     <div class="msgs" id="msgs"></div>
     <div class="chat-bar" id="chat-bar"><div class="att-btn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><input type="file" accept="image/*" onchange="sendImg(event)"></div><input class="chat-inp" id="chat-inp" placeholder="Сообщение…" maxlength="500" onkeydown="if(event.key==='Enter')sendMsg()" oninput="onType()"><button class="send-btn" onclick="sendMsg()"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
@@ -524,7 +524,7 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
 <!-- 1: FRIENDS -->
 <div class="page" id="page-1">
   <div class="sec-title">Друзья</div><p class="sec-sub">Добавляй и общайся</p>
-  <div style="display:flex;gap:.42rem;margin-bottom:.85rem;"><input class="inp" id="add-friend-inp" placeholder="@юзернейм друга…" maxlength="20"><button class="btn-p" onclick="sendFReq()">Добавить</button></div>
+  <div style="display:flex;gap:.42rem;margin-bottom:.85rem;"><input class="inp" id="add-friend-inp" placeholder="@юзернейм друга…" maxlength="20"><button class="btn-p" onclick="window.sendFReq&&window.sendFReq()">Добавить</button></div>
   <div id="freq-wrap"></div>
   <div class="asec-title">Мои друзья</div>
   <div id="friends-wrap"></div>
@@ -641,12 +641,12 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
       <div style="font-size:.68rem;color:var(--muted);font-weight:700;margin-bottom:.45rem;">Выдать монеты 🪙</div>
       <input class="inp" id="give-u" placeholder="@юзернейм" style="margin-bottom:.38rem;">
       <input class="inp" id="give-a" placeholder="Количество" type="number" style="margin-bottom:.38rem;">
-      <button class="btn-p" style="width:100%;" onclick="giveCoins()">Выдать монеты</button>
+      <button class="btn-p" style="width:100%;" onclick="window.giveCoins&&window.giveCoins()">Выдать монеты</button>
     </div>
     <div class="dev-section" style="margin-top:.5rem;">
       <div style="font-size:.68rem;color:var(--muted);font-weight:700;margin-bottom:.45rem;">Выдать галочку ✓</div>
       <input class="inp" id="verify-u" placeholder="@юзернейм" style="margin-bottom:.38rem;">
-      <button class="btn-p" style="width:100%;" onclick="giveVerify()">Верифицировать</button>
+      <button class="btn-p" style="width:100%;" onclick="window.giveVerify&&window.giveVerify()">Верифицировать</button>
     </div>
   </div>
 </div>
@@ -676,8 +676,8 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
     </div>
     <div class="asec"><div class="asec-title">Управление чатом</div>
       <div class="adm-grid">
-        <button class="adm-btn danger" onclick="clearChat()"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg><span>Очистить чат</span></button>
-        <button class="adm-btn" onclick="sendAnnounce()"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Объявление</span></button>
+        <button class="adm-btn danger" onclick="window.clearChat&&window.clearChat()"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg><span>Очистить чат</span></button>
+        <button class="adm-btn" onclick="window.sendAnnounce&&window.sendAnnounce()"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Объявление</span></button>
       </div>
     </div>
     <button class="btn-d" style="width:100%;" onclick="adminLogout()">Выйти из админки</button>
@@ -686,6 +686,51 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
 
 </div><!-- /pages -->
 
+
+<script>
+// Global dispatcher - calls window functions safely
+function doLogin(){if(window.doLogin_)window.doLogin_();else setTimeout(doLogin,100);}
+function createGroup(){if(window.createGroup_)window.createGroup_();else setTimeout(createGroup,100);}
+function joinGroup(){if(window.joinGroup_)window.joinGroup_();else setTimeout(joinGroup,100);}
+function publishPost(){if(window.publishPost_)window.publishPost_();else setTimeout(publishPost,100);}
+function publishStatus(){if(window.publishStatus_)window.publishStatus_();else setTimeout(publishStatus,100);}
+function publishGdz(){if(window.publishGdz_)window.publishGdz_();else setTimeout(publishGdz,100);}
+function sendFReq(){if(window.sendFReq_)window.sendFReq_();else setTimeout(sendFReq,100);}
+function giveCoins(){if(window.giveCoins_)window.giveCoins_();else setTimeout(giveCoins,100);}
+function giveVerify(){if(window.giveVerify_)window.giveVerify_();else setTimeout(giveVerify,100);}
+function closeRoom(){if(window.closeRoom_)window.closeRoom_();}
+function openGrpSettings(){if(window.openGrpSettings_)window.openGrpSettings_();}
+function saveGrpSettings(){if(window.saveGrpSettings_)window.saveGrpSettings_();}
+function deleteGroup(){if(window.deleteGroup_)window.deleteGroup_();}
+function copyCode(){if(window.copyCode_)window.copyCode_();}
+function clearChat(){if(window.clearChat_)window.clearChat_();}
+function sendAnnounce(){if(window.sendAnnounce_)window.sendAnnounce_();}
+function closeSV(){if(window.closeSV_)window.closeSV_();}
+function toggleLike(a,b){if(window.toggleLike_)window.toggleLike_(a,b);}
+function delPost(a){if(window.delPost_)window.delPost_(a);}
+function toggleComm(a,b){if(window.toggleComm_)window.toggleComm_(a,b);}
+function sendComm(a){if(window.sendComm_)window.sendComm_(a);}
+function sendGdzAns(a){if(window.sendGdzAns_)window.sendGdzAns_(a);}
+function attGdzImg(e,a){if(window.attGdzImg_)window.attGdzImg_(e,a);}
+function buyItem(a,b,c){if(window.buyItem_)window.buyItem_(a,b,c);}
+function acceptFR(a,b,c,d){if(window.acceptFR_)window.acceptFR_(a,b,c,d);}
+function declineFR(a){if(window.declineFR_)window.declineFR_(a);}
+function removeFR(a){if(window.removeFR_)window.removeFR_(a);}
+function delMsg(a){if(window.delMsg_)window.delMsg_(a);}
+function promoteAdm(a){if(window.promoteAdm_)window.promoteAdm_(a);}
+function kickMember(a){if(window.kickMember_)window.kickMember_(a);}
+function changeGrpAv(e){if(window.changeGrpAv_)window.changeGrpAv_(e);}
+function viewImg(a){if(window.viewImg_)window.viewImg_(a);}
+function prevImg(e,a,b,c){if(window.prevImg_)window.prevImg_(e,a,b,c);}
+function prevPostMedia(e){if(window.prevPostMedia_)window.prevPostMedia_(e);}
+function sendImg(e){if(window.sendImg_)window.sendImg_(e);}
+function onType(){if(window.onType_)window.onType_();}
+function openDM(a,b,c){if(window.openDM_)window.openDM_(a,b,c);}
+function setFilter(a,b){if(window.setFilter_)window.setFilter_(a,b);}
+function adminFX(a){if(window.adminFX_)window.adminFX_(a);}
+function adminLogout(){if(window.adminLogout_)window.adminLogout_();}
+function checkPass(){if(window.checkPass_)window.checkPass_();}
+</script>
 <script type="module">
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import{getFirestore,collection,addDoc,onSnapshot,query,orderBy,limit,deleteDoc,getDocs,doc,setDoc,serverTimestamp,getDoc,updateDoc,where,arrayUnion,arrayRemove}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -729,7 +774,7 @@ function showToast(name,msg,av){
 }
 
 function viewImg(src){const iv=document.getElementById('img-viewer');document.getElementById('iv-img').src=src;iv.classList.add('open');}
-window.viewImg=viewImg;
+window.viewImg_=viewImg;
 
 // ── PRESENCE ─────────────────────────────────────────────────────
 const presRef=doc(db,'presence',SID);
@@ -748,7 +793,7 @@ onSnapshot(collection(db,'presence'),snap=>{
 });
 
 // ── LOGIN ─────────────────────────────────────────────────────────
-window.doLogin=async function(){
+window.doLogin_=async function(){
   const rawU=(document.getElementById('e-username').value||'').trim().replace(/^@/,'').split(' ').join('');
   const rawN=(document.getElementById('e-name').value||'').trim();
   if(!rawU){alert('Введи юзернейм!');return;}
@@ -856,7 +901,7 @@ function renderUsersStrip(){
 }
 
 // ── FRIENDS ───────────────────────────────────────────────────────
-window.sendFReq=async function(){
+window.sendFReq_=async function(){
   const t=(document.getElementById('add-friend-inp').value||'').trim().replace(/^@/,'');
   if(!t||t===uUsername){alert('Укажи другой юзернейм');return;}
   const ref=doc(db,'users',t);const d=await getDoc(ref);
@@ -892,13 +937,13 @@ function listenFriends(){
   });
 }
 
-window.acceptFR=async function(reqId,fromU,fromN,fromA){
+window.acceptFR_=async function(reqId,fromU,fromN,fromA){
   const fid=[uUsername,fromU].sort().join('__');
   await setDoc(doc(db,'friends',fid),{users:[uUsername,fromU],names:{[uUsername]:uName,[fromU]:fromN},avatars:{[uUsername]:uAv,[fromU]:fromA},t:serverTimestamp()});
   await deleteDoc(doc(db,'freq',reqId));
 };
-window.declineFR=async function(id){await deleteDoc(doc(db,'freq',id));};
-window.removeFR=async function(id){if(confirm('Удалить из друзей?'))await deleteDoc(doc(db,'friends',id));};
+window.declineFR_=async function(id){await deleteDoc(doc(db,'freq',id));};
+window.removeFR_=async function(id){if(confirm('Удалить из друзей?'))await deleteDoc(doc(db,'friends',id));};
 
 // ── STATUSES ──────────────────────────────────────────────────────
 function listenStatuses(){
@@ -917,8 +962,8 @@ function listenStatuses(){
     if(!list.children.length)list.innerHTML='<div style="padding:1.5rem;text-align:center;font-size:.74rem;color:var(--muted);">Статусов нет. Будь первым!</div>';
   });
 }
-window.closeSV=()=>document.getElementById('sv').classList.remove('open');
-window.publishStatus=async function(){
+window.closeSV_=()=>document.getElementById('sv').classList.remove('open');
+window.publishStatus_=async function(){
   const text=(document.getElementById('status-text').value||'').trim();
   const imgEl=document.getElementById('status-img-prev');
   const img=imgEl.src&&imgEl.src.startsWith('data:')?imgEl.src:'';
@@ -933,7 +978,7 @@ window.publishStatus=async function(){
 };
 
 // ── GROUPS ────────────────────────────────────────────────────────
-window.createGroup=async function(){
+window.createGroup_=async function(){
   const name=(document.getElementById('grp-name').value||'').trim();
   const icon=(document.getElementById('grp-icon').value||'').trim()||'💬';
   const imgEl=document.getElementById('grp-av-prev');
@@ -950,7 +995,7 @@ window.createGroup=async function(){
   }catch(e){alert('Ошибка создания: '+e.message);}
 };
 
-window.joinGroup=async function(){
+window.joinGroup_=async function(){
   const code=(document.getElementById('join-code').value||'').trim().toUpperCase();
   if(!code){alert('Введи код!');return;}
   const snap=await getDocs(query(collection(db,'groups'),where('inviteCode','==',code)));
@@ -1067,9 +1112,9 @@ function openRoom(roomId,type,name,icon,avatar,grpData){
   });
 }
 
-window.closeRoom=function(){if(roomUnsub){roomUnsub();roomUnsub=null;}curRoom=null;curType=null;curGrp=null;document.getElementById('chat-room').classList.remove('open');document.getElementById('chat-home').style.display='flex';};
+window.closeRoom_=function(){if(roomUnsub){roomUnsub();roomUnsub=null;}curRoom=null;curType=null;curGrp=null;document.getElementById('chat-room').classList.remove('open');document.getElementById('chat-home').style.display='flex';};
 
-window.onType=async function(){
+window.onType_=async function(){
   if(!curRoom||!uUsername)return;
   clearTimeout(typTO);
   await setDoc(doc(db,'typing',curRoom),{username:uUsername,name:uName,t:serverTimestamp()});
@@ -1085,7 +1130,7 @@ window.sendMsg=async function(){
   await setDoc(doc(db,'typing',curRoom),{username:'',name:'',t:serverTimestamp()});
 };
 
-window.sendImg=async function(e){
+window.sendImg_=async function(e){
   const f=e.target.files[0];if(!f||!curRoom)return;
   const r=new FileReader();
   r.onload=ev=>{
@@ -1099,14 +1144,14 @@ window.sendImg=async function(e){
   };r.readAsDataURL(f);e.target.value='';
 };
 
-window.delMsg=async function(msgId){
+window.delMsg_=async function(msgId){
   if(!curRoom)return;
   const col=curType==='group'?`groups/${curRoom}/messages`:`dms/${curRoom}/messages`;
   await deleteDoc(doc(db,col,msgId));
 };
 
 // ── GROUP SETTINGS ────────────────────────────────────────────────
-window.openGrpSettings=async function(){
+window.openGrpSettings_=async function(){
   if(!curGrp||!curRoom)return;
   const g=curGrp;
   document.getElementById('gs-name').value=g.name||'';
@@ -1124,7 +1169,7 @@ window.openGrpSettings=async function(){
   });
   M.open('m-grp-settings');
 };
-window.saveGrpSettings=async function(){
+window.saveGrpSettings_=async function(){
   if(!curRoom)return;
   const name=(document.getElementById('gs-name').value||'').trim();
   const adminOnly=document.getElementById('gs-ao').classList.contains('on');
@@ -1133,48 +1178,10 @@ window.saveGrpSettings=async function(){
   if(name)document.getElementById('r-hdr-name').textContent=name;
   M.close('m-grp-settings');
 };
-window.changeGrpAv=function(e){
+window.changeGrpAv_=function(e){
   const f=e.target.files[0];if(!f)return;
   const r=new FileReader();
   r.onload=ev=>{const img=new Image();img.onload=async()=>{const c=document.createElement('canvas');const M=80;let w=img.width,h=img.height;if(w>h){if(w>M){h=h*M/w;w=M;}}else{if(h>M){w=w*M/h;h=M;}}c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);const av=c.toDataURL('image/jpeg',.7);await updateDoc(doc(db,'groups',curRoom),{avatar:av});document.getElementById('gs-av').innerHTML=`<img src="${av}" style="width:100%;height:100%;object-fit:cover;">`;curGrp={...curGrp,avatar:av};};img.src=ev.target.result;};r.readAsDataURL(f);
 };
-window.promoteAdm=async function(m){const a=[...(curGrp.admins||[]),m];await updateDoc(doc(db,'groups',curRoom),{admins:a});curGrp={...curGrp,admins:a};window.openGrpSettings();};
-window.kickMember=async function(m){if(!confirm(`Выкинуть @${m}?`))return;const members=(curGrp.members||[]).filter(x=>x!==m);const admins=(curGrp.admins||[]).filter(x=>x!==m);await updateDoc(doc(db,'groups',curRoom),{members,admins});await addDoc(collection(db,`groups/${curRoom}/messages`),{system:true,text:`${m} покинул группу`,t:serverTimestamp()});curGrp={...curGrp,members,admins};window.openGrpSettings();};
-window.deleteGroup=async function(){if(!curRoom||!confirm('Удалить группу навсегда?'))return;await deleteDoc(doc(db,'groups',curRoom));M.close('m-grp-settings');window.closeRoom();};
-window.copyCode=function(){const code=document.getElementById('gs-code').textContent;navigator.clipboard?.writeText(code).then(()=>alert('Код скопирован: '+code)).catch(()=>alert('Код: '+code));};
-
-window.setFilter=function(f,el){chatFilter=f;document.querySelectorAll('.cf').forEach(c=>c.classList.remove('active'));el.classList.add('active');listenGroups();renderDMs();};
-
-// ── POSTS ─────────────────────────────────────────────────────────
-window.prevPostMedia=function(e){
-  const f=e.target.files[0];if(!f)return;
-  const isVid=f.type.startsWith('video/');
-  if(isVid){const u=URL.createObjectURL(f);document.getElementById('post-img-prev').style.display='none';document.getElementById('post-media-ico').innerHTML='<span style="font-size:.72rem;color:#4ade80;">📹 Видео выбрано</span>';document.getElementById('post-media-wrap').dataset.videoUrl=u;document.getElementById('post-media-wrap').dataset.isVid='1';return;}
-  const r=new FileReader();
-  r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');const M=800;let w=img.width,h=img.height;if(w>h){if(w>M){h=h*M/w;w=M;}}else{if(h>M){w=w*M/h;h=M;}}c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);const pi=document.getElementById('post-img-prev');pi.src=c.toDataURL('image/jpeg',.78);pi.style.display='block';document.getElementById('post-media-ico').style.display='none';document.getElementById('post-media-wrap').dataset.isVid='0';};img.src=ev.target.result;};r.readAsDataURL(f);
-};
-
-window.publishPost=async function(){
-  if(!uUsername){alert('Войди сначала!');return;}
-  const text=(document.getElementById('post-text').value||'').trim();
-  const imgEl=document.getElementById('post-img-prev');
-  const img=imgEl.src&&imgEl.src.startsWith('data:')?imgEl.src:'';
-  if(!text&&!img){alert('Добавь текст или фото!');return;}
-  const prof=await getDoc(doc(db,'users',uUsername));const pd=prof.exists()?prof.data():{};
-  try{
-    await addDoc(collection(db,'posts'),{author:uName,username:uUsername,avatar:uAv,text,img,likes:[],nickGrad:pd.nickGrad||'',verified:pd.verified||false,isDev:pd.isDev||false,tag:pd.tag||'',t:serverTimestamp()});
-    M.close('m-post');document.getElementById('post-text').value='';imgEl.src='';imgEl.style.display='none';document.getElementById('post-media-ico').style.display='flex';
-  }catch(e){alert('Ошибка: '+e.message);}
-};
-
-function listenPosts(){
-  onSnapshot(query(collection(db,'posts'),orderBy('t','desc'),limit(30)),snap=>{
-    const list=document.getElementById('posts-list');if(!list)return;list.innerHTML='';
-    if(snap.empty){list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted);font-size:.76rem;">Постов нет. Будь первым!</div>';return;}
-    snap.forEach(d=>{
-      const v=d.data();const pid=d.id;
-      const liked=(v.likes||[]).includes(uUsername);
-      const time=v.t?new Date(v.t.toMillis()).toLocaleDateString('ru',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
-      const nick=buildNick(v.author,v.nickGrad,v.verified,v.isDev,v.tag);
-      const card=document.createElement('div');card.className='post-card';
-      card.innerHTML=`<div class="post-head"><div class="p-av" style="background:${nc(v.author)}">${v.avatar?`<img src="${v.a
+window.promoteAdm_=async function(m){const a=[...(curGrp.admins||[]),m];await updateDoc(doc(db,'groups',curRoom),{admins:a});curGrp={...curGrp,admins:a};window.openGrpSettings();};
+window.kickMember_=async function(m){if(!confirm(`Выкинуть @${m}?`))return;const members=(curGrp.members||[]).filter(x=>x!==m);const admins=(curGrp.admins||[]).filter(x=>x!==m);await updateDoc(doc(db,'groups',curRoom),{members,admins});await addDoc(collection(db,`gr
